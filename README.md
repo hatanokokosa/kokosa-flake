@@ -9,7 +9,7 @@
 ░  ░ ░ ░ ░ ░    ░  ░ ░ ░   ░ ▒     ░       ░   ▒    
     ░       ░          ░     ░ ░           ░   ░
 
-~ [211]$ doas echo "Ciallo～(∠・ω< )⌒☆ World!" > /boot/linux-zen-bzImage 
+~ [211]$ doas echo "Ciallo～(∠・ω< )⌒☆ World!" > /boot/kernels/*'
 ```
 
 My personal NixOS configuration!
