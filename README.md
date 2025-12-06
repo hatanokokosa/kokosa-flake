@@ -2,8 +2,6 @@ My personal NixOS configuration!
 
 Built with flake-parts + import-tree; modules auto-discover!
 
-[![Built With Nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
-
 ## Components
 - Security: [OpenDoas] (Sudo disabled)
 - Colorscheme: [Catppuccin Latte]
