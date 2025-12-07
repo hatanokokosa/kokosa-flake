@@ -19,29 +19,52 @@ The flake auto-discovers modules; you mostly drop files in the right folder and 
 ## Home Manager Modules
 - Location: `home/modules/*.nix` (auto-imported by `nixos/modules/home.nix`).
 - Enable: set `my.hm.<name>.enable = true;` in `nixos/modules/home.nix` under `home-manager.users.hatano.my.hm`.
+- Reminder: flake evaluation sees the Git tree; keep new modules/dotfiles tracked or Nix won't find the options.
 - Basic template:
 ```nix
-{ config, lib, pkgs, ... }:
-let cfg = config.my.hm.<name>;
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  cfg = config.my.hm.<name>;
 in {
-  options.my.hm.<name>.enable = lib.mkEnableOption "Enable <name>";
-  config = lib.mkIf cfg.enable { /* programs.<tool> = { ... }; */ };
+  options.my.hm.<name> = {
+    enable = lib.mkEnableOption "Enable <name> via Home Manager";
+    # ...
+  };
+  config = lib.mkIf cfg.enable {
+    programs.<name> = {
+      enable = true;
+      # ...
+    }
+  };
 }
 ```
 
 ### Home Manager Modules Linking Dotfiles
-- Dotfiles: place under `home/dotfiles/<app>/...`.
+- Dotfiles: place under `home/dotfiles/<name>/...`.
 - Module template:
 ```nix
-{ config, lib, homeFiles, ... }:
-let cfg = config.my.hm.<name>;
-    dotdir = "${homeFiles}/<app>";
+{
+  config,
+  lib,
+  homeFiles,
+  ...
+}: let
+  cfg = config.my.hm.<name>;
+  dotdir = "${homeFiles}/<name>";
 in {
-  options.my.hm.<name>.enable = lib.mkEnableOption "Manage <app> dotfiles";
+  options.my.hm.<name> = {
+    enable = lib.mkEnableOption "Manage <name> dotfiles";
+  };
   config = lib.mkIf cfg.enable {
-    xdg.configFile."<app>/config".source = "${dotdir}/config"; # adjust paths
+    xdg.configFile."<name>/<file or dir>".source = "${dotdir}/<file or dir>";
+    xdg.configFile."<name>/<file or dir>".source = "${dotdir}/<file or dir>";
   };
 }
+
 ```
 
 ## Commands

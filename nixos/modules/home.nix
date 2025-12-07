@@ -27,6 +27,7 @@ in {
         fzf.enable = true;
         gh.enable = true;
         fish.enable = true;
+        fastfetch.enable = true;
       };
     };
   };
