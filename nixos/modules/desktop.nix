@@ -12,6 +12,7 @@
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     plasma-workspace-wallpapers
+    gwenview
     discover
     konsole
     okular
