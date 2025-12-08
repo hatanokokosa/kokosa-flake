@@ -152,6 +152,7 @@
     wineasio
     mangohud
     corectrl
+    scanmem
     bottles
     clinfo
     vkd3d
