@@ -37,7 +37,7 @@
 - Editor: [Neovim]
 - Terminal: [Kitty]
 
-## 📂 Structure
+## Structure
 - `modules/`: flake-parts helpers for formatter, systems, and host registry
 - `flake.nix`: flake entry with inputs and outputs
 - `home/`: Home Manager modules and dotfiles
