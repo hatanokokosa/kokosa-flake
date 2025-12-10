@@ -7,7 +7,8 @@
     shell = pkgs.fish;
     extraGroups = [
       "networkmanager"
-      "wheel"
+      "libvirtd"
+      "kvm"
     ];
     packages = [pkgs.papirus-icon-theme];
   };

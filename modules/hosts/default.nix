@@ -55,6 +55,7 @@ in {
       "users"
       "home"
       "boot"
+      "vm"
     ];
     useHomeManager = true;
   };
