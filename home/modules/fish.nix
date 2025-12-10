@@ -5,30 +5,22 @@
   ...
 }: let
   cfg = config.my.hm.fish;
-  fishFilesDir = "${homeFiles}/fish";
+  dotdir = "${homeFiles}/fish";
 in {
   options.my.hm.fish = {
-    enable = lib.mkEnableOption "Manage fish shell configuration via Home Manager";
+    enable = lib.mkEnableOption "Manage fish dotfiles";
   };
 
   config = lib.mkIf cfg.enable {
-    xdg.configFile."fish/fish_plugins".text = "# Managed by Home Manager.\n# Plugins are provided via Home Manager configuration.\n";
-    xdg.configFile."fish/completions".source = "${fishFilesDir}/completions";
-    xdg.configFile."fish/functions".source = "${fishFilesDir}/functions";
-    xdg.configFile."fish/conf.d".source = "${fishFilesDir}/conf.d";
+    xdg.configFile."fish/completions".source = "${dotdir}/completions";
+    xdg.configFile."fish/functions".source = "${dotdir}/functions";
+    xdg.configFile."fish/conf.d".source = "${dotdir}/conf.d";
 
     programs.fish = {
       enable = true;
       interactiveShellInit = ''
         set -gx BAT_THEME "Catppuccin Latte"
         set -gx BAT_STYLE plain
-
-        set -x SKIM_DEFAULT_OPTIONS "$SKIM_DEFAULT_OPTIONS \
-        --color=fg:#4c4f69,bg:#eff1f5,matched:#ccd0da,matched_bg:#dd7878, \
-        current:#4c4f69,current_bg:#bcc0cc,current_match:#eff1f5, \
-        current_match_bg:#dc8a78,spinner:#40a02b,info:#8839ef, \
-        prompt:#1e66f5,cursor:#d20f39,selected:#e64553, \
-        header:#179299,border:#9ca0b0"
 
         set -g fish_color_selection white --bold --background=brblack
         set -g fish_pager_color_progress brwhite --background=cyan
