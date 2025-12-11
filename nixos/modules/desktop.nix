@@ -10,6 +10,7 @@
     };
   };
 
+  # Exclude Packages
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     plasma-workspace-wallpapers
     gwenview
@@ -21,6 +22,7 @@
 
   programs.niri.enable = false;
 
+  # Hardware
   hardware = {
     graphics = {
       enable = true;
@@ -40,6 +42,13 @@
       support32Bit = true;
     };
     jack.enable = true;
+  };
+
+  # SDDM
+  services.displayManager.sddm.settings = {
+    Theme = {
+      Font = "Space Grotesk";
+    };
   };
 
   powerManagement.cpuFreqGovernor = "ondemand";
