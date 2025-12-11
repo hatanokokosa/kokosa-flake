@@ -40,7 +40,7 @@
       source-han-serif-vf-otf
       source-han-sans-vf-otf
       noto-fonts-color-emoji
-      maple-mono.CN
+      maple-mono.truetype
       dejavu_fonts
       noto-fonts
 
