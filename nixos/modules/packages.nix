@@ -43,15 +43,16 @@
     vim
 
     # Cli Tools
+    claude-code-router
     wl-clipboard-rs
     translate-shell
     appimage-run
     ripgrep-all
     ffmpeg-full
     libva-utils
+    claude-code
     go-musicfox
     amdgpu_top
-    gemini-cli
     fastfetch
     rustscan
     tealdeer

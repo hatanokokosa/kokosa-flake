@@ -42,6 +42,7 @@
       noto-fonts-color-emoji
       maple-mono.truetype
       dejavu_fonts
+      kokosa-mono
       noto-fonts
 
       (google-fonts.override {
@@ -59,7 +60,8 @@
       defaultFonts = {
         emoji = ["Noto Color Emoji"];
         monospace = [
-          "Maple Mono CN"
+          "Kokosa Mono"
+          "Maple Mono"
           "FZSJ-ZHUZAYTB"
           "Symbols Nerd Font"
         ];

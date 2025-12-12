@@ -2,12 +2,7 @@
   inputs,
   pkgs,
   ...
-}: let
-  nurOverlay =
-    if inputs.nur ? overlays && inputs.nur.overlays ? default
-    then inputs.nur.overlays.default
-    else inputs.nur.overlay;
-in {
+}: {
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
@@ -30,10 +25,10 @@ in {
   nixpkgs = {
     config = {
       allowUnfree = true;
-      allowBroken = false;
     };
     overlays = [
-      nurOverlay
+      inputs.nur.overlays.default
+      inputs.self.overlays.default
       (final: prev: {
         hid-bpf-uclogic = inputs.hid-bpf-uclogic.packages.${prev.stdenv.hostPlatform.system}.default;
       })
