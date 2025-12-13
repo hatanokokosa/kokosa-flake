@@ -9,7 +9,7 @@ stdenvNoCC.mkDerivation rec {
 
   src = fetchzip {
     url = "https://github.com/hatanokokosa/kokosa-mono/releases/download/v${version}/PkgTTF-KokosaMono.zip";
-    hash = "sha256-e5tCF66kMGZf8NpKLw3wkldY7MAQzHMP5rjvCO60w6g=";
+    hash = "sha256-x3q2C8omMBAGPvZ2RJtOL1X1JNeZLTUEMEpT6BNOgE0=";
     stripRoot = false;
   };
 
