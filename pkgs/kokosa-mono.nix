@@ -5,11 +5,11 @@
 }:
 stdenvNoCC.mkDerivation rec {
   pname = "kokosa-mono";
-  version = "0.1.1-test-fix";
+  version = "0.2.0";
 
   src = fetchzip {
     url = "https://github.com/hatanokokosa/kokosa-mono/releases/download/v${version}/PkgTTF-KokosaMono.zip";
-    hash = "sha256-smxo7oh9x7xy5xhmqr/gfjTwZMyuault0vueLgu3sHg=";
+    hash = "sha256-e5tCF66kMGZf8NpKLw3wkldY7MAQzHMP5rjvCO60w6g=";
     stripRoot = false;
   };
 
