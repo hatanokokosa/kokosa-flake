@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  programs.nix-index.enable = false;
   programs.appimage.binfmt = true;
 
   # Steam
@@ -6,12 +7,11 @@
     gamemode.enable = true;
     steam = {
       enable = true;
+      dedicatedServer.openFirewall = true;
       gamescopeSession.enable = true;
       remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
       protontricks.enable = true;
     };
-    nix-index.enable = false;
   };
 
   # System Packages
@@ -43,14 +43,12 @@
     vim
 
     # Cli Tools
-    claude-code-router
     wl-clipboard-rs
     translate-shell
     appimage-run
     ripgrep-all
     ffmpeg-full
     libva-utils
-    claude-code
     go-musicfox
     amdgpu_top
     fastfetch
@@ -65,7 +63,6 @@
     broot
     codex
     dust
-    skim
     cloc
     yazi
     fish
@@ -116,28 +113,36 @@
     gcc
 
     # Coding Tools
+
+    ## RUST
     rust-analyzer
     rustfmt
     clippy
     rustc
     cargo
 
+    ## Just
     just-formatter
     just-lsp
 
+    ## Nix
     alejandra
     nixd
 
+    ## Python
     python314
     python313
     ruff
 
+    ## C/C++
     clang-tools
     clang
 
+    ## Go
     gopls
     go
 
+    ## JS/TS
     nodePackages.typescript-language-server
     nodePackages.prettier
     nodePackages.nodejs
@@ -161,17 +166,14 @@
 
     # Daily Use
     kdePackages.partitionmanager
-    kdePackages.markdownpart
     kdePackages.kdenlive
     kdePackages.kalzium
     telegram-desktop
-    zed-editor-fhs
-    cherry-studio
     obs-studio
     handbrake
     obsidian
-    upscayl
     firefox
+    upscayl
     haruna
     krita
     rnote
