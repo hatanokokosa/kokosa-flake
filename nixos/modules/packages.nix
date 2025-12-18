@@ -38,6 +38,7 @@
 
     # Editors
     nur.repos.novel2430.wpsoffice-365
+    antigravity-fhs
     evil-helix
     neovim
     vim
@@ -172,6 +173,7 @@
     obs-studio
     handbrake
     obsidian
+    openutau
     firefox
     upscayl
     haruna

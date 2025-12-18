@@ -1,0 +1,13 @@
+# Nix build outputs
+result
+result-*
+
+# Direnv cache
+.direnv/
+
+# Local IDE settings
+.vscode/
+.idea/
+
+# Meta files to keep local
+AGENTS.md
