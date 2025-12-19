@@ -3,10 +3,7 @@
   networking = {
     networkmanager.enable = true;
     firewall = {
-      trustedInterfaces = ["mihomo" "tun0"];
-      allowedUDPPorts = [21027 22000 11010];
-      allowedTCPPorts = [8384 22000 11010];
-      enable = true;
+      enable = false;
     };
   };
 

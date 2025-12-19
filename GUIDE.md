@@ -68,7 +68,6 @@ in {
 ```
 
 ## Commands
-- Format: `just fmt`
-- Check: `just check`
-- Rebuild current boot: `just switch` (`nh os switch .`; requires `nh`, else `sudo nixos-rebuild switch -L --flake .#kokosa`)
-- Rebuild next boot: `just boot` (`nh os boot .`; requires `nh`, else `sudo nixos-rebuild boot -L --flake .#kokosa`)
+- Format & Check: `just ci`
+- Rebuild current boot: `just switch`
+- Rebuild next boot: `just boot`
