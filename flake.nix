@@ -2,9 +2,8 @@
   description = "Kokosa's Nix Flake";
 
   inputs = {
-    # Nixpkgs & NUR
+    # Nixpkgs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nur.url = "github:nix-community/NUR";
 
     # Flake-parts
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -17,8 +16,18 @@
     };
 
     # Other
-    hid-bpf-uclogic.url = "github:dramforever/hid-bpf-uclogic";
-    catppuccin.url = "github:catppuccin/nix";
+    hid-bpf-uclogic = {
+      url = "github:dramforever/hid-bpf-uclogic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: let
