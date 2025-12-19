@@ -1,7 +1,7 @@
 {
   stdenvNoCC,
   fetchzip,
-  iosevka,
+  lib,
 }:
 stdenvNoCC.mkDerivation rec {
   pname = "kokosa-mono";
@@ -24,6 +24,7 @@ stdenvNoCC.mkDerivation rec {
   meta = {
     homepage = "https://github.com/hatanokokosa/kokosa-mono";
     description = "Custom Iosevka build plan Kokosa Mono";
-    inherit (iosevka.meta) license platforms;
+    license = lib.licenses.ofl;
+    platforms = lib.platforms.all;
   };
 }

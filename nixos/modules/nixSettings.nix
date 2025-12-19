@@ -25,13 +25,7 @@
     config = {
       allowUnfree = true;
     };
-    overlays = [
-      inputs.self.overlays.default
-      inputs.nur.overlays.default
-      (final: prev: {
-        hid-bpf-uclogic = inputs.hid-bpf-uclogic.packages.${prev.stdenv.hostPlatform.system}.default;
-      })
-    ];
+    overlays = [inputs.self.overlays.all];
   };
 
   # NixOS Helper
