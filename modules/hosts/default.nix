@@ -46,18 +46,18 @@ in {
     system = "x86_64-linux";
     modules = [
       "nixSettings"
+      "inputMethod"
       "colorscheme"
       "networking"
-      "packages"
       "services"
+      "packages"
       "security"
       "desktop"
       "locale"
       "users"
+      "fonts"
       "home"
       "boot"
-      "fonts"
-      "inputMethod"
       "vm"
     ];
     useHomeManager = true;
