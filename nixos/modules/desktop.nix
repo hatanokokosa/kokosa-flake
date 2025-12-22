@@ -13,6 +13,7 @@
   # Exclude Packages
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     plasma-workspace-wallpapers
+    khelpcenter
     gwenview
     discover
     konsole
@@ -34,6 +35,7 @@
 
   security.rtkit.enable = true;
 
+  # Audio
   services.pipewire = {
     pulse.enable = true;
     jack.enable = true;
@@ -51,6 +53,11 @@
     };
   };
 
+  # XDG Portal
+  xdg.portal = {
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    enable = true;
+  };
+
   powerManagement.cpuFreqGovernor = "ondemand";
-  xdg.portal.enable = true;
 }
