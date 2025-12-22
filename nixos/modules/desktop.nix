@@ -52,4 +52,5 @@
   };
 
   powerManagement.cpuFreqGovernor = "ondemand";
+  xdg.portal.enable = true;
 }
