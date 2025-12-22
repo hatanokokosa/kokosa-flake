@@ -14,10 +14,6 @@
         password = "$2b$05$OB3G1GrL6hAyvBSDFLXuUuCDc6JbxlHfYz0Pwjmj.nj6mFtIGHMFu";
         user = "kokosa";
       };
-      folders."obsidian-vault" = {
-        path = "/home/hatano/Documents/Obsidian Vault";
-        devices = [];
-      };
     };
     openDefaultPorts = true;
   };
