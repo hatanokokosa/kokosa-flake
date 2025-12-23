@@ -170,6 +170,7 @@
     kdePackages.kdenlive
     kdePackages.kalzium
     telegram-desktop
+    google-chrome
     obs-studio
     handbrake
     obsidian
