@@ -10,7 +10,11 @@
         fcitx5-pinyin-moegirl
         fcitx5-pinyin-zhwiki
         fcitx5-fluent
-        fcitx5-rime
+        (fcitx5-rime.override {
+          rimeDataPkgs = [
+            pkgs.rime-wanxiang
+          ];
+        })
       ];
     };
   };
