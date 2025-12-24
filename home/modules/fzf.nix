@@ -17,7 +17,7 @@
         --exclude .wine --exclude .steam --exclude .cache --exclude .local \
         --exclude .cargo --exclude .dotnet --exclude .gemini --exclude .gnupg \
         --exclude .icons --exclude .java --exclude .lyrics --exclude .mozilla \
-        --size -10M --max-results 3000000 --strip-cwd-prefix
+        --size -50M --max-results 3000000 --strip-cwd-prefix
   '';
 in {
   options.my.hm.fzf = {
