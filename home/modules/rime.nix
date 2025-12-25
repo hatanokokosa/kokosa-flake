@@ -20,7 +20,8 @@ in {
 
       "fcitx5/rime/wanxiang.custom.yaml".text = ''
         patch:
-          "__include": wanxiang_algebra:/flypy
+          speller/algebra:
+            "__include": wanxiang_algebra:/base/小鹤双拼
       '';
     };
   };
