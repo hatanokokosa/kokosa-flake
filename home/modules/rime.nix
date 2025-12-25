@@ -20,7 +20,7 @@ in {
 
       "fcitx5/rime/wanxiang.custom.yaml".text = ''
         patch:
-          speller/algebra/__patch:
+          'speller/algebra/__patch':
             - wanxiang_algebra:/base/小鹤双拼
       '';
     };
