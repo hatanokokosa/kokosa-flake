@@ -37,6 +37,7 @@ in {
       # Enabled Modules
       my.hm = {
         fastfetch.enable = true;
+        rime.enable = true;
         fish.enable = true;
         fzf.enable = true;
         gh.enable = true;
