@@ -10,7 +10,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    xdg.configFile = {
+    xdg.dataFile = {
       "fcitx5/rime/default.custom.yaml".text = ''
         patch:
           "__include": wanxiang_suggested_default:/
