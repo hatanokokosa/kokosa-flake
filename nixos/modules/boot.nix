@@ -18,4 +18,11 @@
       "xt_owner"
     ];
   };
+
+  # Zram Swap
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 50;
+  };
 }
