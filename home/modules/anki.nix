@@ -12,7 +12,6 @@ in {
 
   config = lib.mkIf cfg.enable {
     catppuccin.anki.enable = true;
-
     programs.anki = {
       package = pkgs.anki;
       enable = true;
