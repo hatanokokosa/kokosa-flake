@@ -179,7 +179,6 @@
     haruna
     krita
     rnote
-    anki
     pix
     qq
 
