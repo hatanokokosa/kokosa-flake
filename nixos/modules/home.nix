@@ -30,6 +30,7 @@ in {
       # Colorscheme
       catppuccin = {
         accent = "rosewater";
+        anki.enable = true;
         flavor = "latte";
         enable = true;
       };
