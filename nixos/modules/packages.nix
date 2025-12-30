@@ -172,6 +172,7 @@
     telegram-desktop
     obs-studio
     handbrake
+    anki-bin
     obsidian
     openutau
     firefox
@@ -179,7 +180,6 @@
     haruna
     krita
     rnote
-    anki
     pix
     qq
 
