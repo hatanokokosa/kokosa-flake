@@ -16,7 +16,7 @@
       extraRules = [
         {
           users = ["hatano"];
-          keepEnv = true;
+          keepEnv = false;
           noPass = true;
         }
       ];
