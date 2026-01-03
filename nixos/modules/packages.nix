@@ -180,7 +180,6 @@
     haruna
     krita
     rnote
-    pix
     qq
 
     # Driver
