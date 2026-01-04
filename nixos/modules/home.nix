@@ -41,7 +41,6 @@ in {
         fish.enable = true;
         fzf.enable = true;
         gh.enable = true;
-        syncthing.enable = true;
       };
     };
   };
