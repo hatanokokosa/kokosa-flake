@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  osConfig,
   ...
 }: let
   cfg = config.my.hm.syncthing;
@@ -14,7 +15,7 @@ in {
       extraOptions = {
         gui = {
           user = "kokosa";
-          passwordFile = config.age.secrets.syncthing-gui-password.path;
+          passwordFile = osConfig.age.secrets.syncthing-gui-password.path;
         };
       };
     };
