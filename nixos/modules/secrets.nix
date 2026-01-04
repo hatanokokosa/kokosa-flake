@@ -19,12 +19,4 @@
     storageMode = "local";
     localStorageDir = ./. + "/secrets/rekeyed/${config.networking.hostName}";
   };
-
-  # DAE subscription link secret
-  age.secrets.dae-subscription = {
-    rekeyFile = ./secrets/dae-subscription.age;
-    owner = "root";
-    group = "root";
-    mode = "0400";
-  };
 }

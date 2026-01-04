@@ -59,7 +59,7 @@ in {
       "fonts"
       "home"
       "boot"
-      "dae"
+      "boot"
       "vm"
     ];
     useHomeManager = true;
