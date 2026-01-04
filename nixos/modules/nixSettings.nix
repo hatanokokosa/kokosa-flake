@@ -7,8 +7,8 @@
     settings = {
       experimental-features = ["nix-command" "flakes"];
       substituters = [
-        "https://mirrors.ustc.edu.cn/nix-channels/store?priority=10"
         "https://cache.nixos.org"
+        "https://mirrors.ustc.edu.cn/nix-channels/store?priority=10"
         "https://nix-community.cachix.org"
       ];
       trusted-public-keys = [
