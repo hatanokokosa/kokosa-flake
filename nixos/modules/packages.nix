@@ -16,7 +16,6 @@
     # Daily Use
     kdePackages.partitionmanager
     kdePackages.kdenlive
-    kdePackages.kalzium
     telegram-desktop
     obs-studio
     handbrake
