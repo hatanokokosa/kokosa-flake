@@ -18,7 +18,7 @@ in {
       ];
       settings = {
         gui = {
-           user = "kokosa";
+          user = "kokosa";
         };
       };
     };
