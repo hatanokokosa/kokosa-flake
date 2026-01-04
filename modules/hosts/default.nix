@@ -52,12 +52,14 @@ in {
       "services"
       "packages"
       "security"
+      # "secrets"  # TODO: Enable after configuring agenix master identity
       "desktop"
       "locale"
       "users"
       "fonts"
       "home"
       "boot"
+      "dae"
       "vm"
     ];
     useHomeManager = true;

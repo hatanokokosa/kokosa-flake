@@ -21,13 +21,5 @@
         }
       ];
     };
-
-    # Sparkle (forked from clash-party)
-    wrappers.sparkle = {
-      capabilities = "cap_net_bind_service,cap_net_admin=+ep";
-      source = "${lib.getExe pkgs.sparkle}";
-      owner = "root";
-      group = "root";
-    };
   };
 }
