@@ -28,7 +28,6 @@
     krita
     rnote
     qq
-    clash-verge-rev
 
     # Driver
     hid-bpf-uclogic
