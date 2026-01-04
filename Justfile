@@ -32,3 +32,23 @@ boot:
 # Clean Garbage
 clean:
   nh clean all
+
+# Update Flake
+update:
+  nix flake update
+
+# Start Repl
+repl:
+  nix repl --file flake.nix
+
+# Debug Build
+debug:
+  nixos-rebuild build --flake .#kokosa --show-trace --verbose
+
+# Edit Secret (usage: just secret-edit <path>)
+secret-edit path:
+  nix run github:ryantm/agenix -- -e {{path}}
+
+# Rekey Secrets
+secret-rekey:
+  nix run github:oddlama/agenix-rekey -- rekey
