@@ -12,10 +12,13 @@ in {
   config = lib.mkIf cfg.enable {
     services.syncthing = {
       enable = true;
-      extraOptions = {
+      passwordFile = osConfig.age.secrets.syncthing-gui-password.path;
+      extraOptions = [
+        "--gui-address=127.0.0.1:8384"
+      ];
+      settings = {
         gui = {
-          user = "kokosa";
-          passwordFile = osConfig.age.secrets.syncthing-gui-password.path;
+           user = "kokosa";
         };
       };
     };
