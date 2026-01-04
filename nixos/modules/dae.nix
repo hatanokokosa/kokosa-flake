@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   # dae - eBPF transparent proxy
   services.dae = {
     enable = true;
@@ -7,56 +12,60 @@
       port = 12345;
     };
 
-    config = ''
-      global {
-        tproxy_port: 12345
-        log_level: info
-        tcp_check_url: 'http://cp.cloudflare.com'
-        udp_check_dns: 'dns.google.com:53'
-        check_interval: 30s
-        check_tolerance: 50ms
-        lan_interface: auto
-        wan_interface: auto
-        allow_insecure: false
-        auto_config_kernel_parameter: true
-      }
-
-      subscription {
-        airport: 'https://your-airport.com/api/v1/client/subscribe?token=YOUR_TOKEN'
-      }
-
-      node {}
-
-      group {
-        proxy {
-          filter: subtag(airport)
-          policy: min_moving_avg
-        }
-      }
-
-      routing {
-        pname(NetworkManager, systemd-resolved, dnsmasq) -> direct
-        dip(geoip:private) -> direct
-        dip(geoip:cn) -> direct
-        domain(geosite:cn) -> direct
-        fallback: proxy
-      }
-    '';
+    # DISABLE declarative config.
+    # We want daed to manage the config.
+    config = "";
   };
 
-  # Daed - Web dashboard (http://localhost:2023)
+  # 1. Override dae service to read manual config file
+  # 2. Use ExecStartPre to GUARANTEE the file exists and has correct permissions
+  systemd.services.dae.serviceConfig = {
+    ExecStartPre = lib.mkForce [ 
+      "" 
+      (pkgs.writeShellScript "ensure-dae-config" ''
+        mkdir -p /etc/daed
+        if [ ! -f /etc/daed/config.dae ]; then
+          echo "Creating default dae config..."
+          cat > /etc/daed/config.dae <<EOF
+        global {
+          tproxy_port: 12345
+          lan_interface: auto
+          wan_interface: auto
+          log_level: info
+          allow_insecure: true
+          auto_config_kernel_parameter: true
+        }
+        routing {
+          pname(NetworkManager) -> direct
+          fallback: direct
+        }
+        EOF
+        fi
+        # Enforce strict 0600 permissions (required by dae)
+        chmod 600 /etc/daed/config.dae
+        
+        # Validate config
+        ${pkgs.dae}/bin/dae validate -c /etc/daed/config.dae
+      '')
+    ];
+    ExecStart = lib.mkForce [ "" "${pkgs.dae}/bin/dae run --disable-timestamp -c /etc/daed/config.dae" ];
+  };
+  
+  # Daed - Web dashboard
   environment.systemPackages = [pkgs.daed];
-
   systemd.services.daed = {
     description = "daed - dae web dashboard";
-    after = ["network.target" "dae.service"];
+    after = ["network.target"];
     wantedBy = ["multi-user.target"];
+    path = [ pkgs.dae pkgs.iptables pkgs.iproute2 ];
     serviceConfig = {
-      ExecStart = "${pkgs.daed}/bin/daed run -c /etc/daed";
-      Restart = "on-failure";
-      RestartSec = "5s";
+      Type = "simple";
+      User = "root";
+      Restart = "always";
+      ExecStart = "${pkgs.daed}/bin/daed run -c /etc/daed -l 0.0.0.0:2023";
+      ExecutionProfile = "unsafe";
     };
   };
-
-  environment.etc."daed/.keep".text = "";
+  
 }
+

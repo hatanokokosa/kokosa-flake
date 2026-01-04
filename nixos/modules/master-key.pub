@@ -1,13 +1,1 @@
-# Master Identity Public Key Placeholder
-#
-# Replace this file with your actual master identity public key.
-#
-# Options:
-# 1. YubiKey: Run `age-plugin-yubikey` to generate
-# 2. FIDO2: Use `age-plugin-fido2-hmac`
-# 3. Plain age key: Run `age-keygen -o master-key.txt` and use the public key
-#
-# Example format:
-# age1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs3290gq
-
-# TODO: Replace with your actual public key
+age1utasugq63v8spf2jlyjk3ma5l7c68f60qnug9n7swf459p4wrudqv48u48

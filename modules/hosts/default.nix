@@ -52,7 +52,7 @@ in {
       "services"
       "packages"
       "security"
-      # "secrets"  # TODO: Enable after configuring agenix master identity
+      "secrets"
       "desktop"
       "locale"
       "users"
