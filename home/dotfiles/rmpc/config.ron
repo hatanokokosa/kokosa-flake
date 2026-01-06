@@ -2,6 +2,7 @@
 #![enable(unwrap_newtypes)]
 #![enable(unwrap_variant_newtypes)]
 (
+    theme: "~/.config/rmpc/themes/catppuccin-latte.ron",
     tabs: [
     (
         name: "Queue",
