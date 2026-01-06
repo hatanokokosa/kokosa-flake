@@ -24,10 +24,9 @@ in {
         visualizer_data_source = "/tmp/mpd.fifo";
         visualizer_output_name = "Visualizer";
         visualizer_in_stereo = "yes";
-        visualizer_type = "spectrum";
+        visualizer_type = "wave_filled";
         visualizer_look = "●▮";
         visualizer_color = "blue, cyan, green, yellow, magenta, red";
-        visualizer_spectrum_smooth_look = "yes";
 
         # Display
         song_list_format = "{$4%a - }{%t}|{$8%f$9}$R{$3(%l)$9}";
@@ -80,7 +79,7 @@ in {
         mouse_list_scroll_whole_page = "no";
 
         # Other
-        lyrics_fetchers = "azlyrics, genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet";
+        lyrics_fetchers = "genius, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet";
         follow_now_playing_lyrics = "yes";
         fetch_lyrics_for_current_song_in_background = "yes";
         store_lyrics_in_song_dir = "no";
