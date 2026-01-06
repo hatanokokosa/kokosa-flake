@@ -138,19 +138,58 @@ in {
       };
 
       bindings = [
-        { key = "j"; command = "scroll_down"; }
-        { key = "k"; command = "scroll_up"; }
-        { key = "J"; command = [ "select_item" "scroll_down" ]; }
-        { key = "K"; command = [ "select_item" "scroll_up" ]; }
-        { key = "h"; command = "previous_column"; }
-        { key = "l"; command = "next_column"; }
-        { key = "g"; command = "move_home"; }
-        { key = "G"; command = "move_end"; }
-        { key = "n"; command = "next_found_item"; }
-        { key = "N"; command = "previous_found_item"; }
-        { key = "."; command = "show_lyrics"; }
-        { key = "x"; command = "delete_playlist_items"; }
-        { key = "U"; command = "update_database"; }
+        {
+          key = "j";
+          command = "scroll_down";
+        }
+        {
+          key = "k";
+          command = "scroll_up";
+        }
+        {
+          key = "J";
+          command = ["select_item" "scroll_down"];
+        }
+        {
+          key = "K";
+          command = ["select_item" "scroll_up"];
+        }
+        {
+          key = "h";
+          command = "previous_column";
+        }
+        {
+          key = "l";
+          command = "next_column";
+        }
+        {
+          key = "g";
+          command = "move_home";
+        }
+        {
+          key = "G";
+          command = "move_end";
+        }
+        {
+          key = "n";
+          command = "next_found_item";
+        }
+        {
+          key = "N";
+          command = "previous_found_item";
+        }
+        {
+          key = ".";
+          command = "show_lyrics";
+        }
+        {
+          key = "x";
+          command = "delete_playlist_items";
+        }
+        {
+          key = "U";
+          command = "update_database";
+        }
       ];
     };
   };
