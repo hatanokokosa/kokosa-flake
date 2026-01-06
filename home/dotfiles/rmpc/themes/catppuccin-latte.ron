@@ -183,9 +183,6 @@
                             ),
                             (size: "100%", pane: Pane(Property(content: [
                                             (kind: Text("[ "),style: (fg: "#dc8a78", modifiers: "Bold")),
-                                            (kind: Property(Song(SampleRate())),default: (kind: Text(" "), style: (fg: "#4c4f69")), style: (fg: "#4c4f69")),
-                                            (kind: Text(" Hz"),style: (fg: "#dc8a78")),
-                                            (kind: Text(" | "),style: (fg: "#dc8a78", modifiers: "Bold")),
                                             (kind: Property(Song(Position)), style: (fg: "#4c4f69")),
                                             (kind: Text(" / "),style: (fg: "#dc8a78", modifiers: "Bold")),
                                             (kind: Property(Status(QueueLength())),style: (fg: "#4c4f69")),
@@ -265,11 +262,9 @@
         "custom_header_right": Split(direction: Horizontal, panes: [
                 (size: "100%", pane: Split(direction: Vertical, panes: [
                             (size: "100%", pane: Pane(Property(content: [
-                                            (kind: Property(Song(Channels())), style: (fg: "#ccd0da")),
-                                            (kind: Text(" 󱡫 "),style: (fg: "#ccd0da")),
-                                            (kind: Text(" 󱡬"), style: (fg: "#dc8a78", modifiers: "Bold")),
+                                            (kind: Text(" 󱡬"), style: (fg: "#dc8a78", modifiers: "Bold")),
                                             (kind: Property(Status(Volume)), style: (fg: "#4c4f69")),
-                                            (kind: Text("% "), style: (fg: "#dc8a78", modifiers: "Bold"))
+                                            (kind: Text("% "), style: (fg: "#dc8a78", modifiers: "Bold"))
                                         ], align: Right))
                             ),
                         ])
