@@ -9,21 +9,11 @@
             source: "/tmp/mpd.fifo",
         ),
         framerate: 180,
-        bars: 0,
-        bar_width: 2,
         autosens: true,
-        sleep_timer: 10,
-        bar_spacing: 0,
         smoothing: (
-            integral: 100,
-            monstercat: false,
-            gravity: 70,
-        ),
-        colors: (
-            gradient: Some((
-                count: 8,
-                colors: ["#179299", "#1e66f5", "#7287fd", "#8839ef", "#ea76cb", "#e64553", "#fe640b", "#d20f39"],
-            )),
+            integral: 70,
+            monstercat: true,
+            gravity: 100,
         ),
     ),
     tabs: [
@@ -32,14 +22,14 @@
             pane: Split(
                 direction: Horizontal,
                 panes: [
-                    (size: "60%", pane: Pane(Queue)),
+                    (size: "60%", pane: Pane(Queue), borders: "ALL"),
                     (
                         size: "40%",
                         pane: Split(
                             direction: Vertical,
                             panes: [
-                                (size: "60%", pane: Pane(AlbumArt)),
-                                (size: "40%", pane: Pane(Cava)),
+                                (size: "60%", pane: Pane(AlbumArt), borders: "ALL"),
+                                (size: "40%", pane: Pane(Cava), borders: "ALL"),
                             ],
                         ),
                     ),
