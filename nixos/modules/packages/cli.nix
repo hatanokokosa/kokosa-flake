@@ -22,6 +22,7 @@
     dust
     cloc
     yazi
+    cava
     fish
     btop
     wget
