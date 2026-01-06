@@ -16,7 +16,7 @@
                             direction: Vertical,
                             panes: [
                                 (size: "80%", pane: Pane(AlbumArt)),
-                                (size: "20%", pane: Pane(Visualizer)),
+                                (size: "20%", pane: Pane(Cava)),
                             ],
                         ),
                     ),
