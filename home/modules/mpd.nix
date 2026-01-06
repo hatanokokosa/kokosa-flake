@@ -23,19 +23,13 @@ in {
       dbFile = "${config.xdg.dataHome}/mpd/database";
 
       extraConfig = ''
-        # Audio output for PulseAudio/PipeWire
-        audio_output {
-          type "pipewire"
-          name "PipeWire Sound Server"
-        }
-
         # Fallback to PulseAudio if PipeWire fails
         audio_output {
           type "pulse"
           name "PulseAudio Sound Server"
         }
 
-        # Visualization output for ncmpcpp
+        # Visualization output for rmpc
         audio_output {
           type "fifo"
           name "Visualizer"

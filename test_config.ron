@@ -4,10 +4,8 @@
 (
     theme: "theme",
     cava: (
-        input: (
-            method: Fifo,
-            source: "/tmp/mpd.fifo",
-        )
+        method: Fifo,
+        source: "/tmp/mpd.fifo",
     ),
     tabs: [
         (
@@ -21,8 +19,8 @@
                         pane: Split(
                             direction: Vertical,
                             panes: [
-                                (size: "60%", pane: Pane(AlbumArt)),
-                                (size: "40%", pane: Pane(Cava)),
+                                (size: "80%", pane: Pane(AlbumArt)),
+                                (size: "20%", pane: Pane(Cava)),
                             ],
                         ),
                     ),
