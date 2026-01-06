@@ -1,4 +1,5 @@
-tabs: [
+(
+    tabs: [
     (
         name: "Queue",
         pane: Split(
@@ -30,4 +31,5 @@ tabs: [
         name: "Search",
         pane: Pane(Search),
     ),
-],
+    ],
+)
