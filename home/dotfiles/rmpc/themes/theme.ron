@@ -48,12 +48,12 @@
     // Song table
     song_table_format: [
         (
-            prop: (kind: Property(Title), style: (fg: "#4c4f69"), default: (kind: Text("Unknown"))),  // Blue
+            prop: (kind: Property(Title), style: (fg: "#7c7f93"), default: (kind: Text("Unknown"))),  // Blue
             width: "80%",
             alignment: Left,
         ),
         (
-            prop: (kind: Property(Duration), style: (fg: "#7c7f93"), default: (kind: Text("-:--"))),  // Mauve
+            prop: (kind: Property(Duration), style: (fg: "#acb0be"), default: (kind: Text("-:--"))),  // Mauve
             width: "20%",
             alignment: Right,
         ),
