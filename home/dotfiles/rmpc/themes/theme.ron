@@ -7,7 +7,7 @@
     show_song_table_header: false,
     symbols: (song: "🎵", dir: "📁", playlist: "🎼", marker: "\u{e0b0}"),
     
-    # Layout
+    // Layout
     layout: Split(
         direction: Vertical,
         panes: [
