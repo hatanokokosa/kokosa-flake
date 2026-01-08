@@ -48,12 +48,12 @@
     // Song table
     song_table_format: [
         (
-            prop: (kind: Property(Title), style: (fg: "#179299"), default: (kind: Text("Unknown"))),  // Blue
+            prop: (kind: Property(Title), style: (fg: "#4c4f69"), default: (kind: Text("Unknown"))),  // Blue
             width: "80%",
             alignment: Left,
         ),
         (
-            prop: (kind: Property(Duration), style: (fg: "#8839ef"), default: (kind: Text("-:--"))),  // Mauve
+            prop: (kind: Property(Duration), style: (fg: "#7c7f93"), default: (kind: Text("-:--"))),  // Mauve
             width: "20%",
             alignment: Right,
         ),
@@ -64,13 +64,13 @@
         rows: [
             (
                 left: [
-                    (kind: Text("["), style: (fg: "#179299", modifiers: "Bold")),
-                    (kind: Property(Status(State)), style: (fg: "#40a02b", modifiers: "Bold")),  // Green
-                    (kind: Text("]"), style: (fg: "#179299", modifiers: "Bold"))
+                    (kind: Text("["), style: (fg: "#dc8a78", modifiers: "Bold")),
+                    (kind: Property(Status(State)), style: (fg: "#dc8a78", modifiers: "Bold")),  // Green
+                    (kind: Text("]"), style: (fg: "#dc8a78", modifiers: "Bold"))
                 ],
                 center: [
-                    (kind: Property(Song(Artist)), style: (fg: "#8839ef", modifiers: "Bold"),  // Mauve
-                        default: (kind: Text("Unknown"), style: (fg: "#8839ef", modifiers: "Bold"))
+                    (kind: Property(Song(Artist)), style: (fg: "#209fb5", modifiers: "Bold"),  // Mauve
+                        default: (kind: Text("Unknown"), style: (fg: "#209fb5", modifiers: "Bold"))
                     ),
                     (kind: Text(" - "), style: (fg: "#4c4f69")),
                     (kind: Property(Song(Title)), style: (fg: "#179299", modifiers: "Bold"),  // Blue
@@ -78,9 +78,9 @@
                     )
                 ],
                 right: [
-                    (kind: Text("Vol: "), style: (fg: "#179299", modifiers: "Bold")),
-                    (kind: Property(Status(Volume)), style: (fg: "#fe640b", modifiers: "Bold")),  // Peach
-                    (kind: Text("% "), style: (fg: "#179299", modifiers: "Bold"))
+                    (kind: Text("Vol: "), style: (fg: "#209fb5", modifiers: "Bold")),
+                    (kind: Property(Status(Volume)), style: (fg: "#209fb5", modifiers: "Bold")),  // Peach
+                    (kind: Text("% "), style: (fg: "#209fb5", modifiers: "Bold"))
                 ]
             )
         ],
