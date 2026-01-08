@@ -24,16 +24,16 @@
         ],
     ),
     progress_bar: (
-        symbols: ["▓", "▓", "█", "░", "░"],
+        symbols: ["▓", "▓", "█", " ", " "],
         track_style: (bg: "#e6e9ef"),
-        elapsed_style: (fg: "#dc8a78", bg: "#e6e9ef"),
-        thumb_style: (fg: "#dc8a78", bg: "#e6e9ef"),
+        elapsed_style: (fg: "#89b4fa", bg: "#e6e9ef"),
+        thumb_style: (fg: "#89b4fa", bg: "#e6e9ef"),
     ),
     scrollbar: (
         symbols: ["┋", "█", "󰄿", "󰄼"],
         track_style: (),
         ends_style: (),
-        thumb_style: (fg: "#dc8a78"),
+        thumb_style: (fg: "#89b4fa"),
     ),
     browser_column_widths: [20, 38, 42],
     text_color: "#4c4f69",
@@ -41,19 +41,19 @@
     header_background_color: "#e6e9ef",
     modal_background_color: None,
     modal_backdrop: false,
-    tab_bar: (active_style: (fg: "#eff1f5", bg: "#dc8a78", modifiers: "Bold"), inactive_style: ()),
-    borders_style: (fg: "#dc8a78", modifiers: "Bold"),
+    tab_bar: (active_style: (fg: "#eff1f5", bg: "#89b4fa", modifiers: "Bold"), inactive_style: ()),
+    borders_style: (fg: "#89b4fa", modifiers: "Bold"),
     highlighted_item_style: (fg: "#4c4f69", bg: "#ccd0da", modifiers: "Bold"),
-    current_item_style: (fg: "#eff1f5", bg: "#dc8a78", modifiers: "Bold"),
-    highlight_border_style: (fg: "#dc8a78"),
+    current_item_style: (fg: "#eff1f5", bg: "#89b4fa", modifiers: "Bold"),
+    highlight_border_style: (fg: "#89b4fa"),
     song_table_format: [
         (
-            prop: (kind: Property(Title), style: (fg: "#dc8a78"), default: (kind: Text("Unknown"))),
+            prop: (kind: Property(Title), style: (fg: "#89b4fa"), default: (kind: Text("Unknown"))),
             width: "80%",
             alignment: Left,
         ),
         (
-            prop: (kind: Property(Duration), style: (fg: "#dc8a78"), default: (kind: Text("-:--"))),
+            prop: (kind: Property(Duration), style: (fg: "#89b4fa"), default: (kind: Text("-:--"))),
             width: "20%",
             alignment: Right,
         ),
@@ -62,23 +62,23 @@
         rows: [
             (
                 left: [
-                    (kind: Text("["), style: (fg: "#dc8a78", modifiers: "Bold")),
-                    (kind: Property(Status(State)), style: (fg: "#dc8a78", modifiers: "Bold")),
-                    (kind: Text("]"), style: (fg: "#dc8a78", modifiers: "Bold"))
+                    (kind: Text("["), style: (fg: "#89b4fa", modifiers: "Bold")),
+                    (kind: Property(Status(State)), style: (fg: "#89b4fa", modifiers: "Bold")),
+                    (kind: Text("]"), style: (fg: "#89b4fa", modifiers: "Bold"))
                 ],
                 center: [
-                    (kind: Property(Song(Artist)), style: (fg: "#df8e1d", modifiers: "Bold"),
-                        default: (kind: Text("Unknown"), style: (fg: "#df8e1d", modifiers: "Bold"))
+                    (kind: Property(Song(Artist)), style: (fg: "#89b4fa", modifiers: "Bold"),
+                        default: (kind: Text("Unknown"), style: (fg: "#89b4fa", modifiers: "Bold"))
                     ),
                     (kind: Text(" - ")),
-                    (kind: Property(Song(Title)), style: (fg: "#dc8a78", modifiers: "Bold"),
-                        default: (kind: Text("No Song"), style: (fg: "#dc8a78", modifiers: "Bold"))
+                    (kind: Property(Song(Title)), style: (fg: "#89b4fa", modifiers: "Bold"),
+                        default: (kind: Text("No Song"), style: (fg: "#89b4fa", modifiers: "Bold"))
                     )
                 ],
                 right: [
-                    (kind: Text("Vol: "), style: (fg: "#dc8a78", modifiers: "Bold")),
-                    (kind: Property(Status(Volume)), style: (fg: "#dc8a78", modifiers: "Bold")),
-                    (kind: Text("% "), style: (fg: "#dc8a78", modifiers: "Bold"))
+                    (kind: Text("Vol: "), style: (fg: "#89b4fa", modifiers: "Bold")),
+                    (kind: Property(Status(Volume)), style: (fg: "#89b4fa", modifiers: "Bold")),
+                    (kind: Text("% "), style: (fg: "#89b4fa", modifiers: "Bold"))
                 ]
             )
         ],
