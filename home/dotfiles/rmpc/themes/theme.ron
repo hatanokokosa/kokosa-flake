@@ -5,7 +5,7 @@
     default_album_art_path: None,
     draw_borders: true,
     show_song_table_header: false,
-    symbols: (song: "🎵", dir: "📁", playlist: "🎼", marker: "\u{e0b0}"),
+    symbols: (song: "", dir: "", playlist: "󰲸", marker: "󰙒"),
     
     // Layout
     layout: Split(
@@ -27,33 +27,33 @@
     ),
     
     // Catppuccin Latte
-    text_color: "#4c4f69",              // Text
-    background_color: "#eff1f5",        // Base
-    header_background_color: "#e6e9ef", // Mantle
+    text_color: "#7c7f93",                  // Text
+    background_color: "#eff1f5",            // Base
+    header_background_color: "#e6e9ef",     // Mantle
     modal_background_color: None,
     modal_backdrop: false,
     
     // Borders
     borders_style: (fg: "#179299", modifiers: "Bold"),
     highlight_border_style: (fg: "#179299"),
-    highlighted_item_style: (fg: "#4c4f69", bg: "#ccd0da", modifiers: "Bold"),  // Surface1
+    highlighted_item_style: (fg: "#7c7f93", bg: "#ccd0da", modifiers: "Bold"),  // Surface1
     current_item_style: (fg: "#eff1f5", bg: "#179299", modifiers: "Bold"),      // Blue
     
     // Tab bar
     tab_bar: (
-        active_style: (fg: "#eff1f5", bg: "#179299", modifiers: "Bold"),   // Blue
-        inactive_style: (fg: "#6c6f85")  // Subtext0
+        active_style: (fg: "#eff1f5", bg: "#179299", modifiers: "Bold"),        // Blue
+        inactive_style: (fg: "#6c6f85")                                           // Subtext0
     ),
     
     // Song table
     song_table_format: [
         (
-            prop: (kind: Property(Title), style: (fg: "#7c7f93"), default: (kind: Text("Unknown"))),  // Blue
+            prop: (kind: Property(Title), style: (fg: "#7c7f93"), default: (kind: Text("Unknown"))),    // Blue
             width: "80%",
             alignment: Left,
         ),
         (
-            prop: (kind: Property(Duration), style: (fg: "#acb0be"), default: (kind: Text("-:--"))),  // Mauve
+            prop: (kind: Property(Duration), style: (fg: "#acb0be"), default: (kind: Text("-:--"))),    // Mauve
             width: "20%",
             alignment: Right,
         ),
@@ -65,21 +65,21 @@
             (
                 left: [
                     (kind: Text("["), style: (fg: "#dc8a78", modifiers: "Bold")),
-                    (kind: Property(Status(State)), style: (fg: "#dc8a78", modifiers: "Bold")),  // Green
+                    (kind: Property(Status(State)), style: (fg: "#dc8a78", modifiers: "Bold")),     // Green
                     (kind: Text("]"), style: (fg: "#dc8a78", modifiers: "Bold"))
                 ],
                 center: [
-                    (kind: Property(Song(Artist)), style: (fg: "#209fb5", modifiers: "Bold"),  // Mauve
+                    (kind: Property(Song(Artist)), style: (fg: "#209fb5", modifiers: "Bold"),       // Mauve
                         default: (kind: Text("Unknown"), style: (fg: "#209fb5", modifiers: "Bold"))
                     ),
                     (kind: Text(" - "), style: (fg: "#4c4f69")),
-                    (kind: Property(Song(Title)), style: (fg: "#179299", modifiers: "Bold"),  // Blue
+                    (kind: Property(Song(Title)), style: (fg: "#179299", modifiers: "Bold"),        // Blue
                         default: (kind: Text("No Song"), style: (fg: "#179299", modifiers: "Bold"))
                     )
                 ],
                 right: [
                     (kind: Text("Vol: "), style: (fg: "#209fb5", modifiers: "Bold")),
-                    (kind: Property(Status(Volume)), style: (fg: "#209fb5", modifiers: "Bold")),  // Peach
+                    (kind: Property(Status(Volume)), style: (fg: "#209fb5", modifiers: "Bold")),    // Peach
                     (kind: Text("% "), style: (fg: "#209fb5", modifiers: "Bold"))
                 ]
             )
@@ -89,8 +89,8 @@
     // Progress bar
     progress_bar: (
         symbols: ["▓", "▓", "█", " ", " "],
-        track_style: (bg: "#e6e9ef"),  // Mantle
-        elapsed_style: (fg: "#179299", bg: "#e6e9ef"),  // Blue
+        track_style: (bg: "#e6e9ef"),                       // Mantle
+        elapsed_style: (fg: "#179299", bg: "#e6e9ef"),    // Blue
         thumb_style: (fg: "#179299", bg: "#e6e9ef"),
     ),
     
