@@ -35,6 +35,7 @@
     
     // Borders
     borders_style: (fg: "#dc8a78", modifiers: "Bold"),
+    highlight_border_style: (fg: "#dc8a78"),
     
     // Tab bar
     tab_bar: (
