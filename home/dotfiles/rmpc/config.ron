@@ -2,23 +2,29 @@
 #![enable(unwrap_newtypes)]
 #![enable(unwrap_variant_newtypes)]
 (
+    // Theme file to use (references theme.ron in config directory)
     theme: "theme",
+    
+    // Audio visualizer configuration
     cava: (
         input: (
             method: Fifo,
-            source: "/tmp/mpd.fifo",
+            source: "/tmp/mpd.fifo",    // MPD FIFO output path
         ),
-        framerate: 180,
-        autosens: true,
+        framerate: 180,                 // Refresh rate for visualization
+        autosens: true,                 // Automatic sensitivity adjustment
         smoothing: (
-            integral: 70,
-            monstercat: true,
-            gravity: 100,
+            integral: 70,               // Smoothing intensity (0-100)
+            monstercat: true,           // Monstercat-style smoothing algorithm
+            gravity: 100,               // Bar fall speed
         ),
     ),
+    
+    // Tab definitions for different views
     tabs: [
         (
             name: "Queue",
+            // Split layout: Queue on left, Album Art + Cava on right
             pane: Split(
                 direction: Horizontal,
                 panes: [
@@ -38,27 +44,27 @@
         ),
         (
             name: "Directories",
-            pane: Pane(Directories),
+            pane: Pane(Directories),    // Browse by file system structure
         ),
         (
             name: "Artists",
-            pane: Pane(Artists),
+            pane: Pane(Artists),        // Browse by artist
         ),
         (
             name: "Album Artists",
-            pane: Pane(AlbumArtists),
+            pane: Pane(AlbumArtists),   // Browse by album artist tag
         ),
         (
             name: "Albums",
-            pane: Pane(Albums),
+            pane: Pane(Albums),         // Browse by album
         ),
         (
             name: "Playlists",
-            pane: Pane(Playlists),
+            pane: Pane(Playlists),      // Browse saved playlists
         ),
         (
             name: "Search",
-            pane: Pane(Search),
+            pane: Pane(Search),         // Search interface
         ),
     ],
 )

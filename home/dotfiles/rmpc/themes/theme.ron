@@ -6,6 +6,8 @@
     draw_borders: true,
     show_song_table_header: false,
     symbols: (song: "🎵", dir: "📁", playlist: "🎼", marker: "\u{e0b0}"),
+    
+    # Layout
     layout: Split(
         direction: Vertical,
         panes: [
@@ -23,78 +25,98 @@
             ),
         ],
     ),
-    progress_bar: (
-        symbols: ["▓", "▓", "█", " ", " "],
-        track_style: (bg: "#e6e9ef"),
-        elapsed_style: (fg: "#89b4fa", bg: "#e6e9ef"),
-        thumb_style: (fg: "#89b4fa", bg: "#e6e9ef"),
-    ),
-    scrollbar: (
-        symbols: ["┋", "█", "󰄿", "󰄼"],
-        track_style: (),
-        ends_style: (),
-        thumb_style: (fg: "#89b4fa"),
-    ),
-    browser_column_widths: [20, 38, 42],
-    text_color: "#4c4f69",
-    background_color: "#eff1f5",
-    header_background_color: "#e6e9ef",
+    
+    // Catppuccin Latte
+    text_color: "#4c4f69",              // Text
+    background_color: "#eff1f5",        // Base
+    header_background_color: "#e6e9ef", // Mantle
     modal_background_color: None,
     modal_backdrop: false,
-    tab_bar: (active_style: (fg: "#eff1f5", bg: "#89b4fa", modifiers: "Bold"), inactive_style: ()),
-    borders_style: (fg: "#89b4fa", modifiers: "Bold"),
-    highlighted_item_style: (fg: "#4c4f69", bg: "#ccd0da", modifiers: "Bold"),
-    current_item_style: (fg: "#eff1f5", bg: "#89b4fa", modifiers: "Bold"),
-    highlight_border_style: (fg: "#89b4fa"),
+    
+    // Borders
+    borders_style: (fg: "#179299", modifiers: "Bold"),
+    highlight_border_style: (fg: "#179299"),
+    highlighted_item_style: (fg: "#4c4f69", bg: "#ccd0da", modifiers: "Bold"),  // Surface1
+    current_item_style: (fg: "#eff1f5", bg: "#179299", modifiers: "Bold"),      // Blue
+    
+    // Tab bar
+    tab_bar: (
+        active_style: (fg: "#eff1f5", bg: "#179299", modifiers: "Bold"),   // Blue
+        inactive_style: (fg: "#6c6f85")  // Subtext0
+    ),
+    
+    // Song table
     song_table_format: [
         (
-            prop: (kind: Property(Title), style: (fg: "#89b4fa"), default: (kind: Text("Unknown"))),
+            prop: (kind: Property(Title), style: (fg: "#179299"), default: (kind: Text("Unknown"))),  // Blue
             width: "80%",
             alignment: Left,
         ),
         (
-            prop: (kind: Property(Duration), style: (fg: "#89b4fa"), default: (kind: Text("-:--"))),
+            prop: (kind: Property(Duration), style: (fg: "#8839ef"), default: (kind: Text("-:--"))),  // Mauve
             width: "20%",
             alignment: Right,
         ),
     ],
+    
+    // Header
     header: (
         rows: [
             (
                 left: [
-                    (kind: Text("["), style: (fg: "#89b4fa", modifiers: "Bold")),
-                    (kind: Property(Status(State)), style: (fg: "#89b4fa", modifiers: "Bold")),
-                    (kind: Text("]"), style: (fg: "#89b4fa", modifiers: "Bold"))
+                    (kind: Text("["), style: (fg: "#179299", modifiers: "Bold")),
+                    (kind: Property(Status(State)), style: (fg: "#40a02b", modifiers: "Bold")),  // Green
+                    (kind: Text("]"), style: (fg: "#179299", modifiers: "Bold"))
                 ],
                 center: [
-                    (kind: Property(Song(Artist)), style: (fg: "#89b4fa", modifiers: "Bold"),
-                        default: (kind: Text("Unknown"), style: (fg: "#89b4fa", modifiers: "Bold"))
+                    (kind: Property(Song(Artist)), style: (fg: "#8839ef", modifiers: "Bold"),  // Mauve
+                        default: (kind: Text("Unknown"), style: (fg: "#8839ef", modifiers: "Bold"))
                     ),
-                    (kind: Text(" - ")),
-                    (kind: Property(Song(Title)), style: (fg: "#89b4fa", modifiers: "Bold"),
-                        default: (kind: Text("No Song"), style: (fg: "#89b4fa", modifiers: "Bold"))
+                    (kind: Text(" - "), style: (fg: "#4c4f69")),
+                    (kind: Property(Song(Title)), style: (fg: "#179299", modifiers: "Bold"),  // Blue
+                        default: (kind: Text("No Song"), style: (fg: "#179299", modifiers: "Bold"))
                     )
                 ],
                 right: [
-                    (kind: Text("Vol: "), style: (fg: "#89b4fa", modifiers: "Bold")),
-                    (kind: Property(Status(Volume)), style: (fg: "#89b4fa", modifiers: "Bold")),
-                    (kind: Text("% "), style: (fg: "#89b4fa", modifiers: "Bold"))
+                    (kind: Text("Vol: "), style: (fg: "#179299", modifiers: "Bold")),
+                    (kind: Property(Status(Volume)), style: (fg: "#fe640b", modifiers: "Bold")),  // Peach
+                    (kind: Text("% "), style: (fg: "#179299", modifiers: "Bold"))
                 ]
             )
         ],
     ),
+    
+    // Progress bar
+    progress_bar: (
+        symbols: ["▓", "▓", "█", " ", " "],
+        track_style: (bg: "#e6e9ef"),  // Mantle
+        elapsed_style: (fg: "#179299", bg: "#e6e9ef"),  // Blue
+        thumb_style: (fg: "#179299", bg: "#e6e9ef"),
+    ),
+    
+    // Scrollbar
+    scrollbar: (
+        symbols: ["┋", "█", "󰄿", "󰄼"],
+        track_style: (),
+        ends_style: (),
+        thumb_style: (fg: "#179299"),  // Blue
+    ),
+    
+    browser_column_widths: [20, 38, 42],
+    
+    // Cava
     cava: (
         bar_width: 1,
         bar_spacing: 1,
         bar_color: Gradient({
-            0: "#179299",
-            14: "#1e66f5",
-            28: "#7287fd",
-            42: "#8839ef",
-            57: "#ea76cb",
-            71: "#e64553",
-            85: "#fe640b",
-            100: "#d20f39",
+            0: "#179299",   // Teal
+            14: "#179299",  // Blue
+            28: "#7287fd",  // Lavender
+            42: "#8839ef",  // Mauve
+            57: "#ea76cb",  // Pink
+            71: "#e64553",  // Maroon
+            85: "#fe640b",  // Peach
+            100: "#d20f39", // Red
         }),
     ),
 )
