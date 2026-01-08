@@ -36,6 +36,8 @@
     // Borders
     borders_style: (fg: "#dc8a78", modifiers: "Bold"),
     highlight_border_style: (fg: "#dc8a78"),
+    highlighted_item_style: (fg: "#7c7f93", bg: "#ccd0da", modifiers: "Bold"),
+    current_item_style: (fg: "#eff1f5", bg: "#dc8a78", modifiers: "Bold"),
     
     // Tab bar
     tab_bar: (
