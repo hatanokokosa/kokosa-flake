@@ -29,15 +29,20 @@
     entries = builtins.readDir dir;
     names = builtins.attrNames entries;
 
-    nixFiles = builtins.filter (
-      f: builtins.match ".*\\.nix" f != null && f != "default.nix"
-    ) names;
+    nixFiles =
+      builtins.filter (
+        f: builtins.match ".*\\.nix" f != null && f != "default.nix"
+      )
+      names;
 
-    subDirs = builtins.filter (
-      name:
-        entries.${name} == "directory"
-        && builtins.pathExists "${dir}/${name}/default.nix"
-    ) names;
+    subDirs =
+      builtins.filter (
+        name:
+          entries.${name}
+          == "directory"
+          && builtins.pathExists "${dir}/${name}/default.nix"
+      )
+      names;
   in
     builtins.listToAttrs (
       (map (file: {
@@ -73,7 +78,8 @@
     entries = builtins.readDir hostsDir;
     hostNames = builtins.filter (
       name:
-        entries.${name} == "directory"
+        entries.${name}
+        == "directory"
         && builtins.pathExists "${hostsDir}/${name}/default.nix"
     ) (builtins.attrNames entries);
   in
