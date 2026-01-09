@@ -38,8 +38,8 @@
 - Terminal: [Kitty]
 
 ## Structure
-- `lib/`: shared utility functions (module discovery, etc.)
 - `modules/`: flake-parts helpers for formatter, systems, and host registry
+- `lib/`: shared utility functions (module discovery, etc.)
 - `flake.nix`: flake entry with inputs and outputs
 - `home/`: Home Manager modules and dotfiles
 - `nixos/`: shared modules and host profiles
