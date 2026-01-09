@@ -3,5 +3,6 @@
     # Python
     python313
     ruff
+    uv
   ];
 }

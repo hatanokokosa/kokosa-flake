@@ -45,20 +45,16 @@ in {
   config.hosts.nixos.kokosa = {
     system = "x86_64-linux";
     modules = [
-      "nixSettings"
-      "inputMethod"
-      "colorscheme"
-      "networking"
       "services"
       "packages"
       "security"
       "secrets"
       "desktop"
-      "locale"
+      "network"
       "users"
-      "fonts"
       "home"
       "boot"
+      "nix"
       "vm"
     ];
     useHomeManager = true;

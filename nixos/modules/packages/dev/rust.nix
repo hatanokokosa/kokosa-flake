@@ -4,6 +4,7 @@
     rust-analyzer
     rustfmt
     clippy
+    bacon
     rustc
     cargo
   ];

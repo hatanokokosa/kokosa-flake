@@ -1,8 +1,9 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{inputs, ...}: {
+  imports = [
+    ./nh.nix
+    ./nix-ld.nix
+  ];
+
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
@@ -26,25 +27,5 @@
       allowUnfree = true;
     };
     overlays = [inputs.self.overlays.all];
-  };
-
-  # NixOS Helper
-  programs.nh = {
-    flake = "/home/hatano/Flake";
-    enable = true;
-    clean = {
-      extraArgs = "--keep 5 --keep-since 7d";
-      dates = "weekly";
-      enable = true;
-    };
-  };
-
-  # Nix-ld
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      (pkgs.runCommand "steamrun-lib" {} "mkdir $out; ln -s ${pkgs.steam-run.fhsenv}/usr/lib64 $out/lib")
-      icu
-    ];
   };
 }

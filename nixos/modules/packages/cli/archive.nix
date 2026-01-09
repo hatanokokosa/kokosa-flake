@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    # (De)Compress Tools
+    # Archive Tools
     gnutar
     bzip3
     p7zip

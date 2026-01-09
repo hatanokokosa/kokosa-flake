@@ -1,9 +1,9 @@
 {...}: {
   imports = [
-    ./core.nix
+    ./python.nix
+    ./tools.nix
     ./rust.nix
     ./nix.nix
-    ./python.nix
     ./cpp.nix
     ./go.nix
     ./js.nix

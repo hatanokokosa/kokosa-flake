@@ -1,7 +1,7 @@
 {...}: {
   imports = [
-    ./multimedia.nix
-    ./communication.nix
-    ./productivity.nix
+    ./media.nix
+    ./tools.nix
+    ./tele.nix
   ];
 }

@@ -9,15 +9,33 @@
     then file
     else builtins.head m;
 
-  sharedModules =
-    builtins.listToAttrs
-    (map
-      (file: {
+  dirEntries = builtins.readDir sharedDir;
+
+  # .nix files (excluding default.nix)
+  nixFiles =
+    builtins.filter (f: builtins.match ".*\\.nix" f != null && f != "default.nix")
+    (builtins.attrNames dirEntries);
+
+  # Directories containing default.nix
+  subDirs = builtins.filter (
+    name:
+      dirEntries.${name}
+      == "directory"
+      && builtins.pathExists "${sharedDir}/${name}/default.nix"
+  ) (builtins.attrNames dirEntries);
+
+  sharedModules = builtins.listToAttrs (
+    (map (file: {
         name = stripNixExt file;
         value = import "${sharedDir}/${file}";
       })
-      (builtins.filter (f: builtins.match ".*\\.nix" f != null)
-        (builtins.attrNames (builtins.readDir sharedDir))));
+      nixFiles)
+    ++ (map (dir: {
+        name = dir;
+        value = import "${sharedDir}/${dir}";
+      })
+      subDirs)
+  );
 
   hostModules = let
     hostEntries = builtins.readDir hostsDir;

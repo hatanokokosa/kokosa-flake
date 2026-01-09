@@ -1,7 +1,4 @@
-{config, ...}: {
-  services.v2raya.enable = false;
-
-  # Syncthing
+{...}: {
   services.syncthing = {
     configDir = "/home/hatano/.config/syncthing";
     guiAddress = "127.0.0.1:8384";
@@ -17,17 +14,4 @@
     };
     openDefaultPorts = true;
   };
-
-  # Podman
-  virtualisation.podman.enable = true;
-
-  # Other
-  programs = {
-    kdeconnect.enable = true;
-    nano.enable = false;
-    adb.enable = true;
-  };
-
-  services.openssh.enable = true;
-  services.flatpak.enable = true;
 }

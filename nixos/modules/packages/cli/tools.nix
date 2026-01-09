@@ -15,11 +15,9 @@
     ripgrep
     libwebp
     libwebm
-    zellij
     zoxide
     broot
     codex
-    dust
     cloc
     yazi
     cava
@@ -27,7 +25,6 @@
     btop
     wget
     rip2
-    viu
     dog
     duf
     lsd

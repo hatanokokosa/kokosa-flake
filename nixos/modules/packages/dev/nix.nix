@@ -3,9 +3,5 @@
     # Nix
     alejandra
     nixd
-
-    # Just
-    just-formatter
-    just-lsp
   ];
 }

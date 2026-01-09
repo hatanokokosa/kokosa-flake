@@ -1,5 +1,4 @@
-{pkgs, ...}: {
-  # Network Manager
+{...}: {
   networking = {
     networkmanager.enable = true;
     firewall = {
@@ -8,14 +7,6 @@
       allowedTCPPorts = [8384 22000 11010 7890];
       enable = false;
     };
-  };
-
-  # Clash GUI
-  programs.clash-verge = {
-    serviceMode = true;
-    autoStart = true;
-    tunMode = true;
-    enable = true;
   };
 
   boot.kernel.sysctl = {

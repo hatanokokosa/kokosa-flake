@@ -1,9 +1,10 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    # Productivity
+    # Tools
     kdePackages.partitionmanager
-    anki-bin
+    handbrake
     obsidian
+    upscayl
     firefox
   ];
 }
