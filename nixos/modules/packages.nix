@@ -8,4 +8,3 @@
     ./packages/editor.nix
   ];
 }
-
