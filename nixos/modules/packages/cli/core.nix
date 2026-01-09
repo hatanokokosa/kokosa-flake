@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    # Cli Tools
+    # Core CLI Tools
     wl-clipboard-rs
     translate-shell
     appimage-run
@@ -33,23 +33,5 @@
     lsd
     bat
     fd
-
-    # (De)Compress Tools
-    gnutar
-    bzip3
-    p7zip
-    unzip
-    zstd
-    gzip
-    ouch
-    lz4
-    zip
-    rar
-    xz
-
-    # Network Tools
-    qbittorrent-enhanced
-    v2raya
-    motrix
   ];
 }
