@@ -21,7 +21,7 @@
 
     # Font Config
     fontconfig = {
-      localConf = builtins.readFile ./configs/fontconfig.conf;
+      localConf = builtins.readFile ./config/fontconfig.conf;
       subpixel.rgba = "rgb";
       cache32Bit = true;
       defaultFonts = {
