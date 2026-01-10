@@ -6,6 +6,5 @@
   programs = {
     kdeconnect.enable = true;
     nano.enable = false;
-    adb.enable = true;
   };
 }
