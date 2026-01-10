@@ -5,9 +5,9 @@
     bzip3
     p7zip
     unzip
-    zstd
     gzip
-    ouch
+    zstd
+    unar
     lz4
     zip
     rar
