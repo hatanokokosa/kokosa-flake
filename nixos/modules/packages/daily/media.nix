@@ -4,6 +4,7 @@
     kdePackages.kdenlive
     obs-studio
     openutau
+    pureref
     splayer
     haruna
     krita
