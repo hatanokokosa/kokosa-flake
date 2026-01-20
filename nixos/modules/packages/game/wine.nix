@@ -10,6 +10,7 @@
     bottles
     scanmem
     clinfo
+    heroic
     vkd3d
     dxvk
   ];
