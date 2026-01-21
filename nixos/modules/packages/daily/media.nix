@@ -3,6 +3,7 @@
     # Media
     kdePackages.kdenlive
     obs-studio
+    v4l-utils
     openutau
     pureref
     splayer
