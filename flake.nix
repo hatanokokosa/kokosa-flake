@@ -48,5 +48,5 @@
     flake = inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);
   in
     # Drop non-standard outputs to avoid `nix flake check` warnings.
-    builtins.removeAttrs flake ["modules" "debug" "allSystems"];
+    removeAttrs flake ["modules" "debug" "allSystems"];
 }

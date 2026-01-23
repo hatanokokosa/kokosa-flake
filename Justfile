@@ -2,53 +2,49 @@ set shell := ["fish", "-c"]
 
 # List available recipes
 default:
-  @just --list
+    @just --list
 
 # Format Nix code (Alejandra)
 fmt:
-  nix fmt .
+    nix fmt .
 
 # Show flake outputs
 show:
-  nix flake show
+    nix flake show
 
 # Evaluate flake
 check:
-  nix flake check
+    nix flake check
 
 # Format & Check
 ci:
-  just fmt
-  just check
+    just fmt
+    just check
 
 # Rebuild & Switch
 switch:
-  nh os switch .
+    nh os switch .
 
 # Rebuild & Next Boot
 boot:
-  nh os boot .
+    nh os boot .
 
 # Clean Garbage
 clean:
-  nh clean all
+    nh clean all
 
 # Update Flake
 update:
-  nix flake update
+    nix flake update
 
 # Start Repl
 repl:
-  nix repl --file flake.nix
-
-# Debug Build
-debug:
-  nixos-rebuild build --flake .#kokosa --show-trace --verbose
+    nix repl --file flake.nix
 
 # Edit Secret (usage: just secret-edit <path>)
 secret-edit path:
-  nix run github:ryantm/agenix -- -e {{path}}
+    nix run github:ryantm/agenix -- -e {{ path }}
 
 # Rekey Secrets
 secret-rekey:
-  nix run github:oddlama/agenix-rekey -- rekey
+    nix run github:oddlama/agenix-rekey -- rekey
