@@ -2,6 +2,7 @@
   fonts = {
     enableDefaultPackages = false;
     packages = with pkgs; [
+      nur.repos.guanran928.harmonyos-sans
       nur.repos.rewine.ttf-wps-fonts
       nerd-fonts.symbols-only
       source-han-serif-vf-otf
