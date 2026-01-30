@@ -4,6 +4,9 @@ set shell := ["fish", "-c"]
 default:
     @just --list
 
+add:
+    git add -A
+
 # Format Nix code (Alejandra)
 fmt:
     nix fmt .

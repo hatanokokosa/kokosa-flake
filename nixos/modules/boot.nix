@@ -18,9 +18,9 @@
       };
     };
     kernelModules = [
+      "v4l2loopback"
       "xt_TPROXY"
       "xt_owner"
-      "v4l2loopback"
     ];
 
     # v4l2loopback 虚拟摄像头配置
@@ -34,8 +34,8 @@
 
   # Zram Swap
   zramSwap = {
-    enable = true;
-    algorithm = "zstd";
     memoryPercent = 50;
+    algorithm = "zstd";
+    enable = true;
   };
 }

@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{...}: {
   security = {
     # Enable Systemd-run0
     pam.services.systemd-run0 = {};
