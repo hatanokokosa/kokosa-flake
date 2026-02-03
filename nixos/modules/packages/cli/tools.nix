@@ -10,6 +10,7 @@
     go-musicfox
     amdgpu_top
     fastfetch
+    opencode
     rustscan
     tealdeer
     ripgrep
