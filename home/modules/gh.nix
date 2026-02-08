@@ -18,7 +18,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     programs.gh = {
-      extensions = with pkgs; [gh-dash gh-copilot];
+      extensions = with pkgs; [gh-dash];
       enable = true;
       settings = {
         git_protocol = cfg.gitProtocol;
