@@ -23,7 +23,7 @@
       "xt_owner"
     ];
 
-    # v4l2loopback 虚拟摄像头配置
+    # v4l2loopback
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback
     ];
