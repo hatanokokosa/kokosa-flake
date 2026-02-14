@@ -42,12 +42,8 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    codex-cli-nix = {
-      url = "github:sadjow/codex-cli-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    antigravity-nix = {
-      url = "github:jacopone/antigravity-nix";
+    codex = {
+      url = "github:openai/codex";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

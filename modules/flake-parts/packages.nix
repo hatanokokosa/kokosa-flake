@@ -11,7 +11,6 @@
         inputs.self.overlays.default
         inputs.nur.overlays.default
         (f: p: {
-          google-antigravity = inputs.antigravity-nix.packages.${prev.stdenv.hostPlatform.system}.default;
           hid-bpf-uclogic = inputs.hid-bpf-uclogic.packages.${prev.stdenv.hostPlatform.system}.default;
           codex = inputs.codex-cli-nix.packages.${prev.stdenv.hostPlatform.system}.default;
         })
