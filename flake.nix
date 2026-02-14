@@ -46,6 +46,10 @@
       url = "github:sadjow/codex-cli-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    antigravity-nix = {
+      url = "github:jacopone/antigravity-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: let

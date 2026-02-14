@@ -2,7 +2,7 @@
   environment.systemPackages = with pkgs; [
     # Editors
     nur.repos.novel2430.wpsoffice-365
-    antigravity-fhs
+    google-antigravity
     evil-helix
     zed-editor
     neovim
