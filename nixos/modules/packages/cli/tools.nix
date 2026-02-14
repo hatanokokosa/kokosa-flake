@@ -18,7 +18,6 @@
     libwebm
     zoxide
     broot
-    codex
     cloc
     yazi
     cava
