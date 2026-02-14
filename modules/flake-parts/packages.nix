@@ -1,17 +1,18 @@
 {inputs, ...}: {
-  # 统一的 overlays 定义
+  # Overlays
   flake.overlays = {
     default = final: prev: {
       kokosa-mono = prev.callPackage "${inputs.self}/pkgs/kokosa-mono.nix" {};
     };
 
-    # 包含所有 overlays 的组合
+    # All overlays
     all = final: prev: let
       overlays = [
         inputs.self.overlays.default
         inputs.nur.overlays.default
         (f: p: {
           hid-bpf-uclogic = inputs.hid-bpf-uclogic.packages.${prev.stdenv.hostPlatform.system}.default;
+          codex = inputs.codex-cli-nix.packages.${prev.stdenv.hostPlatform.system}.default;
         })
       ];
     in
