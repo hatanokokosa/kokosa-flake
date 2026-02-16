@@ -10,7 +10,6 @@
       noto-fonts-color-emoji
       maple-mono.truetype
       dejavu_fonts
-      wqy_microhei
       kokosa-mono
       noto-fonts
 
