@@ -10,6 +10,10 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    home.activation.clearRimeCache = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      rm -rf $HOME/.local/share/fcitx5/rime/build
+    '';
+
     xdg.dataFile = {
       "fcitx5/rime/default.custom.yaml".text = ''
         patch:
