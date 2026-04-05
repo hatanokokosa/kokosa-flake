@@ -8,6 +8,7 @@
     ffmpeg-full
     libva-utils
     go-musicfox
+    claude-code
     amdgpu_top
     fastfetch
     steamcmd
