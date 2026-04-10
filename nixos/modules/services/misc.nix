@@ -4,5 +4,6 @@
 
   programs = {
     kdeconnect.enable = true;
+    nano.enable = false;
   };
 }
