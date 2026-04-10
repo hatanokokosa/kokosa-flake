@@ -18,10 +18,6 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    agenix-rekey = {
-      url = "github:oddlama/agenix-rekey";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # Home Manager
     home-manager = {
@@ -62,6 +58,6 @@
     };
   in
     # Drop non-standard outputs to avoid `nix flake check` warnings.
-    (removeAttrs flake ["modules" "debug" "allSystems" "agenix-rekey"])
+    (removeAttrs flake ["modules" "debug" "allSystems"])
     // {inherit nixosConfigurations;};
 }

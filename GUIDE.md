@@ -127,9 +127,24 @@ in {
 
 ## Secrets
 
-- Rekeyed secrets live under `secrets/rekeyed/<host>/`.
-- `nixos/modules/secrets.nix` wires repository-tracked rekeyed secrets into NixOS.
+- Source secrets live under `secrets/*.age`.
+- `secrets.nix` declares which public keys can edit each source secret.
+- `nixos/modules/secrets.nix` maps a NixOS secret name to its encrypted source file.
 - Reminder: if a new secret file is not tracked by Git, Flake evaluation will not see it.
+
+### Add Or Rotate A Password
+
+1. Add an entry in `secrets.nix` for `secrets/<name>.age`.
+2. Wire it into `nixos/modules/secrets.nix` with `age.secrets.<name>.file = inputs.self + "/secrets/<name>.age";`.
+3. Create or edit the source secret:
+   `just secret-edit secrets/<name>.age`
+   Put the plaintext password in the file and save.
+4. Commit the source secret and the Nix changes.
+
+For Syncthing GUI specifically:
+```bash
+just secret-edit secrets/syncthing-gui-password.age
+```
 
 ## Commands
 

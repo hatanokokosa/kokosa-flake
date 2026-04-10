@@ -46,8 +46,4 @@ repl:
 
 # Edit Secret (usage: just secret-edit <path>)
 secret-edit path:
-    nix run github:ryantm/agenix -- -e {{ path }}
-
-# Rekey Secrets
-secret-rekey:
-    nix run github:oddlama/agenix-rekey -- rekey
+    nix run github:ryantm/agenix -- -i /home/hatano/.config/agenix/master-key.txt -e {{ path }}

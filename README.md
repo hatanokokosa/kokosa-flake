@@ -40,7 +40,7 @@
 ## Structure
 - `flake.nix`: flake entry, explicit host registration, and outputs
 - `modules/`: flake-parts helpers plus automatic module discovery
-- `secrets/`: rekeyed secrets tracked in the repository
+- `secrets/`: encrypted secrets tracked in the repository
 - `nixos/`: shared modules and host profiles
 - `home/`: Home Manager modules and dotfiles
 - `lib/`: shared utility functions
