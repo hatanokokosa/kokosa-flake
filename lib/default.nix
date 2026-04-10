@@ -1,8 +1,8 @@
 # Kokosa Flake Utilities
 #
 # Shared utility functions for module discovery and file handling.
-# Import this file directly: `import ../lib { inherit lib; }`
-{lib ? import <nixpkgs/lib>}: rec {
+# Import this file directly: `import ../lib`
+rec {
   # stripNixExt :: String -> String
   # Removes the `.nix` extension from a filename.
   #
@@ -67,25 +67,4 @@
     map (f: "${dir}/${f}")
     (builtins.filter (f: builtins.match ".*\\.nix" f != null)
       (builtins.attrNames (builtins.readDir dir)));
-
-  # discoverHosts :: Path -> AttrSet
-  # Discovers host modules from nixos/hosts/ directory.
-  # Each host is named "hosts/<hostname>".
-  #
-  # Example:
-  #   discoverHosts ./nixos/hosts => { "hosts/kokosa" = <fn>; ... }
-  discoverHosts = hostsDir: let
-    entries = builtins.readDir hostsDir;
-    hostNames = builtins.filter (
-      name:
-        entries.${name}
-        == "directory"
-        && builtins.pathExists "${hostsDir}/${name}/default.nix"
-    ) (builtins.attrNames entries);
-  in
-    builtins.listToAttrs (map (name: {
-        name = "hosts/${name}";
-        value = import "${hostsDir}/${name}/default.nix";
-      })
-      hostNames);
 }

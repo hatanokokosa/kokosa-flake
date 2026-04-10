@@ -1,6 +1,6 @@
-{...}: {
+{config, ...}: {
   programs.nh = {
-    flake = "/home/hatano/Flake";
+    flake = "${config.users.users.hatano.home}/Flake";
     enable = true;
     clean = {
       extraArgs = "--keep 5 --keep-since 7d";

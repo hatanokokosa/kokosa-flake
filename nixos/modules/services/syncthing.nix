@@ -1,15 +1,17 @@
-{...}: {
+{config, ...}: let
+  homeDir = config.users.users.hatano.home;
+in {
   services.syncthing = {
-    configDir = "/home/hatano/.config/syncthing";
+    configDir = "${homeDir}/.config/syncthing";
     guiAddress = "127.0.0.1:8384";
-    dataDir = "/home/hatano";
+    dataDir = homeDir;
     group = "users";
     user = "hatano";
+    guiPasswordFile = config.age.secrets.syncthing-gui-password.path;
     enable = true;
     settings = {
       gui = {
         user = "kokosa";
-        password = "$2b$05$OB3G1GrL6hAyvBSDFLXuUuCDc6JbxlHfYz0Pwjmj.nj6mFtIGHMFu";
       };
     };
     openDefaultPorts = true;

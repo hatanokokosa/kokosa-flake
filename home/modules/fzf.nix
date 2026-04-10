@@ -22,10 +22,6 @@
 in {
   options.my.hm.fzf = {
     enable = lib.mkEnableOption "Enable FZF via Home Manager";
-    disableTranspose = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-    };
   };
 
   # FZF Config

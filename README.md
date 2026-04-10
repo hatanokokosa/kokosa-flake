@@ -38,11 +38,12 @@
 - Terminal: [Kitty]
 
 ## Structure
-- `modules/`: flake-parts helpers for formatter, systems, and host registry
-- `lib/`: shared utility functions (module discovery, etc.)
-- `flake.nix`: flake entry with inputs and outputs
-- `home/`: Home Manager modules and dotfiles
+- `flake.nix`: flake entry, explicit host registration, and outputs
+- `modules/`: flake-parts helpers plus automatic module discovery
+- `secrets/`: rekeyed secrets tracked in the repository
 - `nixos/`: shared modules and host profiles
+- `home/`: Home Manager modules and dotfiles
+- `lib/`: shared utility functions
 
 ---
 

@@ -50,7 +50,18 @@
 
   outputs = inputs: let
     flake = inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);
+    nixosModules = (import ./lib).discoverModules ./nixos/modules;
+    nixosConfigurations = {
+      kokosa = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs nixosModules;
+        };
+        modules = [./nixos/hosts/kokosa];
+      };
+    };
   in
     # Drop non-standard outputs to avoid `nix flake check` warnings.
-    removeAttrs flake ["modules" "debug" "allSystems"];
+    (removeAttrs flake ["modules" "debug" "allSystems" "agenix-rekey"])
+    // {inherit nixosConfigurations;};
 }

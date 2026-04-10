@@ -1,5 +1,4 @@
 {...}: {
-  programs.nix-index.enable = false;
   programs.appimage.binfmt = true;
 
   imports = [
