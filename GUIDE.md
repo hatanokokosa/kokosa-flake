@@ -132,6 +132,40 @@ in {
 - `nixos/modules/secrets.nix` maps a NixOS secret name to its encrypted source file.
 - Reminder: if a new secret file is not tracked by Git, Flake evaluation will not see it.
 
+### Secret Wiring Pattern
+
+Declare the secret in `nixos/modules/secrets.nix`:
+```nix
+{
+  inputs,
+  ...
+}: {
+  age.secrets.<name> = {
+    file = inputs.self + "/secrets/<name>.age";
+    owner = "<user>";
+  };
+}
+```
+
+Consume the decrypted file from another module via `config.age.secrets.<name>.path`:
+```nix
+{ config, ... }: {
+  services.<service> = {
+    # The service reads the decrypted plaintext file from /run/agenix/...
+    passwordFile = config.age.secrets.<name>.path;
+  };
+}
+```
+
+Syncthing GUI example:
+```nix
+{ config, ... }: {
+  services.syncthing = {
+    guiPasswordFile = config.age.secrets.syncthing-gui-password.path;
+  };
+}
+```
+
 ### Add Or Rotate A Password
 
 1. Add an entry in `secrets.nix` for `secrets/<name>.age`.
