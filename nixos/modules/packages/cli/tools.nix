@@ -2,24 +2,19 @@
   environment.systemPackages = with pkgs; [
     # Core CLI Tools
     wl-clipboard-rs
-    translate-shell
     appimage-run
     ripgrep-all
     ffmpeg-full
     libva-utils
     go-musicfox
-    claude-code
     amdgpu_top
     fastfetch
     steamcmd
-    opencode
-    rustscan
     tealdeer
     ripgrep
     libwebp
     libwebm
     zoxide
-    broot
     codex
     cloc
     yazi
