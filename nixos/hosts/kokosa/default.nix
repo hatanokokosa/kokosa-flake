@@ -1,15 +1,15 @@
 {nixosModules, ...}: {
   imports = [
-    nixosModules.boot
-    nixosModules.desktop
-    nixosModules.home
-    nixosModules.network
-    nixosModules.nix
-    nixosModules.packages
     nixosModules.security
-    nixosModules.secrets
+    nixosModules.packages
     nixosModules.services
+    nixosModules.secrets
+    nixosModules.network
+    nixosModules.desktop
     nixosModules.users
+    nixosModules.boot
+    nixosModules.home
+    nixosModules.nix
     nixosModules.vm
     ./hardware.nix
   ];
