@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    # Core CLI Tools
     wl-clipboard-rs
     appimage-run
     ripgrep-all

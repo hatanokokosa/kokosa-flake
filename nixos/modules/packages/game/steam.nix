@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-  # Steam
   programs = {
     gamemode.enable = true;
     steam = {

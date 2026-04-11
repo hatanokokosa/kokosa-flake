@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  # Rime dotfiles are managed by home/modules/rime.nix
+  # rime dotfiles are managed by home/modules/rime.nix
   i18n.inputMethod = {
     type = "fcitx5";
     enable = true;

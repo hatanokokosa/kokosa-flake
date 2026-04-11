@@ -1,12 +1,10 @@
 {...}: {
   security = {
-    # Enable Systemd-run0
+    # systemd-run0
     pam.services.systemd-run0 = {};
-
-    # No Sudo
     sudo.enable = false;
 
-    # OpenDoas
+    # opendoas
     doas = {
       enable = true;
       extraRules = [

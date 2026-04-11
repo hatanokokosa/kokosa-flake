@@ -1,6 +1,5 @@
 {inputs, ...}: {
-  # Enable flake-parts module support for `flake.modules`.
+  # enable flake-parts module
   imports = [inputs.flake-parts.flakeModules.modules];
-
   debug = false;
 }

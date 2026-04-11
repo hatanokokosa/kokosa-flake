@@ -4,7 +4,7 @@
   ...
 }: {
   boot = {
-    # Use Kernel: linux-zen
+    # use kernel: linux-zen
     kernelPackages = pkgs.linuxPackages_zen;
     loader = {
       grub = {
@@ -32,7 +32,7 @@
     '';
   };
 
-  # Zram Swap
+  # zram swap
   zramSwap = {
     memoryPercent = 50;
     algorithm = "zstd";

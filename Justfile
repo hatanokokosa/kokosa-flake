@@ -1,49 +1,49 @@
 set shell := ["fish", "-c"]
 
-# List available recipes
+# list available recipes
 default:
     @just --list
 
 add:
     git add -A
 
-# Format Nix code (Alejandra)
+# format via alejandra
 fmt:
     nix fmt .
 
-# Show flake outputs
+# show flake outputs
 show:
     nix flake show
 
-# Evaluate flake
+# evaluate flake
 check:
     nix flake check
 
-# Format & Check
+# format & check
 ci:
     just fmt
     just check
 
-# Rebuild & Switch
+# rebuild & switch
 switch:
     nh os switch .
 
-# Rebuild & Next Boot
+# rebuild & next boot
 boot:
     nh os boot .
 
-# Clean Garbage
+# clean garbage
 clean:
     nh clean all
 
-# Update Flake
+# update flake
 update:
     nix flake update
 
-# Start Repl
+# start repl
 repl:
     nix repl --file flake.nix
 
-# Edit Secret (usage: just secret-edit <path>)
+# edit secret - usage: just secret-edit <path>
 secret-edit path:
     nix run github:ryantm/agenix -- -i /home/hatano/.config/agenix/master-key.txt -e {{ path }}

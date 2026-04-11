@@ -1,11 +1,11 @@
 {inputs, ...}: {
-  # Overlays
+  # overlays
   flake.overlays = {
     default = final: prev: {
       kokosa-mono = prev.callPackage "${inputs.self}/pkgs/kokosa-mono.nix" {};
     };
 
-    # All overlays
+    # all overlays
     all = final: prev: let
       overlays = [
         inputs.self.overlays.default

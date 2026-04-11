@@ -2,10 +2,10 @@
   description = "Kokosa's Nix Flake";
 
   inputs = {
-    # Nixpkgs
+    # nixpkgs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Flake Parts
+    # flake parts
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -13,19 +13,19 @@
 
     import-tree.url = "github:vic/import-tree";
 
-    # Secrets Management
+    # secrets management
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Home Manager
+    # home manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Other
+    # other
     hid-bpf-uclogic = {
       url = "github:dramforever/hid-bpf-uclogic";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,19 +45,28 @@
   };
 
   outputs = inputs: let
+    # main flake outputs. modules discovered from ./modules
     flake = inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);
+
+    # discover and collect NixOS modules under ./nixos/modules.
     nixosModules = (import ./lib).discoverModules ./nixos/modules;
+
+    # define NixOS system configurations exposed by this flake
     nixosConfigurations = {
+      # host configuration: kokosa
       kokosa = inputs.nixpkgs.lib.nixosSystem {
+        modules = [./nixos/hosts/kokosa];
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs nixosModules;
         };
-        modules = [./nixos/hosts/kokosa];
       };
     };
   in
-    # Drop non-standard outputs to avoid `nix flake check` warnings.
+    # avoid warnings from 'nix flake check'
     (removeAttrs flake ["modules" "debug" "allSystems"])
-    // {inherit nixosConfigurations;};
+    // {
+      # re-export it as flake outputs
+      inherit nixosConfigurations nixosModules;
+    };
 }
