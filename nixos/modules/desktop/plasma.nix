@@ -5,7 +5,7 @@
     displayManager.sddm.enable = true;
     displayManager.sddm.settings = {
       Theme = {
-        Font = "Space Grotesk";
+        Font = "Kokosa Mono";
       };
     };
   };
