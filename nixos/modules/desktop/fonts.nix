@@ -2,22 +2,14 @@
   fonts = {
     enableDefaultPackages = false;
     packages = with pkgs; [
-      nur.repos.guanran928.harmonyos-sans
       nur.repos.rewine.ttf-wps-fonts
       nerd-fonts.symbols-only
-      source-han-serif-vf-otf
-      source-han-sans-vf-otf
       noto-fonts-color-emoji
-      maple-mono.truetype
-      dejavu_fonts
+      noto-fonts-cjk-serif
+      noto-fonts-cjk-sans
+      ubuntu-sans
       kokosa-mono
       noto-fonts
-
-      (google-fonts.override {
-        fonts = [
-          "Space Grotesk"
-        ];
-      })
     ];
 
     # font config
@@ -29,18 +21,18 @@
         emoji = ["Noto Color Emoji"];
         monospace = [
           "Kokosa Mono"
-          "Maple Mono"
           "FZSJ-ZHUZAYTB"
           "Symbols Nerd Font"
+          "Noto Color Emoji"
         ];
         sansSerif = [
-          "DejaVu Sans"
-          "Source Han Sans SC VF"
+          "Ubuntu Sans"
+          "Noto Sans CJK SC"
           "Noto Color Emoji"
         ];
         serif = [
-          "DejaVu Serif"
-          "Source Han Serif SC VF"
+          "Noto Serif"
+          "Noto Serif CJK SC"
           "Noto Color Emoji"
         ];
       };
