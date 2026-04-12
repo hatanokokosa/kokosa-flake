@@ -7,7 +7,6 @@
       noto-fonts-color-emoji
       noto-fonts-cjk-serif
       noto-fonts-cjk-sans
-      ubuntu-sans
       kokosa-mono
       noto-fonts
     ];
@@ -26,7 +25,7 @@
           "Noto Color Emoji"
         ];
         sansSerif = [
-          "Ubuntu Sans"
+          "Noto Sans"
           "Noto Sans CJK SC"
           "Noto Color Emoji"
         ];
