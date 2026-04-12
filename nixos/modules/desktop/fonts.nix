@@ -4,9 +4,9 @@
     packages = with pkgs; [
       nur.repos.rewine.ttf-wps-fonts
       nerd-fonts.symbols-only
-      noto-fonts-color-emoji
       source-han-serif-vf-otf
       source-han-sans-vf-otf
+      noto-fonts-color-emoji
       kokosa-mono
       noto-fonts
     ];
