@@ -5,8 +5,8 @@
       nur.repos.rewine.ttf-wps-fonts
       nerd-fonts.symbols-only
       noto-fonts-color-emoji
-      noto-fonts-cjk-serif
-      noto-fonts-cjk-sans
+      source-han-serif-vf-otf
+      source-han-sans-vf-otf
       kokosa-mono
       noto-fonts
     ];
@@ -25,11 +25,11 @@
           "Noto Color Emoji"
         ];
         sansSerif = [
-          "Noto Sans CJK SC"
+          "Source Han Sans SC VF"
           "Noto Color Emoji"
         ];
         serif = [
-          "Noto Serif CJK SC"
+          "Source Han Serif SC VF"
           "Noto Color Emoji"
         ];
       };
