@@ -3,11 +3,6 @@
   services = {
     desktopManager.plasma6.enable = true;
     displayManager.sddm.enable = true;
-    displayManager.sddm.settings = {
-      Theme = {
-        Font = "Kokosa Mono";
-      };
-    };
   };
 
   # exclude packages
