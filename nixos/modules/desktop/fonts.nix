@@ -7,6 +7,7 @@
       source-han-serif-vf-otf
       source-han-sans-vf-otf
       noto-fonts-color-emoji
+      source-han-serif
       source-han-sans
       kokosa-mono
       noto-fonts
