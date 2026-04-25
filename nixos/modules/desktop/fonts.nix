@@ -9,6 +9,7 @@
       noto-fonts-color-emoji
       kokosa-mono
       noto-fonts
+      fraunces
     ];
 
     # font config
