@@ -21,7 +21,7 @@
         emoji = ["Noto Color Emoji"];
         monospace = [
           "Kokosa Mono"
-          "FZSJ-ZHUZAYTB"
+          "Source Han Sans SC VF"
           "Symbols Nerd Font"
           "Noto Color Emoji"
         ];
