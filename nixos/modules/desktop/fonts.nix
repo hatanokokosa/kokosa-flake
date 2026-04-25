@@ -7,8 +7,6 @@
       source-han-serif-vf-otf
       source-han-sans-vf-otf
       noto-fonts-color-emoji
-      noto-fonts-cjk-serif
-      noto-fonts-cjk-sans
       kokosa-mono
       noto-fonts
       fraunces
