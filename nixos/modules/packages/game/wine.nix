@@ -6,7 +6,6 @@
     protonplus
     winetricks
     wineasio
-    bottles
     scanmem
     clinfo
     # heroic
