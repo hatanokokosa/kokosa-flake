@@ -4,11 +4,10 @@
     packages = with pkgs; [
       nur.repos.rewine.ttf-wps-fonts
       nerd-fonts.symbols-only
-      source-han-serif-vf-otf
-      source-han-sans-vf-otf
       noto-fonts-color-emoji
       source-han-serif
       source-han-sans
+      sarasa-gothic
       kokosa-mono
       noto-fonts
       fraunces
@@ -23,16 +22,16 @@
         emoji = ["Noto Color Emoji"];
         monospace = [
           "Kokosa Mono"
-          "Source Han Sans SC VF"
+          "Sarasa Mono SC"
           "Symbols Nerd Font"
           "Noto Color Emoji"
         ];
         sansSerif = [
-          "Source Han Sans SC VF"
+          "Source Han Sans SC"
           "Noto Color Emoji"
         ];
         serif = [
-          "Source Han Serif SC VF"
+          "Source Han Serif SC"
           "Noto Color Emoji"
         ];
       };
