@@ -2,60 +2,60 @@
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
     "source": "~/.config/fastfetch/kokosa.png",
-    "height": 14
+    "height": 14,
   },
   "display": {
-    "separator": "  ",
+    "separator": " › ",
     "color": {
       "keys": "blue",
-      "separator": "245"
-    }
+      "separator": "245",
+    },
   },
   "modules": [
     {
       "type": "custom",
-      "format": "{##89b4fa}󱐮 HATANO 󱙣  {#}{##b4befe}   {#}{##89b4fa} 󰩖 KOKOSA 󰋔 "
+      "format": "{##89b4fa}󱐮 HATANO 󱙣  {#}{##b4befe}   {#}{##89b4fa} 󰩖 KOKOSA 󰋔 ",
     },
     "break",
     {
       "type": "custom",
-      "format": "{##9ca0b0}<==/=/===================/=>{#}"
+      "format": "{##9ca0b0}<==/=/===================/=>{#}",
     },
     "break",
     {
       "type": "command",
       "key": "{##b4befe} {#} {##89b4fa}KERN{#}",
-      "text": "echo LINUX $(uname -r | cut -d'-' -f1)-KKS"
+      "text": "echo LINUX $(uname -r | cut -d'-' -f1)-KKS",
     },
     {
       "type": "os",
       "key": "{##b4befe} {#} {##89b4fa}OSYS{#}",
-      "format": "NIXOS YARARA"
+      "format": "NIXOS YARARA",
     },
     {
       "type": "packages",
       "key": "{##b4befe} {#} {##89b4fa}PKGS{#}",
-      "format": "{1} (NIX)"
+      "format": "{1} (NIX)",
     },
     {
       "type": "terminal",
       "key": "{##b4befe} {#} {##89b4fa}TERM{#}",
-      "format": "KITTY"
+      "format": "KITTY",
     },
     {
       "type": "wm",
       "key": "{##b4befe} {#} {##89b4fa}WMAN{#}",
-      "format": "KWIN"
+      "format": "KWIN",
     },
     "break",
     {
       "type": "custom",
-      "format": "{##9ca0b0}<==/=/===================/=>{#}"
+      "format": "{##9ca0b0}<==/=/===================/=>{#}",
     },
     "break",
     {
       "type": "custom",
-      "format": "{##f5e0dc} {#} {##eba0ac} {#} {##fab387} {#} {##f9e2af} {#} {##94e2d5} {#} {##89dceb} {#} {##89b4fa} {#} {##b4befe} {#} {##cdd6f4} {#} {##d9e0ee} {#}"
-    }
-  ]
+      "format": "{##f5e0dc} {#} {##eba0ac} {#} {##fab387} {#} {##f9e2af} {#} {##94e2d5} {#} {##89dceb} {#} {##89b4fa} {#} {##b4befe} {#} {##cdd6f4} {#} {##d9e0ee} {#}",
+    },
+  ],
 }
