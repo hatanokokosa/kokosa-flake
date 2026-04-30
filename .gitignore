@@ -4,3 +4,4 @@ result-*
 
 # direnv cache
 .direnv/
+.codex
