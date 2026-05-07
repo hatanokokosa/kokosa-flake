@@ -13,13 +13,13 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    xdg.configFile."fish/completions".source = "${dotdir}/completions";
+    xdg.configFile."fish/completions/fisher.fish".source = "${dotdir}/completions/fisher.fish";
+    xdg.configFile."fish/completions/cargo.fish".text = builtins.readFile "${pkgs.fish}/share/fish/completions/cargo.fish";
     xdg.configFile."fish/functions".source = "${dotdir}/functions";
     xdg.configFile."fish/conf.d".source = "${dotdir}/conf.d";
 
     programs.fish = {
       enable = true;
-      completions.cargo = builtins.readFile "${pkgs.fish}/share/fish/completions/cargo.fish";
       interactiveShellInit = ''
         set -gx BAT_THEME "Catppuccin Latte"
         set -gx BAT_STYLE plain
