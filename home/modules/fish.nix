@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   homeFiles,
   ...
 }: let
@@ -18,6 +19,7 @@ in {
 
     programs.fish = {
       enable = true;
+      completions.cargo = builtins.readFile "${pkgs.fish}/share/fish/completions/cargo.fish";
       interactiveShellInit = ''
         set -gx BAT_THEME "Catppuccin Latte"
         set -gx BAT_STYLE plain
