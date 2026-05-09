@@ -16,7 +16,6 @@
     cat = "bat";
     dig = "dog";
     du = "duf";
-    huion = "doas hid-bpf-uclogic --device /sys/devices/pci0000:00/0000:00:14.0/usb1/1-6 --force --wait";
     zh = "set -gx LANG zh_CN.UTF-8";
   };
 

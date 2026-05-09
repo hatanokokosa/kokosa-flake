@@ -1,11 +1,13 @@
 {...}: {
   services.xserver = {
     videoDrivers = ["amdgpu"];
-    wacom.enable = true;
+    wacom.enable = false;
     enable = true;
   };
 
   hardware = {
+    opentabletdriver.enable = true;
+
     graphics = {
       enable32Bit = true;
       enable = true;
