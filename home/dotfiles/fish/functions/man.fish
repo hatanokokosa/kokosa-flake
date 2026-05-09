@@ -2,9 +2,7 @@ set -gx BAT_THEME "Catppuccin Latte"
 set -gx BAT_STYLE plain
 
 function man --wraps man --description 'Display man pages with bat'
-    set -lx LESS "-R"
-    set -lx MANLESS "-Ps"
-    set -lx MANPAGER "sh -c 'col -bx | bat -l man -p --paging=always'"
+    set -lx MANPAGER "sh -c 'col -bx | bat -l man -p --paging=never | less -R -Ps'"
     set -lx MANROFFOPT "-c"
 
     set -lx MANPATH (string join : $MANPATH)
