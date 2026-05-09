@@ -1,0 +1,147 @@
+[
+  {
+    "pname": "AtkSharp",
+    "version": "3.24.24.34",
+    "hash": "sha256-GrOzO4YDMKJNHAnqLF+c44iGYlvazGTOuRLUnuLbwco="
+  },
+  {
+    "pname": "CairoSharp",
+    "version": "3.24.24.34",
+    "hash": "sha256-/80xbYSPU8+6twoXRjES8PtV7dKB6fQoe6EqBmawzV8="
+  },
+  {
+    "pname": "Eto.Forms",
+    "version": "2.5.10",
+    "hash": "sha256-51NkW/COGLiGl/+niLJaPJY+ypG1a1OXw65HMunj4bQ="
+  },
+  {
+    "pname": "Eto.Forms",
+    "version": "2.5.11",
+    "hash": "sha256-enxjfLwl+KEl//rG9pJ4VaQtAAycjHWP1Hp4ngKTBkE="
+  },
+  {
+    "pname": "Eto.Platform.Gtk",
+    "version": "2.5.11",
+    "hash": "sha256-sqRlx0itUTncAfLaExymb2hdtoqLnkj/yvD9RM+XNuk="
+  },
+  {
+    "pname": "GdkSharp",
+    "version": "3.24.24.34",
+    "hash": "sha256-pQOp2jft19vVN+gSjD0tHfNGucss7ruy1xyys6IHHWQ="
+  },
+  {
+    "pname": "GioSharp",
+    "version": "3.24.24.34",
+    "hash": "sha256-/fZBfaKXlrdBuNh1/h0s1++5Ek4OnznXvzJx0uTbHQo="
+  },
+  {
+    "pname": "GLibSharp",
+    "version": "3.24.24.34",
+    "hash": "sha256-eAYUYNHF37nIJnk7aRffzBj8b/rluqXERYy358YAd08="
+  },
+  {
+    "pname": "GtkSharp",
+    "version": "3.24.24.34",
+    "hash": "sha256-i0XZfzUt9GNaZD1uXNd8x+pb1mPJqYrxQd15XOuHSAA="
+  },
+  {
+    "pname": "HidSharpCore",
+    "version": "1.3.0",
+    "hash": "sha256-MhNwqDoAM2o7OkAV/MtJJKW++xI4q+uLheJdYIAk5Ls="
+  },
+  {
+    "pname": "JetBrains.Annotations",
+    "version": "2025.2.4",
+    "hash": "sha256-YJpS77UH9tTETCKHr5M+bQOax1BLPFqIr/i+KLN9tEI="
+  },
+  {
+    "pname": "MessagePack",
+    "version": "2.5.192",
+    "hash": "sha256-M9QUEAIeSoSgO3whVkOou0F8kbKCNJ7HHAvTZgytkPU="
+  },
+  {
+    "pname": "MessagePack.Annotations",
+    "version": "2.5.192",
+    "hash": "sha256-DLtncnaQ9Sp5YmWm89+2w3InhdU1ZQxnJgbonAq/1aM="
+  },
+  {
+    "pname": "Microsoft.Extensions.DependencyInjection",
+    "version": "10.0.1",
+    "hash": "sha256-RKOB+zPrtQNUbJY/1jR54rKOM8KHPgynPExxugku3I8="
+  },
+  {
+    "pname": "Microsoft.Extensions.DependencyInjection.Abstractions",
+    "version": "10.0.1",
+    "hash": "sha256-zNUpau51ds7iQTaSUTFtyTHIUoinYc129W50CnufMdQ="
+  },
+  {
+    "pname": "Microsoft.NET.StringTools",
+    "version": "17.6.3",
+    "hash": "sha256-H2Qw8x47WyFOd/VmgRmGMc+uXySgUv68UISgK8Frsjw="
+  },
+  {
+    "pname": "Microsoft.VisualStudio.Threading.Only",
+    "version": "17.13.61",
+    "hash": "sha256-OhXEAuF9PZAkZuHqHwdVODLjA/rIMqmD7nXJfVAQWA8="
+  },
+  {
+    "pname": "Microsoft.VisualStudio.Validation",
+    "version": "17.8.8",
+    "hash": "sha256-sB8GLRiJHX3Py7qeBUnUANiDWhyPtISon6HQs+8wKms="
+  },
+  {
+    "pname": "Nerdbank.Streams",
+    "version": "2.12.87",
+    "hash": "sha256-BglFZT1nSyJO8mB235sP5yyu51iaGXwRHSOV8aeeY2A="
+  },
+  {
+    "pname": "Newtonsoft.Json",
+    "version": "13.0.3",
+    "hash": "sha256-hy/BieY4qxBWVVsDqqOPaLy1QobiIapkbrESm6v2PHc="
+  },
+  {
+    "pname": "Newtonsoft.Json",
+    "version": "13.0.4",
+    "hash": "sha256-8JCB1FdAW681qXP6DFDWvycu1oPyVoxaYgpJ2pUvZSk="
+  },
+  {
+    "pname": "Octokit",
+    "version": "14.0.0",
+    "hash": "sha256-pTSI7Tz5VFd4Ydx1laE+VkZfhsl7Rbgw42PBqhyVvyI="
+  },
+  {
+    "pname": "PangoSharp",
+    "version": "3.24.24.34",
+    "hash": "sha256-/KdH3SA/11bkwPe/AXRph4v4a2cjbUjDvo4+OhkJEOQ="
+  },
+  {
+    "pname": "SharpZipLib",
+    "version": "1.4.2",
+    "hash": "sha256-/giVqikworG2XKqfN9uLyjUSXr35zBuZ2FX2r8X/WUY="
+  },
+  {
+    "pname": "StreamJsonRpc",
+    "version": "2.22.23",
+    "hash": "sha256-SRk+00fzJk/jA2dbQbYE/udmcZgqVkscgZT8yi+D2NY="
+  },
+  {
+    "pname": "System.CommandLine",
+    "version": "2.0.1",
+    "hash": "sha256-NDBiPUt/ZZIMBcLHpF/6IMX/UpfsC/XnH3p4i4MHCFw="
+  },
+  {
+    "pname": "System.ComponentModel.Annotations",
+    "version": "4.7.0",
+    "hash": "sha256-PxG9lvf2v/IAIs7LhO4Ur+EpX/L5nYbEs0D21gypoRs="
+  },
+  {
+    "pname": "System.ComponentModel.Annotations",
+    "version": "5.0.0",
+    "hash": "sha256-0pST1UHgpeE6xJrYf5R+U7AwIlH3rVC3SpguilI/MAg="
+  },
+  {
+    "pname": "WaylandNET",
+    "version": "0.2.0",
+    "hash": "sha256-E2VXvSV4KkTz1tQgGXJpuvRQiPlVvSAJb7htBFTeV+I="
+  }
+]

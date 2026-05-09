@@ -1,4 +1,10 @@
-{...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: let
+  opentabletdriver-q630m = pkgs.callPackage "${inputs.self}/pkgs/opentabletdriver-q630m" {};
+in {
   services.xserver = {
     videoDrivers = ["amdgpu"];
     wacom.enable = false;
@@ -6,7 +12,10 @@
   };
 
   hardware = {
-    opentabletdriver.enable = true;
+    opentabletdriver = {
+      enable = true;
+      package = opentabletdriver-q630m;
+    };
 
     graphics = {
       enable32Bit = true;
