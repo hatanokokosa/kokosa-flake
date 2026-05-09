@@ -15,7 +15,6 @@
     libwebm
     zoxide
     codex
-    cloc
     yazi
     cava
     fish
@@ -26,6 +25,7 @@
     duf
     lsd
     bat
+    scc
     fd
   ];
 }
