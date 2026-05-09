@@ -3,6 +3,7 @@ set -gx BAT_STYLE plain
 
 function man --wraps man --description 'Display man pages with bat'
     set -lx LESS "-R"
+    set -lx MANLESS "-Ps"
     set -lx MANPAGER "sh -c 'col -bx | bat -l man -p --paging=always'"
     set -lx MANROFFOPT "-c"
 
