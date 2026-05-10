@@ -26,6 +26,7 @@
     lsd
     bat
     scc
+    jq
     fd
   ];
 }
