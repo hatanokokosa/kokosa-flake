@@ -32,7 +32,7 @@
     };
     overlays = [
       inputs.self.overlays.all
-      inputs.nix-cachyos-kernel.overlays.default
+      inputs.nix-cachyos-kernel.overlays.pinned
     ];
   };
 }
