@@ -12,7 +12,7 @@
         inputs.nur.overlays.default
         (f: p: {
           hid-bpf-uclogic = inputs.hid-bpf-uclogic.packages.${prev.stdenv.hostPlatform.system}.default;
-          codex = inputs.codex-cli-nix.packages.${prev.stdenv.hostPlatform.system}.default;
+          opencode = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system}.opencode;
         })
       ];
     in

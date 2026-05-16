@@ -9,12 +9,12 @@
     amdgpu_top
     fastfetch
     steamcmd
+    opencode
     tealdeer
     ripgrep
     libwebp
     libwebm
     zoxide
-    codex
     yazi
     cava
     fish
