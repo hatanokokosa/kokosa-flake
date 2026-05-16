@@ -4,8 +4,8 @@
   ...
 }: {
   boot = {
-    # use kernel: linux-zen
-    kernelPackages = pkgs.linuxPackages_zen;
+    # use kernel: cachyos-latest-lto-v3
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
     loader = {
       grub = {
         efiSupport = true;

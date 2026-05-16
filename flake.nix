@@ -25,6 +25,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # cachyos kernel
+    nix-cachyos-kernel = {
+      url = "github:xddxdd/nix-cachyos-kernel/release";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # other
     hid-bpf-uclogic = {
       url = "github:dramforever/hid-bpf-uclogic";

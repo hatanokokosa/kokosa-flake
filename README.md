@@ -30,12 +30,11 @@
 - Desktop: [KDE Plasma 6]
 - InputMethod: [Fcitx5]
 - Security: [OpenDoas]
-- GUI Editor: [VSCode]
 - Shell: [Fish] & [Fisher]
-- Kernel: [Linux-zen]
 - Browser: [Firefox]
-- Editor: [Neovim]
+- Kernel: [CachyOS]
 - Terminal: [Kitty]
+- Editor: [Zed]
 
 ## Structure
 - `flake.nix`: flake entry, explicit host registration, and outputs
@@ -65,11 +64,11 @@
 [OpenDoas]: https://github.com/Duncaen/OpenDoas
 [Catppuccin]: https://catppuccin.com/
 [KDE Plasma 6]: https://kde.org/plasma-desktop
-[Linux-zen]: https://github.com/zen-kernel/zen-kernel
+[CachyOS]: https://github.com/xddxdd/nix-cachyos-kernel
 [Fish]: https://fishshell.com
 [Fisher]: https://github.com/jorgebucaran/fisher
 [Fcitx5]: https://fcitx-im.org/wiki/Fcitx5
-[VSCode]: https://code.visualstudio.com
+[Zed]: https://zed.dev
 [Firefox]: https://www.mozilla.org/firefox
 [Kitty]: https://sw.kovidgoyal.net/kitty/
 [Neovim]: https://neovim.io
