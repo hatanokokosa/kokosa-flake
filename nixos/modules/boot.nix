@@ -4,7 +4,7 @@
   ...
 }: {
   boot = {
-    # use kernel: cachyos-latest-lto-v3
+    # use kernel: CachyOS-latest-lto-v3
     kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
     loader = {
       grub = {
