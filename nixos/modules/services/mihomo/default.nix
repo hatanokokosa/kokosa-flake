@@ -16,12 +16,7 @@
       store-fake-ip: true
 
     tun:
-      enable: true
-      stack: system
-      auto-route: true
-      auto-detect-interface: true
-      dns-hijack:
-        - any:53
+      enable: false
 
     dns:
       enable: true
