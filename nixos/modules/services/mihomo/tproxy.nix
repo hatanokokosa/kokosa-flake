@@ -41,6 +41,7 @@
 
       chain prerouting {
         type filter hook prerouting priority mangle; policy accept;
+        ct state established,related return
         ip daddr @private4 return
         ip6 daddr @private6 return
         meta l4proto { tcp, udp } tproxy ip to 127.0.0.1:${toString tproxyPort} meta mark set ${fwmark} accept
