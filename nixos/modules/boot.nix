@@ -21,6 +21,7 @@
       "v4l2loopback"
       "xt_TPROXY"
       "xt_owner"
+      "tun"
     ];
 
     # v4l2loopback
