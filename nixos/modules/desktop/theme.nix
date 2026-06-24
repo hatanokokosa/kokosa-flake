@@ -5,5 +5,6 @@
     accent = "rosewater";
     flavor = "latte";
     enable = true;
+    autoEnable = true;
   };
 }
