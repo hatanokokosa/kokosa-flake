@@ -36,11 +36,11 @@
         - 223.5.5.5
         - 119.29.29.29
       nameserver:
-        - https://doh.pub/dns-query
-        - https://dns.alidns.com/dns-query
+        - 223.5.5.5
+        - 119.29.29.29
       fallback:
-        - https://1.1.1.1/dns-query
-        - https://8.8.8.8/dns-query
+        - 1.1.1.1
+        - 8.8.8.8
       fallback-filter:
         geoip: true
         geoip-code: CN

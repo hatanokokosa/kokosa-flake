@@ -53,6 +53,8 @@
         ip daddr @private4 return
         ip6 daddr @private6 return
         meta mark 0xff return
+        udp dport 53 return
+        tcp dport 53 return
         meta l4proto { tcp, udp } meta mark set ${fwmark}
       }
     }
