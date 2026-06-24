@@ -6,4 +6,8 @@ in {
     master
     kokosa
   ];
+  "secrets/mihomo-subscription.age".publicKeys = [
+    master
+    kokosa
+  ];
 }

@@ -1,5 +1,5 @@
-{pkgs, ...}: let
-  configYaml = pkgs.writeText "mihomo-config.yaml" ''
+{config, pkgs, lib, ...}: let
+  configTemplate = pkgs.writeText "mihomo-config.template.yaml" ''
     mixed-port: 7890
     tproxy-port: 7895
     allow-lan: true
@@ -149,9 +149,22 @@
         path: ./rulesets/applications.yaml
         interval: 86400
 
+    proxy-providers:
+      subscribe:
+        type: http
+        url: "__SUBSCRIPTION_URL__"
+        path: ./proxy-providers/subscribe.yaml
+        interval: 86400
+        health-check:
+          enable: true
+          url: https://www.gstatic.com/generate_204
+          interval: 300
+
     proxy-groups:
       - name: Proxy
         type: select
+        use:
+          - subscribe
         proxies:
           - DIRECT
       - name: Domestic
@@ -189,7 +202,32 @@ in {
     tunMode = true;
     processesInfo = true;
     webui = pkgs.zashboard;
-    configFile = configYaml;
+    configFile = "/var/lib/private/mihomo/config.yaml";
+  };
+
+  systemd.services.mihomo = {
+    serviceConfig = {
+      ExecStartPre = [
+        "+${pkgs.writeShellScript "mihomo-gen-config" ''
+          set -e
+          ${pkgs.gnused}/bin/sed \
+            "s|__SUBSCRIPTION_URL__|$(cat "$CREDENTIALS_DIRECTORY/subscription-url")|" \
+            ${configTemplate} \
+            > /var/lib/private/mihomo/config.yaml
+        ''}"
+      ];
+      ExecStart = lib.mkForce (
+        lib.concatStringsSep " " [
+          (lib.getExe config.services.mihomo.package)
+          "-d /var/lib/private/mihomo"
+          "-f /var/lib/private/mihomo/config.yaml"
+          (lib.optionalString (config.services.mihomo.webui != null) "-ext-ui ${config.services.mihomo.webui}")
+        ]
+      );
+      LoadCredential = lib.mkForce [
+        "subscription-url:${config.age.secrets.mihomo-subscription.path}"
+      ];
+    };
   };
 
   imports = [./tproxy.nix];
