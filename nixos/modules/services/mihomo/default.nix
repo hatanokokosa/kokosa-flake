@@ -1,0 +1,214 @@
+{
+  lib,
+  pkgs,
+  ...
+}: let
+  mihomoUid = 995;
+
+  configYaml = pkgs.writeText "mihomo-config.yaml" ''
+    mixed-port: 7890
+    tproxy-port: 7895
+    allow-lan: true
+    bind-address: "*"
+    mode: rule
+    log-level: info
+    ipv6: true
+
+    external-controller: 127.0.0.1:9090
+
+    profile:
+      store-selected: true
+      store-fake-ip: true
+
+    tun:
+      enable: true
+      stack: system
+      auto-route: true
+      auto-detect-interface: true
+      dns-hijack:
+        - any:53
+
+    dns:
+      enable: true
+      listen: 0.0.0.0:1053
+      ipv6: true
+      enhanced-mode: fake-ip
+      fake-ip-range: 198.18.0.1/16
+      fake-ip-filter:
+        - "*.lan"
+        - "*.local"
+        - "*.localhost"
+        - "*.home.arpa"
+        - localhost.ptlogin2.qq.com
+        - "*.msftconnecttest.com"
+        - "*.msftncsi.com"
+      default-nameserver:
+        - 223.5.5.5
+        - 119.29.29.29
+      nameserver:
+        - https://doh.pub/dns-query
+        - https://dns.alidns.com/dns-query
+      fallback:
+        - https://1.1.1.1/dns-query
+        - https://8.8.8.8/dns-query
+      fallback-filter:
+        geoip: true
+        geoip-code: CN
+        geosite:
+          - gfw
+
+    sniffer:
+      enable: true
+      sniff:
+        TLS:
+          ports: [443, 8443]
+        HTTP:
+          ports: [80, 8080-8880]
+      force-dns-mapping: true
+      parse-pure-ip: true
+      override-destination: true
+
+    rule-providers:
+      reject:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt"
+        path: ./rulesets/reject.yaml
+        interval: 86400
+      icloud:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/icloud.txt"
+        path: ./rulesets/icloud.yaml
+        interval: 86400
+      apple:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/apple.txt"
+        path: ./rulesets/apple.yaml
+        interval: 86400
+      google:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/google.txt"
+        path: ./rulesets/google.yaml
+        interval: 86400
+      proxy:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.txt"
+        path: ./rulesets/proxy.yaml
+        interval: 86400
+      direct:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt"
+        path: ./rulesets/direct.yaml
+        interval: 86400
+      private:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/private.txt"
+        path: ./rulesets/private.yaml
+        interval: 86400
+      gfw:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt"
+        path: ./rulesets/gfw.yaml
+        interval: 86400
+      greatfire:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/greatfire.txt"
+        path: ./rulesets/greatfire.yaml
+        interval: 86400
+      tld-not-cn:
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/tld-not-cn.txt"
+        path: ./rulesets/tld-not-cn.yaml
+        interval: 86400
+      telegramcidr:
+        type: http
+        behavior: ipcidr
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt"
+        path: ./rulesets/telegramcidr.yaml
+        interval: 86400
+      cncidr:
+        type: http
+        behavior: ipcidr
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt"
+        path: ./rulesets/cncidr.yaml
+        interval: 86400
+      lancidr:
+        type: http
+        behavior: ipcidr
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancidr.txt"
+        path: ./rulesets/lancidr.yaml
+        interval: 86400
+      applications:
+        type: http
+        behavior: classical
+        url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/applications.txt"
+        path: ./rulesets/applications.yaml
+        interval: 86400
+
+    proxy-groups:
+      - name: Proxy
+        type: select
+        proxies:
+          - DIRECT
+      - name: Domestic
+        type: select
+        proxies:
+          - DIRECT
+      - name: Others
+        type: select
+        proxies:
+          - Proxy
+          - DIRECT
+
+    rules:
+      - RULE-SET,applications,Domestic
+      - DOMAIN,clash.razord.top,Domestic
+      - DOMAIN,yacd.metacubex.one,Domestic
+      - DOMAIN,d.metacubex.one,Domestic
+      - RULE-SET,private,Domestic,no-resolve
+      - RULE-SET,reject,REJECT
+      - RULE-SET,icloud,Domestic
+      - RULE-SET,apple,Domestic
+      - RULE-SET,google,Proxy
+      - RULE-SET,proxy,Proxy
+      - RULE-SET,direct,Domestic
+      - RULE-SET,lancidr,Domestic,no-resolve
+      - RULE-SET,cncidr,Domestic,no-resolve
+      - RULE-SET,telegramcidr,Proxy,no-resolve
+      - GEOIP,lan,Domestic,no-resolve
+      - GEOIP,cn,Domestic
+      - MATCH,Others
+  '';
+in {
+  users.users.mihomo = {
+    isSystemUser = true;
+    group = "mihomo";
+    uid = mihomoUid;
+  };
+  users.groups.mihomo = {};
+
+  services.mihomo = {
+    enable = true;
+    tunMode = true;
+    processesInfo = true;
+    webui = pkgs.zashboard;
+    configFile = configYaml;
+  };
+
+  systemd.services.mihomo.serviceConfig = {
+    DynamicUser = lib.mkForce false;
+    User = "mihomo";
+    Group = "mihomo";
+  };
+
+  imports = [./tproxy.nix];
+}
