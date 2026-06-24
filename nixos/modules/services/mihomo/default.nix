@@ -1,10 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
-  mihomoUid = 995;
-
+{pkgs, ...}: let
   configYaml = pkgs.writeText "mihomo-config.yaml" ''
     mixed-port: 7890
     tproxy-port: 7895
@@ -13,6 +7,7 @@
     mode: rule
     log-level: info
     ipv6: true
+    routing-mark: 255
 
     external-controller: 127.0.0.1:9090
 
@@ -189,25 +184,12 @@
       - MATCH,Others
   '';
 in {
-  users.users.mihomo = {
-    isSystemUser = true;
-    group = "mihomo";
-    uid = mihomoUid;
-  };
-  users.groups.mihomo = {};
-
   services.mihomo = {
     enable = true;
     tunMode = true;
     processesInfo = true;
     webui = pkgs.zashboard;
     configFile = configYaml;
-  };
-
-  systemd.services.mihomo.serviceConfig = {
-    DynamicUser = lib.mkForce false;
-    User = "mihomo";
-    Group = "mihomo";
   };
 
   imports = [./tproxy.nix];

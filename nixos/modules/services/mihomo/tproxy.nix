@@ -3,7 +3,6 @@
   pkgs,
   ...
 }: let
-  mihomoUid = 995;
   tproxyPort = 7895;
   dnsPort = 1053;
   fwmark = "0x1";
@@ -52,7 +51,7 @@
         type route hook output priority mangle; policy accept;
         ip daddr @private4 return
         ip6 daddr @private6 return
-        meta skuid ${toString mihomoUid} return
+        meta mark 0xff return
         meta l4proto { tcp, udp } meta mark set ${fwmark}
       }
     }
