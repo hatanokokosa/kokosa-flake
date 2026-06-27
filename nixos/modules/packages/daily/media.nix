@@ -4,6 +4,7 @@
     obs-studio
     v4l-utils
     openutau
+    blender
     pureref
     splayer
     haruna
