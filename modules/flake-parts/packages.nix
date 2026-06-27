@@ -12,6 +12,7 @@
         inputs.nur.overlays.default
         (f: p: {
           hid-bpf-uclogic = inputs.hid-bpf-uclogic.packages.${prev.stdenv.hostPlatform.system}.default;
+          hermes-desktop = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system}.hermes-desktop;
           opencode = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system}.opencode;
         })
       ];

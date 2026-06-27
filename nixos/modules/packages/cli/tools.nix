@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     wl-clipboard-rs
+    hermes-desktop
     appimage-run
     ripgrep-all
     ffmpeg-full
