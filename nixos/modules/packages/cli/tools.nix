@@ -2,6 +2,7 @@
   environment.systemPackages = with pkgs; [
     wl-clipboard-rs
     hermes-desktop
+    hermes-agent
     appimage-run
     ripgrep-all
     ffmpeg-full

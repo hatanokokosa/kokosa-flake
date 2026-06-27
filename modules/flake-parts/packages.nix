@@ -13,6 +13,7 @@
         (f: p: {
           hid-bpf-uclogic = inputs.hid-bpf-uclogic.packages.${prev.stdenv.hostPlatform.system}.default;
           hermes-desktop = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system}.hermes-desktop;
+          hermes-agent = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system}.hermes-agent;
           opencode = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system}.opencode;
         })
       ];
