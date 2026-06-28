@@ -16,7 +16,6 @@ in {
     xdg.configFile."fish/completions".source = pkgs.runCommand "fish-completions" {} ''
       mkdir -p $out
       ln -s ${dotdir}/completions/fisher.fish $out/fisher.fish
-      cp ${pkgs.fish}/share/fish/completions/cargo.fish $out/cargo.fish
     '';
     xdg.configFile."fish/functions".source = "${dotdir}/functions";
     xdg.configFile."fish/conf.d".source = "${dotdir}/conf.d";
