@@ -2,7 +2,7 @@
   imports = [
     ./syncthing.nix
     ./container.nix
-    ./throne.nix
+    ./clash.nix
     ./misc.nix
   ];
 }
