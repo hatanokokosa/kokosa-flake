@@ -30,7 +30,7 @@
     {
       "type": "os",
       "key": "{##b4befe} {#} {##89b4fa}OSYS{#}",
-      "format": "NIXOS YARARA"
+      "format": "NIXOS ZOKOR"
     },
     {
       "type": "packages",
