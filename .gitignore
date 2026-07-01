@@ -1,6 +1,7 @@
 # nix build outputs
 result
 result-*
+.directory
 
 # direnv cache
 .direnv/
