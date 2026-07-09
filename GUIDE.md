@@ -21,6 +21,22 @@ home/
 └── dotfiles/            # Dotfile sources
 ```
 
+## Architecture Flow
+
+```text
+nixos/hosts/kokosa
+├─ nixosModules.home
+│  └─ Home Manager
+│     ├─ imports home/modules/*.nix
+│     └─ uses home/dotfiles as homeFiles
+├─ nixosModules.secrets
+│  └─ agenix secrets
+├─ nixosModules.desktop
+├─ nixosModules.packages
+├─ nixosModules.services
+└─ hardware.nix
+```
+
 ## Shared Library (`lib/default.nix`)
 
 Available functions (import via `import "${inputs.self}/lib"`):
