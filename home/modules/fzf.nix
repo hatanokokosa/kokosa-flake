@@ -33,9 +33,9 @@ in {
       enableFishIntegration = true;
 
       defaultCommand = fdBase;
-      fileWidgetCommand = fdBase;
+      fileWidget.command = fdBase;
 
-      changeDirWidgetCommand = ''
+      changeDirWidget.command = ''
         fd --type d --hidden --follow \
             --exclude .git --exclude node_modules --exclude vendor \
             --exclude target --exclude build --exclude dist --exclude .venv \
@@ -54,12 +54,12 @@ in {
         "--info=inline"
       ];
 
-      fileWidgetOptions = [
+      fileWidget.options = [
         "--preview='bat --style=plain --color=always --paging=never {}'"
         "--preview-window=right,50%,border-left"
       ];
-      changeDirWidgetOptions = ["--select-1" "--exit-0"];
-      historyWidgetOptions = ["--exact" "--sort"];
+      changeDirWidget.options = ["--select-1" "--exit-0"];
+      historyWidget.options = ["--exact" "--sort"];
     };
   };
 }
