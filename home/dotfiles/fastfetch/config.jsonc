@@ -35,7 +35,7 @@
     {
       "type": "packages",
       "key": "{##b4befe} {#} {##89b4fa}PKGS{#}",
-      "format": "{1} (NIX)"
+      "format": "{all} (NIX)"
     },
     {
       "type": "terminal",
