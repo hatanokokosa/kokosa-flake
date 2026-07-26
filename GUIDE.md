@@ -173,15 +173,6 @@ Consume the decrypted file from another module via `config.age.secrets.<name>.pa
 }
 ```
 
-Syncthing GUI example:
-```nix
-{ config, ... }: {
-  services.syncthing = {
-    guiPasswordFile = config.age.secrets.syncthing-gui-password.path;
-  };
-}
-```
-
 ### Add Or Rotate A Password
 
 1. Add an entry in `secrets.nix` for `secrets/<name>.age`.
@@ -190,11 +181,6 @@ Syncthing GUI example:
    `just secret-edit secrets/<name>.age`
    Put the plaintext password in the file and save.
 4. Commit the source secret and the Nix changes.
-
-For Syncthing GUI specifically:
-```bash
-just secret-edit secrets/syncthing-gui-password.age
-```
 
 ## Commands
 
