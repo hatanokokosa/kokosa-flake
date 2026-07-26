@@ -1,8 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     wl-clipboard-rs
-    hermes-desktop
-    hermes-agent
     appimage-run
     ripgrep-all
     ffmpeg-full
@@ -11,7 +9,6 @@
     amdgpu_top
     fastfetch
     steamcmd
-    opencode
     tealdeer
     ripgrep
     libwebp
@@ -28,6 +25,7 @@
     lsd
     bat
     scc
+    omp
     jq
     fd
   ];
