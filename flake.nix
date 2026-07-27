@@ -25,6 +25,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Nix binary-cache proxy
+    selector4nix = {
+      url = "github:StarryReverie/selector4nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # cachyos kernel
     nix-cachyos-kernel = {
       url = "github:xddxdd/nix-cachyos-kernel/release";
