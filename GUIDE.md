@@ -58,6 +58,12 @@ Available functions (import via `import "${inputs.self}/lib"`):
 }
 ```
 
+## Nix Binary Caches
+
+- `nixos/modules/nix/default.nix` defines direct fallback mirrors and their trusted keys.
+- `nixos/modules/nix/s4nix.nix` runs selector4nix, which chooses among USTC, SJTU, TUNA, and the existing caches. Open `http://127.0.0.1:5496/` to view download progress.
+- To add a mirror, add its URL to both files; then run `just ci` and `just switch`.
+
 ## Host Configuration
 
 - **Flake registration**: `flake.nix`
