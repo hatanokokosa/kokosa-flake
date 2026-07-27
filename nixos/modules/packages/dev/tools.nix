@@ -2,7 +2,6 @@
   environment.systemPackages = with pkgs; [
     bubblewrap
     distrobox
-    boxbuddy
     lazygit
     jujutsu
     direnv

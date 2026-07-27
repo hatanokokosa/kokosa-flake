@@ -11,8 +11,6 @@
     steamcmd
     tealdeer
     ripgrep
-    libwebp
-    libwebm
     zoxide
     yazi
     cava

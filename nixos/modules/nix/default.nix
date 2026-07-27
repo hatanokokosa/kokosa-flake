@@ -8,8 +8,8 @@
     settings = {
       experimental-features = ["nix-command" "flakes"];
       substituters = [
-        "https://cache.nixos.org"
         "https://mirrors.ustc.edu.cn/nix-channels/store?priority=10"
+        "https://cache.nixos.org"
         "https://nix-community.cachix.org"
         "https://cache.numtide.com"
         "https://attic.xuyh0120.win/lantian"
@@ -31,8 +31,8 @@
       allowUnfree = true;
     };
     overlays = [
-      inputs.self.overlays.all
       inputs.nix-cachyos-kernel.overlays.pinned
+      inputs.self.overlays.all
     ];
   };
 }
