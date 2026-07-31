@@ -37,12 +37,18 @@
 - Editor: [Zed]
 
 ## Structure
-- `flake.nix`: flake entry, explicit host registration, and outputs
-- `modules/`: flake-parts helpers plus automatic module discovery
-- `secrets/`: encrypted secrets tracked in the repository
-- `nixos/`: shared modules and host profiles
-- `home/`: Home Manager modules and dotfiles
-- `lib/`: shared utility functions
+- `flake.nix`: flake entry, host registration, and module/profile discovery
+- `modules/`: flake-level outputs, overlays, formatter, and supported systems
+- `nixos/modules/`: small configuration fragments using upstream NixOS options directly
+- `nixos/profiles/`: orthogonal feature compositions imported by hosts
+- `nixos/hosts/`: hardware facts and final per-host policy
+- `home/modules/`: reusable Home Manager program and dotfile modules
+- `home/profiles/`: Home Manager feature compositions selected by NixOS profiles
+- `home/dotfiles/`: dotfile sources
+- `secrets/`: encrypted agenix sources
+- `lib/`: module discovery and import helpers
+
+See [`GUIDE.md`](./GUIDE.md) for the complete module flow and host template.
 
 ---
 

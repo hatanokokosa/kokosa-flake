@@ -16,7 +16,6 @@
     ./hardware.nix
   ];
 
-  # Preserve the current trusted-network policy for this desktop.
   networking.firewall.enable = false;
 
   networking.hostName = "kokosa";
