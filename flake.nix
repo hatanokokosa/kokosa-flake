@@ -59,8 +59,9 @@
     # main flake outputs. modules discovered from ./modules
     flake = inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);
 
-    # discover and collect NixOS modules under ./nixos/modules.
+    # discover and collect reusable NixOS modules and policy profiles.
     nixosModules = (import ./lib).discoverModules ./nixos/modules;
+    nixosProfiles = (import ./lib).discoverModules ./nixos/profiles;
 
     # define NixOS system configurations exposed by this flake
     nixosConfigurations = {
@@ -69,7 +70,7 @@
         modules = [./nixos/hosts/kokosa];
         system = "x86_64-linux";
         specialArgs = {
-          inherit inputs nixosModules;
+          inherit inputs nixosModules nixosProfiles;
         };
       };
     };

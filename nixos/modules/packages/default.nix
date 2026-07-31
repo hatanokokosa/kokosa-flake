@@ -1,10 +1,9 @@
 {...}: {
   imports = [
+    ./cli
+    ./daily
+    ./dev
     ./driver.nix
     ./editor.nix
-    ./daily
-    ./game
-    ./dev
-    ./cli
   ];
 }

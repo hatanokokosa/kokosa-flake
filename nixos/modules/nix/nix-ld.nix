@@ -1,4 +1,3 @@
-# nix-ld configuration
 {pkgs, ...}: {
   programs.nix-ld = {
     enable = true;

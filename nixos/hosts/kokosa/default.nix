@@ -1,19 +1,23 @@
-{nixosModules, ...}: {
-  # import modules
+{nixosProfiles, ...}: {
   imports = [
-    nixosModules.security
-    nixosModules.packages
-    nixosModules.services
-    nixosModules.secrets
-    nixosModules.network
-    nixosModules.desktop
-    nixosModules.users
-    nixosModules.boot
-    nixosModules.home
-    nixosModules.nix
-    nixosModules.vm
+    nixosProfiles.base
+    nixosProfiles.china-network
+    nixosProfiles.creator
+    nixosProfiles.development
+    nixosProfiles.gaming
+    nixosProfiles.graphical
+    nixosProfiles.music
+    nixosProfiles.performance
+    nixosProfiles.remote-access
+    nixosProfiles.tablet
+    nixosProfiles.virtualisation
+
+    ../../modules/hardware/amd-gpu.nix
     ./hardware.nix
   ];
+
+  # Preserve the current trusted-network policy for this desktop.
+  networking.firewall.enable = false;
 
   networking.hostName = "kokosa";
   system.stateVersion = "24.11";

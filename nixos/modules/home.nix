@@ -1,4 +1,4 @@
-# Uses lib/default.nix to import user modules
+# Uses lib/default.nix to import user modules.
 {inputs, ...}: let
   utils = import "${inputs.self}/lib";
   homeModules = "${inputs.self}/home/modules";
@@ -20,23 +20,6 @@ in {
       imports =
         utils.importAll homeModules
         ++ [inputs.catppuccin.homeModules.catppuccin];
-
-      catppuccin = {
-        accent = "rosewater";
-        flavor = "latte";
-        enable = true;
-        autoEnable = true;
-      };
-
-      my.hm = {
-        fastfetch.enable = true;
-        rmpc.enable = true;
-        rime.enable = true;
-        fish.enable = true;
-        fzf.enable = true;
-        mpd.enable = true;
-        gh.enable = true;
-      };
     };
   };
 }

@@ -8,9 +8,6 @@
     spiceUSBRedirection.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    virglrenderer
-  ];
-
+  environment.systemPackages = [pkgs.virglrenderer];
   programs.virt-manager.enable = true;
 }

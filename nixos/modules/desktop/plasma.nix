@@ -1,11 +1,9 @@
 {pkgs, ...}: {
-  # KDE plasma
   services = {
     desktopManager.plasma6.enable = true;
     displayManager.sddm.enable = true;
   };
 
-  # exclude packages
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     plasma-workspace-wallpapers
     khelpcenter
@@ -15,7 +13,6 @@
     elisa
   ];
 
-  # XDG portal
   xdg.portal = {
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
     enable = true;

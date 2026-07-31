@@ -1,7 +1,3 @@
 {...}: {
-  imports = [
-    ./container.nix
-    ./clash.nix
-    ./misc.nix
-  ];
+  imports = [./flatpak.nix];
 }

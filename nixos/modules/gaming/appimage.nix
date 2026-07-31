@@ -1,0 +1,3 @@
+{...}: {
+  programs.appimage.binfmt = true;
+}

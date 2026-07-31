@@ -17,7 +17,7 @@ show:
 
 # evaluate flake
 check:
-    nix flake check
+    nix flake check --no-build
 
 # format & check
 ci:

@@ -40,19 +40,19 @@ rec {
         name:
           entries.${name}
           == "directory"
-          && builtins.pathExists "${dir}/${name}/default.nix"
+          && builtins.pathExists (dir + "/${name}/default.nix")
       )
       names;
   in
     builtins.listToAttrs (
       (map (file: {
           name = stripNixExt file;
-          value = import "${dir}/${file}";
+          value = import (dir + "/${file}");
         })
         nixFiles)
       ++ (map (subdir: {
           name = subdir;
-          value = import "${dir}/${subdir}";
+          value = import (dir + "/${subdir}");
         })
         subDirs)
     );
@@ -64,7 +64,9 @@ rec {
   # Example:
   #   importAll ./modules => [ ./modules/fish.nix ./modules/fzf.nix ... ]
   importAll = dir:
-    map (f: "${dir}/${f}")
-    (builtins.filter (f: builtins.match ".*\\.nix" f != null)
+    map (f: dir + "/${f}")
+    (builtins.filter (
+        f: builtins.match ".*\\.nix" f != null && f != "default.nix"
+      )
       (builtins.attrNames (builtins.readDir dir)));
 }

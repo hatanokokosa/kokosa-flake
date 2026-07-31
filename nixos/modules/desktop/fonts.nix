@@ -12,8 +12,6 @@
       noto-fonts
       fraunces
     ];
-
-    # font config
     fontconfig = {
       localConf = builtins.readFile ./config/fontconfig.conf;
       subpixel.rgba = "rgb";

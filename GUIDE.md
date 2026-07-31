@@ -6,36 +6,46 @@ The flake auto-discovers modules.
 
 ```
 lib/
-└── default.nix          # Shared utility functions
+└── default.nix                 # Module discovery and import helpers
 modules/
-├── flake-parts/         # Flake-level modules (overlays, packages, etc.)
-├── nixos/
-│   └── default.nix      # Auto-discovers NixOS modules
-└── systems/
-    └── default.nix      # Supported system architectures
+├── flake-parts/                # Flake-level outputs and overlays
+└── systems/                    # Supported system architectures
 nixos/
-├── hosts/<host>/        # Host-specific hardware & settings
-└── modules/             # Shared NixOS modules (auto-discovered)
+├── hosts/<host>/               # Hardware facts and final host policy
+├── modules/
+│   ├── boot/                   # Bootloader, kernel, and memory capabilities
+│   ├── core/                   # Locale, user, and security capabilities
+│   ├── desktop/                # Plasma, audio, input, fonts, and theme
+│   ├── hardware/               # GPU, Bluetooth, and peripheral capabilities
+│   ├── network/                # NetworkManager, firewall, SSH, and proxy
+│   └── ...                     # Gaming, media, packages, power, etc.
+└── profiles/                   # Orthogonal policy compositions
 home/
-├── modules/             # Home Manager modules (auto-imported)
-└── dotfiles/            # Dotfile sources
+├── modules/                    # Individual Home Manager capabilities
+├── profiles/                   # Home Manager policy compositions
+└── dotfiles/                   # Dotfile sources
 ```
 
 ## Architecture Flow
 
 ```text
 nixos/hosts/kokosa
-├─ nixosModules.home
-│  └─ Home Manager
-│     ├─ imports home/modules/*.nix
-│     └─ uses home/dotfiles as homeFiles
-├─ nixosModules.secrets
-│  └─ agenix secrets
-├─ nixosModules.desktop
-├─ nixosModules.packages
-├─ nixosModules.services
+├─ nixosProfiles.base
+├─ nixosProfiles.graphical
+├─ nixosProfiles.development
+├─ nixosProfiles.gaming
+├─ nixosProfiles.creator
+├─ nixosProfiles.virtualisation
+├─ other orthogonal profiles
+├─ hardware-specific modules
 └─ hardware.nix
 ```
+
+A leaf module is a small configuration fragment that uses upstream NixOS
+options directly. Importing the module enables that fragment. Profiles compose
+related fragments with `imports`; hosts select profiles, add hardware-specific
+modules, and make final policy overrides. Profiles never contain filesystem
+UUIDs or generated hardware configuration.
 
 ## Shared Library (`lib/default.nix`)
 
@@ -44,40 +54,49 @@ Available functions (import via `import "${inputs.self}/lib"`):
 | Function | Type | Description |
 |----------|------|-------------|
 | `stripNixExt` | `String -> String` | Remove `.nix` extension |
-| `discoverModules` | `Path -> AttrSet` | Discover modules in directory |
-| `importAll` | `Path -> [Path]` | List all `.nix` paths in directory |
+| `discoverModules` | `Path -> AttrSet` | Discover `.nix` files and subdirectories with `default.nix` |
+| `importAll` | `Path -> [Path]` | List non-default `.nix` paths in one directory |
 
 ## NixOS Modules (system-level)
 
-- Location: `nixos/modules/*.nix` (auto-registered by `modules/nixos/default.nix`).
-- Use: import them from a host entry via `nixosModules.<name>`.
-- Template:
-```nix
-{ lib, ... }: {
-  # services.<service>.enable = lib.mkDefault true;
-}
-```
+- Configuration fragments live under `nixos/modules/`.
+- Category `default.nix` files aggregate related fragments.
+- Profiles import only the fragments they need; importing a fragment is its
+  enable switch.
+- Use upstream NixOS options directly instead of adding one-to-one wrappers.
+- Top-level modules are auto-exported as `nixosModules.<name>` by `flake.nix`.
+- Define custom options only for modules that provide real parameterization or
+  invariants beyond an upstream option.
 
 ## Nix Binary Caches
 
-- `nixos/modules/nix/default.nix` defines direct fallback mirrors and their trusted keys.
-- `nixos/modules/nix/s4nix.nix` runs selector4nix, `http://127.0.0.1:5496/` to view progress.
+- `nixos/modules/nix/caches.nix` defines direct mirrors and trusted keys.
+- `nixos/modules/nix/s4nix.nix` provides the optional selector4nix service;
+  use `http://127.0.0.1:5496/` to view progress when enabled.
 
 ## Host Configuration
 
 - **Flake registration**: `flake.nix`
-- **Host-specific hardware**: `nixos/hosts/<host>/default.nix`
+- **Host composition**: `nixos/hosts/<host>/default.nix`
+- **Generated hardware facts**: `nixos/hosts/<host>/hardware.nix`
 
-Template for a host entry (`nixos/hosts/<host>/default.nix`):
+Template for a host entry:
 ```nix
-{ nixosModules, ... }: {
+{
+  nixosProfiles,
+  ...
+}: {
   imports = [
-    nixosModules.boot
-    nixosModules.desktop
+    nixosProfiles.base
+    nixosProfiles.graphical
+    ../../modules/hardware/amd-gpu.nix
     ./hardware.nix
   ];
 
-  networking.hostName = "<host>";
+  networking = {
+    hostName = "<host>";
+    firewall.enable = false;
+  };
   system.stateVersion = "24.11";
 }
 ```
@@ -89,7 +108,7 @@ Example:
 nixosConfigurations.<host> = inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
   specialArgs = {
-    inherit inputs nixosModules;
+    inherit inputs nixosModules nixosProfiles;
   };
   modules = [ ./nixos/hosts/<host> ];
 };
@@ -97,9 +116,13 @@ nixosConfigurations.<host> = inputs.nixpkgs.lib.nixosSystem {
 
 ## Home Manager Modules
 
-- Location: `home/modules/*.nix` (auto-imported by `nixos/modules/home.nix`).
-- Enable: set `my.hm.<name>.enable = true;` in `nixos/modules/home.nix` under `home-manager.users.hatano.my.hm`.
-- Reminder: flake evaluation sees the Git tree; keep new modules/dotfiles tracked or Nix won't find the options.
+- Capability modules live under `home/modules/`; their `my.hm.*` options are
+  retained because they manage real program configuration and dotfiles.
+- Policy fragments live under `home/profiles/` and set those options directly.
+- `nixos/modules/home.nix` provides the shared Home Manager integration.
+- NixOS profiles append the matching Home Manager profile to
+  `home-manager.users.hatano.imports`.
+- Keep new modules and dotfiles tracked; flake evaluation only sees the Git tree.
 - Basic template:
 ```nix
 {
