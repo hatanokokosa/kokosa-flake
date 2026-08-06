@@ -12,6 +12,7 @@
     tealdeer
     ripgrep
     zoxide
+    herdr
     yazi
     cava
     fish
