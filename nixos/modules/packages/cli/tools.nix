@@ -25,6 +25,7 @@
     bat
     scc
     omp
+    dsh
     jq
     fd
   ];
