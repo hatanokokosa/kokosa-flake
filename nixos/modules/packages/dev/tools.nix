@@ -7,6 +7,8 @@
     direnv
     kitty
     just
+    omp
+    dsh
     git
     gcc
   ];
