@@ -44,7 +44,7 @@ in
       owner = "0xShug0";
       repo = "audio.cpp";
       rev = "4d383be1bff107e823ffc19120dcb6c78d493c0f";
-      hash = "sha256-3ni/yN4SaA8RF5pJDvx9ANetFtYmW9W5/5M7PaLVkj8=";
+      hash = "sha256-+IbxGVlkxZUVJmKfdy2WPtGRobx2pLyza6rPOSwfmIo=";
     };
 
     nativeBuildInputs =
