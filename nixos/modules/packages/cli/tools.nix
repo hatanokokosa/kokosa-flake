@@ -7,10 +7,10 @@
     libva-utils
     go-musicfox
     amdgpu_top
-    audiocpp
     fastfetch
     steamcmd
     tealdeer
+    audiocpp
     ripgrep
     zoxide
     herdr
