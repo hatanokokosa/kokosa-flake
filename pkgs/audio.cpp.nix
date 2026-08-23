@@ -124,7 +124,8 @@ in
       cp -R $src/model_specs $out/model_specs
 
       # Bundled runtime assets (Silero VAD / MarbleNet VAD) used by model sessions
-      cp -R $src/assets/framework/models $out/assets/framework/models
+      mkdir -p $out/assets/framework
+      cp -R $src/assets/framework/models $out/assets/framework/
 
       # Patch the shebang to use our python environment with torch/safetensors/pyyaml
       patchShebangs $out/bin/audiocpp_model_manager_v2.py
