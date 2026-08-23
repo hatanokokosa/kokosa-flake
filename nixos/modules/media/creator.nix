@@ -8,7 +8,6 @@
     pureref
     splayer
     haruna
-    subtitleedit
     krita
   ];
 }
