@@ -123,6 +123,9 @@ in
       install -Dm755 $src/tools/model_manager_v2.py $out/bin/audiocpp_model_manager_v2.py
       cp -R $src/model_specs $out/model_specs
 
+      # Bundled runtime assets (Silero VAD / MarbleNet VAD) used by model sessions
+      cp -R $src/assets/framework/models $out/assets/framework/models
+
       # Patch the shebang to use our python environment with torch/safetensors/pyyaml
       patchShebangs $out/bin/audiocpp_model_manager_v2.py
 
