@@ -2,6 +2,8 @@
   # overlays
   flake.overlays = {
     default = final: prev: {
+      # Subtitle Edit 5.0.0 (from ShadowRZ/nixpkgs shadowrz/subtitleedit-5 branch, upstream nixpkgs still on 4.0.16)
+      subtitleedit = prev.callPackage "${inputs.self}/pkgs/subtitle-edit" {};
       kokosa-mono = prev.callPackage "${inputs.self}/pkgs/kokosa-mono.nix" {};
       # audio.cpp with ROCm/HIP for AMD RX 7900 XT (RDNA 3, gfx1100)
       audiocpp = prev.callPackage "${inputs.self}/pkgs/audio.cpp.nix" {

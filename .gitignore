@@ -7,6 +7,5 @@ result-*
 .direnv/
 .codex
 
-# agent scratch (nix cache copies, build logs)
-.agent-tmp/xdg/
-.agent-tmp/*.log
+# agent scratch
+.agent-tmp/
