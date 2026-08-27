@@ -2,7 +2,7 @@
 
 ## Operating Rules
 
-- Read `GUIDE.md` before changing repository architecture, module wiring, or secrets. It is the canonical project reference.
+- Read `GUIDE.md` & `CONVENTIONS.md` before changing repository architecture, module wiring, or secrets. It is the canonical project reference.
 - Scope changes first. Inspect existing modules, inputs, and package exports before adding or replacing configuration.
 - Preserve local patterns and keep changes minimal; do not introduce parallel configuration paths.
 - Inspect package names from pinned flake inputs with `nix flake show` or `nix eval` before referencing them.
