@@ -32,6 +32,8 @@ Do not use emojis in commit messages, PR titles, or PR descriptions. Use clear, 
 
 Keep commits atomic and focused. Use structured PR sections only when multiple distinct architectural decisions require navigation; do not force rigid boilerplate on simple changes.
 
+Do not use gh or the GitHub API for any external write without explicit permission; if needed, first state the action and request authorization.
+
 ### Build & Test
 
 If the project already has a designated test directory, all new test files must be placed inside it. Only if no such directory exists may tests be placed adjacent to the target source file.
