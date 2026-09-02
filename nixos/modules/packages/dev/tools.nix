@@ -4,7 +4,6 @@
     distrobox
     lazygit
     jujutsu
-    chatgpt
     direnv
     kitty
     just
