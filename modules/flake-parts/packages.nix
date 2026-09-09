@@ -17,6 +17,7 @@
         inputs.nur.overlays.default
         (f: p: {
           hid-bpf-uclogic = inputs.hid-bpf-uclogic.packages.${prev.stdenv.hostPlatform.system}.default;
+          chatgpt = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system}.chatgpt;
           omp = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system}.omp;
           dsh = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system}.dsh;
         })
