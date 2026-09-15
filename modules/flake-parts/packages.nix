@@ -18,15 +18,14 @@
         (f: p: {
           hid-bpf-uclogic = inputs.hid-bpf-uclogic.packages.${prev.stdenv.hostPlatform.system}.default;
           dsh = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system}.dsh;
-          omp = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system}.omp.override {
-            bun = prev.bun.overrideAttrs (_: {
-              version = "1.3.13";
-              src = prev.fetchurl {
-                url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-linux-x64-baseline.zip";
-                hash = "sha256-nYokKSpwaAkCBdqsCloiP19pc29Sh+N7+I07QDHtx1A=";
-              };
-            });
-          };
+          omp = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system}.omp.overrideAttrs (old: {
+            buildPhase =
+              old.buildPhase
+              + ''
+                (cd packages/coding-agent && bun ${inputs.llm-agents}/packages/omp/compile-standalone.ts ${prev.bun}/bin/bun)
+              '';
+            installCheckPhase = prev.lib.replaceStrings ["1.3.14"] [prev.bun.version] old.installCheckPhase;
+          });
         })
       ];
     in
