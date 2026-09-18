@@ -1,7 +1,8 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     kdePackages.partitionmanager
-    z-library-desktop
+    bitwarden-desktop
+    bitwarden-cli
     handbrake
     chromium
     obsidian
