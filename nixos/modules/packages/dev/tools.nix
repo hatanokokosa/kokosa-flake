@@ -7,6 +7,7 @@
     jujutsu
     direnv
     kitty
+    paseo
     just
     omp
     git
