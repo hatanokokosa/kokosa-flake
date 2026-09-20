@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    paseo-desktop
     bubblewrap
     distrobox
     lazygit
@@ -8,7 +9,6 @@
     kitty
     just
     omp
-    dsh
     git
     gcc
   ];
