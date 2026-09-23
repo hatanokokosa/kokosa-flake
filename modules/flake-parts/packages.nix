@@ -17,7 +17,7 @@
         inputs.nur.overlays.default
         (f: p: {
           hid-bpf-uclogic = inputs.hid-bpf-uclogic.packages.${prev.stdenv.hostPlatform.system}.default;
-          paseo-desktop = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system}.paseo-desktop ;
+          paseo-desktop = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system}.paseo-desktop;
           omp = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system}.omp.overrideAttrs (old: {
             buildPhase =
               old.buildPhase
