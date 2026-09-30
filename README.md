@@ -45,7 +45,7 @@
 - `home/modules/`: reusable Home Manager program and dotfile modules
 - `home/profiles/`: Home Manager feature compositions selected by NixOS profiles
 - `home/dotfiles/`: dotfile sources
-- `secrets/`: encrypted agenix sources
+- `secrets/`: encrypted vaultix sources and the per-host cache
 - `lib/`: module discovery and import helpers
 
 See [`GUIDE.md`](./GUIDE.md) for the complete module flow and host template.
