@@ -7,7 +7,7 @@
   acmeCert = config.mailserver.x509.useACMEHost;
   certDir = "/var/lib/acme/${acmeCert}";
   domain = lib.head config.mailserver.domains;
-  fqdn = config.mailserver.fqdn;
+  node = "hy2.${domain}";
   subDir = "/var/lib/irisu-subscription";
 
   # Rendered at runtime: the password cannot be baked into the store.
@@ -15,10 +15,10 @@
     proxies:
       - name: irisu-hy2
         type: hysteria2
-        server: ${fqdn}
+        server: ${node}
         port: 443
         password: "@PASSWORD@"
-        sni: ${fqdn}
+        sni: ${node}
         up: "50 Mbps"
         down: "200 Mbps"
         # dialer-proxy: <your airport node or proxy group>
@@ -43,6 +43,8 @@
     '';
   };
 in {
+  security.acme.certs."${acmeCert}".extraDomainNames = [node];
+
   # sing-box serves the certificate that postfix, dovecot and nginx already use.
   users.users.sing-box.extraGroups = ["acme"];
 
