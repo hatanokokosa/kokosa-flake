@@ -194,11 +194,18 @@ in {
 
 ## Secrets
 
-- Source secrets live under `secrets/*.age`.
-- `secrets.nix` declares which public keys can edit each source secret.
-- `nixos/modules/secrets.nix` only imports agenix. Each secret is declared by the
-  module that consumes it, so a host decrypts only the secrets of the capabilities
-  it enables.
+- Source secrets live under `secrets/*.age`, encrypted to the admin identity.
+- `nixos/modules/secrets.nix` imports vaultix and enables `services.userborn`,
+  which vaultix needs because it activates through systemd-sysusers and that
+  mechanism cannot create normal users.
+- Each host publishes its SSH host public key as `vaultix.settings.hostPubkey`.
+  `just secret-renc` decrypts every source secret with the admin identity and
+  writes a per-host copy under `secrets/cache/<host>/`, encrypted to that host
+  key. The cache is committed: a host listed in `flake.vaultix.nodes` without a
+  cache entry fails to build.
+- `flake.vaultix.nodes` lists the hosts that declare secrets; each of them must
+  import the vaultix nixos module.
+- The admin identity lives outside the repository, as `flake.vaultix.identity`.
 - Reminder: if a new secret file is not tracked by Git, Flake evaluation will not see it.
 
 ### Secret Wiring Pattern
@@ -206,37 +213,34 @@ in {
 Declare the secret in the consuming module (for example
 `nixos/modules/services/mailserver.nix` declares `cloudflare-dns` and `mail-kks`,
 `nixos/modules/services/hysteria2.nix` declares `hy2-password`) and import
-`../secrets.nix` there for the agenix module:
+`../secrets.nix` there for the vaultix module. An empty attribute set resolves to
+`secrets/<name>.age`:
 ```nix
-{
-  inputs,
-  ...
-}: {
+{...}: {
   imports = [../secrets.nix];
 
-  age.secrets.<name>.file = inputs.self + "/secrets/<name>.age";
+  vaultix.secrets.<name> = {};
 }
 ```
 
-Consume the decrypted file from that same module via `config.age.secrets.<name>.path`:
+Consume the decrypted file from that same module via `config.vaultix.secrets.<name>.path`:
 ```nix
 { config, ... }: {
   services.<service> = {
-    # The service reads the decrypted plaintext file from /run/agenix/...
-    passwordFile = config.age.secrets.<name>.path;
+    # The service reads the decrypted plaintext file from /run/vaultix/...
+    passwordFile = config.vaultix.secrets.<name>.path;
   };
 }
 ```
 
 ### Add Or Rotate A Password
 
-1. Add an entry in `secrets.nix` for `secrets/<name>.age`.
-2. Declare it in the module that consumes it:
-   `age.secrets.<name>.file = inputs.self + "/secrets/<name>.age";`
-3. Create or edit the source secret:
+1. Create or edit the source secret:
    `just secret-edit secrets/<name>.age`
    Put the plaintext password in the file and save.
-4. Commit the source secret and the Nix changes.
+2. Declare it in the module that consumes it: `vaultix.secrets.<name> = {};`
+3. Re-encrypt for the hosts: `just secret-renc`
+4. Commit the source secret, the regenerated `secrets/cache/` files and the Nix changes.
 
 ## Commands
 

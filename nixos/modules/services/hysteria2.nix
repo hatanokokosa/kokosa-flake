@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   lib,
   ...
 }: let
@@ -11,7 +10,7 @@
 in {
   imports = [../secrets.nix];
 
-  age.secrets.hy2-password.file = inputs.self + "/secrets/hy2-password.age";
+  vaultix.secrets.hy2-password = {};
 
   security.acme.certs."${acmeCert}".extraDomainNames = [node];
 
@@ -32,7 +31,7 @@ in {
           users = [
             {
               name = "kks";
-              password = {_secret = config.age.secrets.hy2-password.path;};
+              password = {_secret = config.vaultix.secrets.hy2-password.path;};
             }
           ];
           tls = {

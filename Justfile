@@ -48,9 +48,13 @@ update:
 repl:
     nix repl --file flake.nix
 
-# edit secret - usage: just secret-edit <path>
+# edit secret - usage: just secret-edit secrets/<name>.age
 secret-edit path:
-    nix run github:ryantm/agenix -- -i /home/hatano/.config/agenix/master-key.txt -e {{ path }}
+    nix run .#vaultix.app.x86_64-linux.edit -- {{ path }}
+
+# re-encrypt secrets for the hosts in flake.vaultix.nodes - run after adding, editing or removing one
+secret-renc:
+    nix run .#vaultix.app.x86_64-linux.renc
 
 # install nixos on a remote host - usage: ssh-copy-id -i ~/.ssh/id_ed25519.pub root@<ip> && just install <host> root@<ip>
 install host target:

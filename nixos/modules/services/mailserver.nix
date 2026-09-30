@@ -9,9 +9,9 @@
     ../secrets.nix
   ];
 
-  age.secrets = {
-    cloudflare-dns.file = inputs.self + "/secrets/cloudflare-dns.age";
-    mail-kks.file = inputs.self + "/secrets/mail-kks.age";
+  vaultix.secrets = {
+    cloudflare-dns = {};
+    mail-kks = {};
   };
 
   security.acme.acceptTerms = true;
@@ -22,7 +22,7 @@
   # caches the NXDOMAIN it sees just before Cloudflare serves the new record.
   security.acme.certs."mail.irisu.org" = {
     dnsProvider = "cloudflare";
-    credentialFiles.CLOUDFLARE_DNS_API_TOKEN_FILE = config.age.secrets.cloudflare-dns.path;
+    credentialFiles.CLOUDFLARE_DNS_API_TOKEN_FILE = config.vaultix.secrets.cloudflare-dns.path;
     dnsResolver = "hans.ns.cloudflare.com:53";
   };
 
@@ -47,7 +47,7 @@
       };
 
     accounts."kks@irisu.org" = {
-      passwordFile = config.age.secrets.mail-kks.path;
+      passwordFile = config.vaultix.secrets.mail-kks.path;
       aliases = [
         "postmaster@irisu.org"
         "abuse@irisu.org"

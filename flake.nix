@@ -25,9 +25,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # secrets management
-    agenix = {
-      url = "github:ryantm/agenix";
+    # secrets management, re-encrypted per host
+    vaultix = {
+      url = "github:milieuim/vaultix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
