@@ -9,7 +9,6 @@
     ../modules/network/networkmanager.nix
     ../modules/nix
     ../modules/packages/cli
-    ../modules/secrets.nix
     ../modules/security.nix
     ../modules/services/flatpak.nix
     ../modules/users.nix

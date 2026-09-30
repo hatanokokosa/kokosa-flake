@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   ...
 }: let
@@ -8,6 +9,10 @@
   domain = lib.head config.mailserver.domains;
   node = "hy2.${domain}";
 in {
+  imports = [../secrets.nix];
+
+  age.secrets.hy2-password.file = inputs.self + "/secrets/hy2-password.age";
+
   security.acme.certs."${acmeCert}".extraDomainNames = [node];
 
   # sing-box serves the certificate that postfix, dovecot and nginx already use.

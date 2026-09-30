@@ -196,25 +196,29 @@ in {
 
 - Source secrets live under `secrets/*.age`.
 - `secrets.nix` declares which public keys can edit each source secret.
-- `nixos/modules/secrets.nix` maps a NixOS secret name to its encrypted source file.
+- `nixos/modules/secrets.nix` only imports agenix. Each secret is declared by the
+  module that consumes it, so a host decrypts only the secrets of the capabilities
+  it enables.
 - Reminder: if a new secret file is not tracked by Git, Flake evaluation will not see it.
 
 ### Secret Wiring Pattern
 
-Declare the secret in `nixos/modules/secrets.nix`:
+Declare the secret in the consuming module (for example
+`nixos/modules/services/mailserver.nix` declares `cloudflare-dns` and `mail-kks`,
+`nixos/modules/services/hysteria2.nix` declares `hy2-password`) and import
+`../secrets.nix` there for the agenix module:
 ```nix
 {
   inputs,
   ...
 }: {
-  age.secrets.<name> = {
-    file = inputs.self + "/secrets/<name>.age";
-    owner = "<user>";
-  };
+  imports = [../secrets.nix];
+
+  age.secrets.<name>.file = inputs.self + "/secrets/<name>.age";
 }
 ```
 
-Consume the decrypted file from another module via `config.age.secrets.<name>.path`:
+Consume the decrypted file from that same module via `config.age.secrets.<name>.path`:
 ```nix
 { config, ... }: {
   services.<service> = {
@@ -227,7 +231,8 @@ Consume the decrypted file from another module via `config.age.secrets.<name>.pa
 ### Add Or Rotate A Password
 
 1. Add an entry in `secrets.nix` for `secrets/<name>.age`.
-2. Wire it into `nixos/modules/secrets.nix` with `age.secrets.<name>.file = inputs.self + "/secrets/<name>.age";`.
+2. Declare it in the module that consumes it:
+   `age.secrets.<name>.file = inputs.self + "/secrets/<name>.age";`
 3. Create or edit the source secret:
    `just secret-edit secrets/<name>.age`
    Put the plaintext password in the file and save.

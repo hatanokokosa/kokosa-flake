@@ -9,6 +9,11 @@
     ../secrets.nix
   ];
 
+  age.secrets = {
+    cloudflare-dns.file = inputs.self + "/secrets/cloudflare-dns.age";
+    mail-kks.file = inputs.self + "/secrets/mail-kks.age";
+  };
+
   security.acme.acceptTerms = true;
 
   # DNS-01: mail.irisu.org is served from a host that also accepts mail, so the
