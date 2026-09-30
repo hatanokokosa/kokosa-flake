@@ -19,6 +19,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # mail server stack (postfix, dovecot, rspamd, dkim)
+    nixos-mailserver = {
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # secrets management
     agenix = {
       url = "github:ryantm/agenix";
@@ -74,15 +80,6 @@
       # host configuration: kokosa
       kokosa = inputs.nixpkgs.lib.nixosSystem {
         modules = [./nixos/hosts/kokosa];
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs nixosModules nixosProfiles;
-        };
-      };
-
-      # host configuration: irisu
-      irisu = inputs.nixpkgs.lib.nixosSystem {
-        modules = [./nixos/hosts/irisu];
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs nixosModules nixosProfiles;
