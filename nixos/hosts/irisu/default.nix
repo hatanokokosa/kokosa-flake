@@ -2,6 +2,7 @@
   inputs,
   lib,
   nixosProfiles,
+  pkgs,
   ...
 }: {
   imports = [
@@ -43,6 +44,9 @@
   networking.hostName = "irisu";
   time.timeZone = lib.mkForce "UTC";
   system.stateVersion = "26.11";
+
+  # Only interactive account on this host.
+  users.users.root.shell = pkgs.fish;
 
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHm92O2/2O5zGkX0EG27cZRsNmG7ZdLf8jKPfdpIPK1j wuyumagician@gmail.com"

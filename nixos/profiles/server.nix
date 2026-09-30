@@ -6,6 +6,7 @@
     ../modules/network/fail2ban.nix
     ../modules/network/firewall.nix
     ../modules/network/ssh.nix
+    ../modules/packages/cli/terminal.nix
     ../modules/nix/gc.nix
     ../modules/nix/settings.nix
   ];
