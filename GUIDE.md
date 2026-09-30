@@ -114,6 +114,18 @@ nixosConfigurations.<host> = inputs.nixpkgs.lib.nixosSystem {
 };
 ```
 
+### Remote Installation (nixos-anywhere)
+
+- A host installed on a remote machine imports `inputs.disko.nixosModules.disko` and owns a
+  `disko.nix` declaring the disk layout. Its host module sets `boot.loader.grub.enable` only:
+  disko derives `boot.loader.grub.devices` from the `EF02` partition of that layout.
+- `hardware.nix` is rewritten by the installer. `just install <host> root@<ip>` runs
+  `--generate-hardware-config nixos-generate-config`, so the host directory must be committed
+  first — flake evaluation ignores untracked files.
+- The recipe authenticates with `~/.ssh/id_ed25519`, the same key the host config installs for
+  root: run `ssh-copy-id -i ~/.ssh/id_ed25519.pub root@<ip>` once on a fresh machine.
+- `just vm-test <host>` runs the disk layout and boot inside a VM without a target machine.
+
 ## Home Manager Modules
 
 - Capability modules live under `home/modules/`; their `my.hm.*` options are
@@ -215,3 +227,5 @@ Consume the decrypted file from another module via `config.age.secrets.<name>.pa
 - Format & Check: `just ci`
 - Rebuild current boot: `just switch`
 - Rebuild next boot: `just boot`
+- Install on a remote host: `just install <host> root@<ip>`
+- Test an install in a VM: `just vm-test <host>`
