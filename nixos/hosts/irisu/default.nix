@@ -14,12 +14,8 @@
     ./hardware.nix
   ];
 
-  # disko sets boot.loader.grub.devices from the EF02 partition in disko.nix;
-  # setting boot.loader.grub.device here would install GRUB to it twice.
   boot.loader.grub.enable = true;
 
-  # DediRock hands out addressing statically on eth0 and boots with net.ifnames=0;
-  # DHCP is not configured on the image, so the host must not rely on it.
   boot.kernelParams = ["net.ifnames=0"];
 
   networking = {
@@ -34,8 +30,6 @@
     ];
   };
 
-  # The shared ssh module keeps password authentication available for the
-  # desktop; this host accepts keys only, including over PAM keyboard-interactive.
   services.openssh.settings = {
     PasswordAuthentication = lib.mkForce false;
     KbdInteractiveAuthentication = lib.mkForce false;
