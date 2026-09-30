@@ -19,6 +19,8 @@
     fish
     btop
     wget
+    tmux
+    mosh
     rip2
     dog
     duf
