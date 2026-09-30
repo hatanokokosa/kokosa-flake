@@ -32,12 +32,14 @@
 
     # The mailboxes option has no type, so a definition replaces the module
     # default wholesale; reintroduce that default and add Archive.
-    mailboxes = (options.mailserver.mailboxes.default or {}) // {
-      Archive = {
-        special_use = "\\Archive";
-        auto = "subscribe";
+    mailboxes =
+      (options.mailserver.mailboxes.default or {})
+      // {
+        Archive = {
+          special_use = "\\Archive";
+          auto = "subscribe";
+        };
       };
-    };
 
     accounts."kks@irisu.org" = {
       passwordFile = config.age.secrets.mail-kks.path;
@@ -45,6 +47,7 @@
         "postmaster@irisu.org"
         "abuse@irisu.org"
         "dmarc@irisu.org"
+        "tlsrpt@irisu.org"
       ];
     };
   };

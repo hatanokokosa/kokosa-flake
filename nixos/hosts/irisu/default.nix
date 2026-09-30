@@ -33,6 +33,13 @@
     ];
   };
 
+  # The shared ssh module keeps password authentication available for the
+  # desktop; this host accepts keys only, including over PAM keyboard-interactive.
+  services.openssh.settings = {
+    PasswordAuthentication = lib.mkForce false;
+    KbdInteractiveAuthentication = lib.mkForce false;
+  };
+
   networking.hostName = "irisu";
   time.timeZone = lib.mkForce "UTC";
   system.stateVersion = "26.11";
