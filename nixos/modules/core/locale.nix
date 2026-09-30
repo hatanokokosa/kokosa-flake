@@ -3,6 +3,10 @@
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
+
+    # Plasma's formats request zh_CN.
+    extraLocales = ["zh_CN.UTF-8/UTF-8"];
+
     extraLocaleSettings = {
       LC_IDENTIFICATION = "en_US.UTF-8";
       LC_MEASUREMENT = "en_US.UTF-8";
