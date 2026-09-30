@@ -9,3 +9,4 @@ result-*
 
 # agent scratch
 .agent-tmp/
+.scratch/

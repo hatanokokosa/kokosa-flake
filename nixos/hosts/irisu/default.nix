@@ -5,6 +5,7 @@
   ...
 }: {
   imports = [
+    nixosProfiles.mail
     nixosProfiles.server
 
     inputs.disko.nixosModules.disko

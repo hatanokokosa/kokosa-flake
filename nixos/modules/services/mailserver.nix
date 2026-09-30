@@ -1,0 +1,41 @@
+{
+  config,
+  inputs,
+  ...
+}: {
+  imports = [
+    inputs.nixos-mailserver.nixosModules.default
+    ../secrets.nix
+  ];
+
+  security.acme.acceptTerms = true;
+
+  # DNS-01: mail.irisu.org is served from a host that also accepts mail, so the
+  # challenge must not depend on an HTTP vhost. The secret holds the bare token.
+  # The propagation check asks the zone's own nameserver: the local resolver
+  # caches the NXDOMAIN it sees just before Cloudflare serves the new record.
+  security.acme.certs."mail.irisu.org" = {
+    dnsProvider = "cloudflare";
+    credentialFiles.CLOUDFLARE_DNS_API_TOKEN_FILE = config.age.secrets.cloudflare-dns.path;
+    dnsResolver = "hans.ns.cloudflare.com:53";
+  };
+
+  mailserver = {
+    enable = true;
+    stateVersion = 5;
+    fqdn = "mail.irisu.org";
+    domains = ["irisu.org"];
+    openFirewall = true;
+    enableSubmission = true;
+    x509.useACMEHost = "mail.irisu.org";
+
+    accounts."kks@irisu.org" = {
+      passwordFile = config.age.secrets.mail-kks.path;
+      aliases = [
+        "postmaster@irisu.org"
+        "abuse@irisu.org"
+        "dmarc@irisu.org"
+      ];
+    };
+  };
+}

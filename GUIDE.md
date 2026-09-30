@@ -126,6 +126,17 @@ nixosConfigurations.<host> = inputs.nixpkgs.lib.nixosSystem {
   root: run `ssh-copy-id -i ~/.ssh/id_ed25519.pub root@<ip>` once on a fresh machine.
 - `just vm-test <host>` runs the disk layout and boot inside a VM without a target machine.
 
+## Mail Server
+
+- `nixos/profiles/mail.nix` composes `nixos/modules/services/mailserver.nix`, which imports
+  `simple-nixos-mailserver` and serves `irisu.org` from host `mail.irisu.org`.
+- TLS uses ACME DNS-01: the Cloudflare token lives in `secrets/cloudflare-dns.age`, encrypted to
+  the master key and the host key of `irisu` declared in `secrets.nix`.
+- Mailbox passwords are `secrets/mail-<account>.age`; `mailserver.accounts` maps an address to
+  `passwordFile = config.age.secrets.<name>.path`.
+- DNS records owned outside the flake: `A mail`, `MX`, `TXT` SPF, `TXT _dmarc`, and the DKIM key
+  printed by the server as `TXT mail._domainkey`. The provider must point PTR at `mail.irisu.org`.
+
 ## Home Manager Modules
 
 - Capability modules live under `home/modules/`; their `my.hm.*` options are
