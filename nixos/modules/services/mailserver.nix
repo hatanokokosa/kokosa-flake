@@ -37,9 +37,6 @@
         special_use = "\\Archive";
         auto = "subscribe";
       };
-      Important = {
-        auto = "subscribe";
-      };
     };
 
     accounts."kks@irisu.org" = {
