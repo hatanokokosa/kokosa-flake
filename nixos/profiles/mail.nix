@@ -1,3 +1,6 @@
 {...}: {
-  imports = [../modules/services/mailserver.nix];
+  imports = [
+    ../modules/services/mail-autoconfig.nix
+    ../modules/services/mailserver.nix
+  ];
 }

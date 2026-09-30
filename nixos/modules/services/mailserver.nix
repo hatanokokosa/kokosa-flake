@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  options,
   ...
 }: {
   imports = [
@@ -28,6 +29,18 @@
     openFirewall = true;
     enableSubmission = true;
     x509.useACMEHost = "mail.irisu.org";
+
+    # The mailboxes option has no type, so a definition replaces the module
+    # default wholesale; reintroduce that default and add Archive.
+    mailboxes = (options.mailserver.mailboxes.default or {}) // {
+      Archive = {
+        special_use = "\\Archive";
+        auto = "subscribe";
+      };
+      Important = {
+        auto = "subscribe";
+      };
+    };
 
     accounts."kks@irisu.org" = {
       passwordFile = config.age.secrets.mail-kks.path;
