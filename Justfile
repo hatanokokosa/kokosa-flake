@@ -32,6 +32,10 @@ switch:
 boot:
     nh os boot .
 
+# deploy to a remote host - usage: just deploy <host> root@<ip>
+deploy host target:
+    nixos-rebuild switch --flake .#{{ host }} --target-host {{ target }}
+
 # clean garbage
 clean:
     nh clean all

@@ -229,3 +229,4 @@ Consume the decrypted file from another module via `config.age.secrets.<name>.pa
 - Rebuild next boot: `just boot`
 - Install on a remote host: `just install <host> root@<ip>`
 - Test an install in a VM: `just vm-test <host>`
+- Deploy to a remote host: `just deploy <host> root@<ip>`

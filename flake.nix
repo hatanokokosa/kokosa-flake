@@ -85,6 +85,15 @@
           inherit inputs nixosModules nixosProfiles;
         };
       };
+
+      # host configuration: irisu
+      irisu = inputs.nixpkgs.lib.nixosSystem {
+        modules = [./nixos/hosts/irisu];
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs nixosModules nixosProfiles;
+        };
+      };
     };
   in
     # avoid warnings from 'nix flake check'
