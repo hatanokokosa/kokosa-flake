@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   acmeCert = config.mailserver.x509.useACMEHost;
@@ -49,5 +50,19 @@ in {
       ];
       route.final = "direct";
     };
+  };
+
+  # The generated pre-start reads the password file, which vaultix writes at activation.
+  systemd.services.sing-box = {
+    after = ["vaultix-activate.service"];
+    requires = ["vaultix-activate.service"];
+    serviceConfig.ExecStartPre = lib.mkAfter [
+      "+${pkgs.writeShellScript "sing-box-password-present" ''
+        if ! test -s ${config.vaultix.secrets.hy2-password.path}; then
+          echo "sing-box: hysteria2 password is empty" >&2
+          exit 1
+        fi
+      ''}"
+    ];
   };
 }
