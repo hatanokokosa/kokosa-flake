@@ -36,12 +36,15 @@
     x509.useACMEHost = "mail.irisu.org";
 
     # The mailboxes option has no type, so a definition replaces the module
-    # default wholesale; reintroduce that default and add Archive.
+    # default wholesale; reintroduce that default and add Archive and Reports.
     mailboxes =
       (options.mailserver.mailboxes.default or {})
       // {
         Archive = {
           special_use = "\\Archive";
+          auto = "subscribe";
+        };
+        Reports = {
           auto = "subscribe";
         };
       };
@@ -54,6 +57,15 @@
         "dmarc@irisu.org"
         "tlsrpt@irisu.org"
       ];
+
+      sieveScript = ''
+        require ["fileinto"];
+
+        if address :is ["to", "cc"] ["dmarc@irisu.org", "tlsrpt@irisu.org"] {
+          fileinto "Reports";
+          stop;
+        }
+      '';
     };
   };
 }
