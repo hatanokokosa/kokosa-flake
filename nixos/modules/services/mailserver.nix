@@ -12,6 +12,11 @@
   vaultix.secrets = {
     cloudflare-dns = {};
     mail-kks = {};
+    dkim-mail = {
+      owner = config.services.rspamd.user;
+      group = config.services.rspamd.group;
+      mode = "0400";
+    };
   };
 
   security.acme.acceptTerms = true;
@@ -34,6 +39,10 @@
     openFirewall = true;
     enableSubmission = true;
     x509.useACMEHost = "mail.irisu.org";
+    # Sign with the key stored in secrets/dkim-mail.age instead of a generated
+    # one, so reinstall/migration keeps the published DNS record valid.
+    dkim.domains."irisu.org".selectors.mail.keyFile =
+      config.vaultix.secrets.dkim-mail.path;
 
     # The mailboxes option has no type, so a definition replaces the module
     # default wholesale; reintroduce that default and add Archive and Reports.
