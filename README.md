@@ -50,6 +50,15 @@
 
 See [`GUIDE.md`](./GUIDE.md) for the complete module flow and host template.
 
+## Tailscale (kokosa)
+
+`kokosa` enables the Tailscale client daemon. After applying the configuration
+with `just switch`, authenticate once with `doas tailscale up`, then check
+`tailscale status` and `tailscale ip -4`.
+
+This host is not configured as an exit node or subnet router. Tailscale SSH is
+not enabled, and no authentication key is stored in the repository.
+
 ---
 
 ```fish
