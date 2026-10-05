@@ -192,6 +192,19 @@ in {
 }
 ```
 
+## Font Configuration
+
+- `nixos/modules/desktop/fonts.nix` owns system font packages, generic defaults,
+  and rendering settings. User `~/.config/fontconfig/fonts.conf` can override
+  rendering settings; check effective values with
+  `fc-match -f 'rgba=%{rgba} hintstyle=%{hintstyle}\n' ':family=sans-serif'`.
+- Family aliases remain in `config/fontconfig.conf`, loaded as `localConf`.
+  Regional substitutions live in `config/fontconfig-languages.conf`, installed
+  as `54-nixos-languages.conf` so they run after generic defaults are expanded.
+- Browser font preferences can override generic system defaults. Use installed
+  family names or `sans-serif`, `serif`, and `monospace`; only edit Firefox
+  `prefs.js` after its processes have fully exited.
+
 ## Secrets
 
 - Source secrets live under `secrets/*.age`, encrypted to the admin identity.

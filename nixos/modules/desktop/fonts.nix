@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+  environment.etc."fonts/conf.d/54-nixos-languages.conf".text =
+    builtins.readFile ./config/fontconfig-languages.conf;
+
   fonts = {
     enableDefaultPackages = false;
     packages = with pkgs; [
