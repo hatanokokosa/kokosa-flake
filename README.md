@@ -35,6 +35,7 @@
 - Kernel: [CachyOS]
 - Terminal: [Kitty]
 - Editor: [Zed]
+- File search: Fish `Ctrl+T` selects files with fzf/fd; `Alt+C` selects directories.
 
 ## Structure
 - `flake.nix`: flake entry, host registration, and module/profile discovery
