@@ -4,6 +4,7 @@
   inputs = {
     # nixpkgs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
 
     # flake parts
     flake-parts = {
@@ -21,8 +22,8 @@
 
     # mail server stack (postfix, dovecot, rspamd, dkim)
     nixos-mailserver = {
-      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/main";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-26.05";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     # secrets management, re-encrypted per host
@@ -87,11 +88,12 @@
       };
 
       # host configuration: irisu
-      irisu = inputs.nixpkgs.lib.nixosSystem {
+      irisu = inputs.nixpkgs-stable.lib.nixosSystem {
         modules = [./nixos/hosts/irisu];
         system = "x86_64-linux";
         specialArgs = {
-          inherit inputs nixosModules nixosProfiles;
+          inherit nixosModules nixosProfiles;
+          inputs = inputs // {nixpkgs = inputs.nixpkgs-stable;};
         };
       };
     };

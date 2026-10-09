@@ -126,6 +126,35 @@ nixosConfigurations.<host> = inputs.nixpkgs.lib.nixosSystem {
   root: run `ssh-copy-id -i ~/.ssh/id_ed25519.pub root@<ip>` once on a fresh machine.
 - `just vm-test <host>` runs the disk layout and boot inside a VM without a target machine.
 
+### VPS Maintenance
+
+- `irisu` uses the `nixpkgs-stable` input on `nixos-26.05`, together with the
+  matching `nixos-mailserver` release branch. `kokosa` continues to use the
+  separate `nixpkgs` input on `nixos-unstable`.
+- `irisu` is deployed from the repository configuration and `flake.lock`.
+  Automatic system upgrades are disabled; the VPS does not refresh inputs
+  independently or fetch configuration changes from GitHub.
+- For VPS maintenance, deliberately update `nixpkgs-stable` and the matching
+  mail module with `nix flake update nixpkgs-stable nixos-mailserver`, then run
+  `just ci` and build `.#nixosConfigurations.irisu.config.system.build.toplevel`.
+  Review and commit the configuration and lock file changes before deploying
+  with `just deploy irisu root@107.150.26.5`.
+- Deployments switch the running system and may restart services. Verify mail
+  service health after deployment. Kernel updates require a manual reboot.
+  Security updates need regular repository maintenance and deployment.
+- System generations are not data backups. Mailboxes and other mutable data
+  still need independent copies; deployments do not provide data recovery or
+  automatic application-health rollback.
+- Changing release branches does not reset `system.stateVersion` or
+  `mailserver.stateVersion`. Check persistent service formats before a
+  downgrade: Redis 8.8 cannot read the RDB format written by Redis 8.10.
+  Logical migration must preserve values and expiry timestamps with writers
+  stopped; retain the original snapshot until the new service is verified.
+- Lego account-key storage can also change across releases. When migrating
+  from the flat account-key layout to the legacy `keys/<email>.key` layout,
+  preserve the existing registered account key; do not pair a newly generated
+  key with cached account metadata. Verify the ACME order/renew unit succeeds.
+
 ## Mail Server
 
 - `nixos/profiles/mail.nix` composes `nixos/modules/services/mailserver.nix`, which imports

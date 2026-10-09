@@ -39,6 +39,8 @@
   time.timeZone = lib.mkForce "UTC";
   system.stateVersion = "26.11";
 
+  system.autoUpgrade.enable = false;
+
   # Per-host cache is encrypted to this key: /etc/ssh/ssh_host_ed25519_key.pub.
   vaultix.settings.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA+RXfMeaQ7IwZ4GhD0Vj/LA3J/H3WoE7PlQOq9yPANh";
 
