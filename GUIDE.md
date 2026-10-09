@@ -74,6 +74,19 @@ Available functions (import via `import "${inputs.self}/lib"`):
 - `nixos/modules/nix/s4nix.nix` provides the optional selector4nix service;
   use `http://127.0.0.1:5496/` to view progress when enabled.
 
+### Desktop Kernel
+
+- `nixos/modules/boot/cachyos.nix` selects the non-LTO CachyOS latest x86-64-v3
+  kernel. The kernel input follows upstream's default branch, and
+  `overlays.pinned` preserves upstream package hashes.
+- Update normally with `nix flake update`, or update only the kernel with
+  `nix flake update nix-cachyos-kernel`, then run `just ci`. Future upstream
+  versions are not guaranteed to have binary-cache outputs.
+- Fetch all kernel outputs with
+  `nix build '.#nixosConfigurations.kokosa.config.boot.kernelPackages.kernel^*' --no-link --max-jobs 0 --builders ''`
+  before rebuilding the desktop. This fails instead of compiling locally when
+  an output is unavailable. Kernel changes take effect after a manual reboot.
+
 ## Host Configuration
 
 - **Flake registration**: `flake.nix`
