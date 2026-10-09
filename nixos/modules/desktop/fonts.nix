@@ -1,7 +1,4 @@
 {pkgs, ...}: {
-  environment.etc."fonts/conf.d/54-nixos-languages.conf".text =
-    builtins.readFile ./config/fontconfig-languages.conf;
-
   fonts = {
     enableDefaultPackages = false;
     packages = with pkgs; [
@@ -16,6 +13,10 @@
       fraunces
     ];
     fontconfig = {
+      confPackages = [
+        (pkgs.writeTextDir "etc/fonts/conf.d/54-nixos-languages.conf"
+          (builtins.readFile ./config/fontconfig-languages.conf))
+      ];
       localConf = builtins.readFile ./config/fontconfig.conf;
       subpixel.rgba = "rgb";
       cache32Bit = true;

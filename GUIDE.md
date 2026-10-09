@@ -199,8 +199,11 @@ in {
   rendering settings; check effective values with
   `fc-match -f 'rgba=%{rgba} hintstyle=%{hintstyle}\n' ':family=sans-serif'`.
 - Family aliases remain in `config/fontconfig.conf`, loaded as `localConf`.
-  Regional substitutions live in `config/fontconfig-languages.conf`, installed
-  as `54-nixos-languages.conf` so they run after generic defaults are expanded.
+  Regional substitutions live in `config/fontconfig-languages.conf`, packaged
+  through `fonts.fontconfig.confPackages` as `54-nixos-languages.conf` so they
+  run after generic defaults are expanded. `/etc/fonts` is owned by the merged
+  Fontconfig package; additional rules belong in that package list, not nested
+  `environment.etc` entries.
 - Browser font preferences can override generic system defaults. Use installed
   family names or `sans-serif`, `serif`, and `monospace`; only edit Firefox
   `prefs.js` after its processes have fully exited.
