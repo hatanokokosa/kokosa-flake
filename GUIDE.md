@@ -227,8 +227,7 @@ in {
 ### Secret Wiring Pattern
 
 Declare the secret in the consuming module (for example
-`nixos/modules/services/mailserver.nix` declares `cloudflare-dns` and `mail-kks`,
-`nixos/modules/services/hysteria2.nix` declares `hy2-password`) and import
+`nixos/modules/services/mailserver.nix` declares `cloudflare-dns` and `mail-kks`) and import
 `../secrets.nix` there for the vaultix module. An empty attribute set resolves to
 `secrets/<name>.age`:
 ```nix
