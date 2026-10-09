@@ -22,7 +22,7 @@
     tmux
     mosh
     rip2
-    dog
+    dig
     duf
     lsd
     bat

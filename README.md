@@ -36,6 +36,7 @@
 - Terminal: [Kitty]
 - Editor: [Zed]
 - File search: Fish `Ctrl+T` selects files with fzf/fd; `Alt+C` selects directories.
+- DNS lookup: standard BIND `dig`.
 
 ## Structure
 - `flake.nix`: flake entry, host registration, and module/profile discovery

@@ -14,7 +14,6 @@
     ff = "fastfetch";
     rm = "rip";
     cat = "bat";
-    dig = "dog";
     du = "duf";
     zh = "set -gx LANG zh_CN.UTF-8";
   };
