@@ -3,6 +3,7 @@
   flake.overlays = {
     default = final: prev: {
       kokosa-mono = prev.callPackage "${inputs.self}/pkgs/kokosa-mono.nix" {};
+      wps-sandbox = prev.callPackage "${inputs.self}/pkgs/wps-sandbox.nix" {};
       # audio.cpp with ROCm/HIP for AMD RX 7900 XT (RDNA 3, gfx1100)
       audiocpp = prev.callPackage "${inputs.self}/pkgs/audio-cpp.nix" {
         rocmSupport = true;

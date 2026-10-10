@@ -234,6 +234,22 @@ in {
 }
 ```
 
+## WPS Office Lifecycle
+
+- `pkgs/wps-sandbox.nix`, exported as `pkgs.wps-sandbox` by the default overlay,
+  wraps nixpkgs `wpsoffice-cn`. The editor module installs only this wrapper.
+- Desktop file associations and `wps`, `et`, `wpp`, and `wpspdf` launch commands
+  use a separate PID namespace per invocation. When the foreground session
+  exits, remaining processes in that namespace are terminated. Closing a
+  document tab alone does not end a session with another window still open.
+- Independent launches use WPS multi-instance mode, so exiting one launch
+  does not terminate another. Background-only quickstart cannot outlive its
+  launcher.
+- This is lifecycle isolation, not a security sandbox: networking, the home
+  directory, devices, and desktop session access remain available.
+- Build without activating the system:
+  `nix build .#legacyPackages.x86_64-linux.wps-sandbox --no-link`.
+
 ## Font Configuration
 
 - `nixos/modules/desktop/fonts.nix` owns system font packages, generic defaults,

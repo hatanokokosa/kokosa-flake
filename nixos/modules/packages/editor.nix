@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    nur.repos.novel2430.wpsoffice-365
+    wps-sandbox
     evil-helix
     zed-editor
     neovim
