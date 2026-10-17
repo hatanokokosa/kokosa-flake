@@ -3,6 +3,7 @@
     kdePackages.partitionmanager
     bitwarden-desktop
     joplin-desktop
+    brave-origin
     handbrake
     chromium
     obsidian
