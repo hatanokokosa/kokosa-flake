@@ -32,7 +32,7 @@
 - Security: [OpenDoas]
 - Shell: [Fish] & [Fisher]
 - Browser: [Firefox]
-- Kernel: [CachyOS]
+- Kernel: [CachyOS] (`release` branch; module aggregation uses the kernel's pinned nixpkgs).
 - Terminal: [Kitty]
 - Editor: [Zed]
 - File search: Fish `Ctrl+T` selects files with fzf/fd; `Alt+C` selects directories.
