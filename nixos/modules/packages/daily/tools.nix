@@ -3,7 +3,6 @@
     kdePackages.partitionmanager
     joplin-desktop
     brave-origin
-    handbrake
     chromium
     obsidian
     upscayl
