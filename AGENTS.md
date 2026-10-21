@@ -2,7 +2,7 @@
 
 ## Operating Rules
 
-- Must read `GUIDE.md` & `CONVENTIONS.md` before changing repository architecture, module wiring, or secrets. It is the canonical project reference.
+- Must read `CONVENTIONS.md` before changing repository architecture, module wiring, or secrets. It is the canonical project reference.
 - Scope changes first. Inspect existing modules, inputs, and package exports before adding or replacing configuration.
 - Preserve local patterns and keep changes minimal; do not introduce parallel configuration paths.
 - Inspect package names from pinned flake inputs with `nix flake show` or `nix eval` before referencing them.
@@ -17,9 +17,3 @@
 - Use `just check` for flake evaluation.
 - Use `just ci` as the standard verification path: format, then evaluate.
 - Use `just show` to inspect flake outputs.
-
-## Change Completion
-
-- For configuration changes, evaluate the affected NixOS or flake output after editing.
-- Confirm package-list changes through the evaluated configuration, not source inspection alone.
-- Update `GUIDE.md` only when the repository’s architecture or maintenance procedure changes.
