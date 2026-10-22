@@ -61,6 +61,8 @@
     accounts."kks@irisu.org" = {
       passwordFile = config.vaultix.secrets.mail-kks.path;
       aliases = [
+        "git@irisu.org"
+        "contact@irisu.org"
         "postmaster@irisu.org"
         "abuse@irisu.org"
         "dmarc@irisu.org"
