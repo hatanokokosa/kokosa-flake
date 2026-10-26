@@ -12,7 +12,7 @@
       {url = "https://cache.nixos.org/";}
       {url = "https://cache.numtide.com/";}
       {url = "https://nix-community.cachix.org/";}
-      {url = "https://attic.xuyh0120.win/lantian/";}
+      {url = "https://cache.lantian.pub/lantian/";}
     ];
   };
 }

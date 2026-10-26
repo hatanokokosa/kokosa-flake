@@ -6,5 +6,6 @@
     flavor = "latte";
     enable = true;
     autoEnable = true;
+    tty.enable = false;
   };
 }
