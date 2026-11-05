@@ -10,6 +10,7 @@
 - Only delete paths with `rip`; never use `rm`, including `rm -rf`.
 - Never edit encrypted secret files directly. Use `just secret-edit <path>`.
 - Add new modules, dotfiles, package sources, and secret files to Git before relying on flake evaluation.
+- DO NOT EDIT MY ANY MARKDOWN FILES!!!
 
 ## Nix Workflow
 
