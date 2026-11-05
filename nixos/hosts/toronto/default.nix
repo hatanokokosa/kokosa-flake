@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   lib,
   nixosProfiles,
@@ -7,6 +8,7 @@
 }: {
   imports = [
     nixosProfiles.server
+    ../../modules/secrets.nix
     inputs.disko.nixosModules.disko
     ./disko.nix
     ./hardware.nix
@@ -50,6 +52,18 @@
     PermitRootLogin = "prohibit-password";
     AuthenticationMethods = "publickey";
     X11Forwarding = false;
+  };
+
+  vaultix.settings.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHmeM5Dg1mo6uj+p1z3uNIHWfPYNYVLTeW09IQj08gkL";
+  vaultix.secrets.cloudflared-toronto = {};
+
+  services.cloudflared = {
+    enable = true;
+    tunnels."f222e999-b6dd-4432-bf9d-90ed6a691e71" = {
+      credentialsFile = config.vaultix.secrets.cloudflared-toronto.path;
+      warp-routing.enabled = true;
+      default = "http_status:404";
+    };
   };
 
   users.mutableUsers = false;
