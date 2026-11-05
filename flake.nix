@@ -96,6 +96,15 @@
           inputs = inputs // {nixpkgs = inputs.nixpkgs-stable;};
         };
       };
+
+      toronto = inputs.nixpkgs-stable.lib.nixosSystem {
+        modules = [./nixos/hosts/toronto];
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit nixosModules nixosProfiles;
+          inputs = inputs // {nixpkgs = inputs.nixpkgs-stable;};
+        };
+      };
     };
   in
     # avoid warnings from 'nix flake check'
