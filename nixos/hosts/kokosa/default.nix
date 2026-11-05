@@ -13,7 +13,7 @@
     nixosProfiles.virtualisation
 
     ../../modules/hardware/amd-gpu.nix
-    ../../modules/network/tailscale.nix
+    ../../modules/services/paseo.nix
     ../../modules/secrets.nix
     ./hardware.nix
   ];
