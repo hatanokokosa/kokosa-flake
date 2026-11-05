@@ -76,6 +76,5 @@
   };
 
   nix.settings.max-jobs = 1;
-  time.timeZone = lib.mkForce "UTC";
   system.stateVersion = "26.05";
 }
