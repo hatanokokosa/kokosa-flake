@@ -14,14 +14,10 @@
 
     ../../modules/hardware/amd-gpu.nix
     ../../modules/services/paseo.nix
-    ../../modules/secrets.nix
     ./hardware.nix
   ];
 
   networking.firewall.enable = false;
-
-  vaultix.settings.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINgl+EIk/QAxExeVE5hAkhTXLwPQtv2dXYpBZFoGVeSB";
-  vaultix.secrets.warp-endpoint = {};
 
   networking.hostName = "kokosa";
   system.stateVersion = "24.11";
