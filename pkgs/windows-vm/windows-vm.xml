@@ -1,0 +1,93 @@
+<domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
+  <name>windows11</name>
+  <uuid>51ebf134-1871-42fd-a930-c061040b71e1</uuid>
+  <title>Windows 11</title>
+  <memory unit='GiB'>8</memory>
+  <vcpu placement='static'>4</vcpu>
+  <memoryBacking>
+    <source type='memfd'/>
+    <access mode='shared'/>
+  </memoryBacking>
+  <os>
+    <type arch='x86_64' machine='q35'>hvm</type>
+    <loader readonly='yes' secure='no' type='pflash'/>
+    <nvram/>
+    <boot dev='hd'/>
+  </os>
+  <features>
+    <acpi/>
+    <apic/>
+    <hyperv mode='custom'>
+      <relaxed state='on'/>
+      <vapic state='on'/>
+      <spinlocks state='on' retries='8191'/>
+      <vpindex state='on'/>
+      <runtime state='on'/>
+      <synic state='on'/>
+      <stimer state='on'/>
+      <frequencies state='on'/>
+      <tlbflush state='on'/>
+      <ipi state='on'/>
+    </hyperv>
+  </features>
+  <cpu mode='host-passthrough' check='none'>
+    <topology sockets='1' cores='4' threads='1'/>
+  </cpu>
+  <clock offset='utc'>
+    <timer name='hypervclock' present='yes'/>
+  </clock>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>destroy</on_crash>
+  <pm>
+    <suspend-to-mem enabled='no'/>
+    <suspend-to-disk enabled='no'/>
+  </pm>
+  <devices>
+    <emulator/>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2' discard='unmap'/>
+      <source/>
+      <target dev='sda' bus='sata'/>
+    </disk>
+    <controller type='usb' model='qemu-xhci'/>
+    <controller type='virtio-serial'/>
+    <interface type='user'>
+      <mac address='52:54:00:12:34:56'/>
+      <model type='e1000e'/>
+    </interface>
+    <input type='tablet' bus='usb'/>
+    <input type='keyboard' bus='usb'/>
+    <channel type='unix'>
+      <target type='virtio' name='org.qemu.guest_agent.0'/>
+    </channel>
+    <filesystem type='mount' accessmode='passthrough'>
+      <driver type='virtiofs'/>
+      <binary>
+        <sandbox mode='namespace'/>
+      </binary>
+      <source/>
+      <target dir='Public'/>
+    </filesystem>
+    <graphics type='sdl'>
+      <gl enable='yes'/>
+    </graphics>
+    <video>
+      <model type='virtio' heads='1' primary='yes' blob='on'>
+        <acceleration accel3d='yes'/>
+      </model>
+    </video>
+    <sound model='ich9'>
+      <audio id='1'/>
+    </sound>
+    <audio id='1' type='pipewire'/>
+  </devices>
+  <qemu:override>
+    <qemu:device alias='video0'>
+      <qemu:frontend>
+        <qemu:property name='venus' type='bool' value='true'/>
+        <qemu:property name='hostmem' type='unsigned' value='4294967296'/>
+      </qemu:frontend>
+    </qemu:device>
+  </qemu:override>
+</domain>

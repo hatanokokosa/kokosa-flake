@@ -1,4 +1,8 @@
-{nixosProfiles, ...}: {
+{
+  nixosProfiles,
+  pkgs,
+  ...
+}: {
   imports = [
     nixosProfiles.base
     nixosProfiles.china-network
@@ -16,6 +20,8 @@
     ../../modules/services/paseo.nix
     ./hardware.nix
   ];
+
+  environment.systemPackages = [pkgs.windows-vm];
 
   networking.firewall.enable = false;
 

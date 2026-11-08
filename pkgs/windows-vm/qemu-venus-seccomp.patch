@@ -1,0 +1,18 @@
+From: Kokosa Flake
+Subject: [PATCH] seccomp: classify process group creation with spawning
+
+Venus starts a separate render server and gives it a process group.
+Allow setpgid when process spawning is explicitly enabled, without allowing
+UID/GID changes or disabling the remaining sandbox policy.
+
+--- a/system/qemu-seccomp.c
++++ b/system/qemu-seccomp.c
+@@ -196,7 +196,7 @@ static const struct QemuSeccompSyscall denylist[] = {
+       0, NULL, SCMP_ACT_TRAP },
+     { SCMP_SYS(setgid),                 QEMU_SECCOMP_SET_PRIVILEGED,
+       0, NULL, SCMP_ACT_TRAP },
+-    { SCMP_SYS(setpgid),                QEMU_SECCOMP_SET_PRIVILEGED,
++    { SCMP_SYS(setpgid),                QEMU_SECCOMP_SET_SPAWN,
+       0, NULL, SCMP_ACT_TRAP },
+     { SCMP_SYS(setsid),                 QEMU_SECCOMP_SET_PRIVILEGED,
+       0, NULL, SCMP_ACT_TRAP },
