@@ -1,7 +1,7 @@
 <h1 align="center">
     <img src="/home/dotfiles/fastfetch/kokosa.png" alt="logo" width="400px" />
     <br>
-        Kokosa's NixOS Flakes
+        Kokosa's Flakes
     <br>
     <a href="https://github.com/catppuccin/catppuccin">
         <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/refs/heads/main/assets/palette/latte.png" width="600px" />
@@ -10,7 +10,7 @@
 </h1>
 
 <p align="center">
-    My personal NixOS configuration! Built with flake-parts~
+    My personal NixOS configuration
 </p>
 
 <div align="center">
@@ -32,25 +32,9 @@
 - Security: [OpenDoas]
 - Shell: [Fish] & [Fisher]
 - Browser: [Firefox]
-- Kernel: [CachyOS] (`release` branch; module aggregation uses the kernel's pinned nixpkgs).
+- Kernel: [CachyOS]
 - Terminal: [Kitty]
 - Editor: [Zed]
-- File search: Fish `Ctrl+T` selects files with fzf/fd; `Alt+C` selects directories.
-- DNS lookup: standard BIND `dig`.
-
-## Structure
-- `flake.nix`: flake entry, host registration, and module/profile discovery
-- `modules/`: flake-level outputs, overlays, formatter, and supported systems
-- `nixos/modules/`: small configuration fragments using upstream NixOS options directly
-- `nixos/profiles/`: orthogonal feature compositions imported by hosts
-- `nixos/hosts/`: hardware facts and final per-host policy
-- `home/modules/`: reusable Home Manager program and dotfile modules
-- `home/profiles/`: Home Manager feature compositions selected by NixOS profiles
-- `home/dotfiles/`: dotfile sources
-- `secrets/`: encrypted vaultix sources and the per-host cache
-- `lib/`: module discovery and import helpers
-
-See [`GUIDE.md`](./GUIDE.md) for the complete module flow and host template.
 
 ---
 
