@@ -76,6 +76,7 @@
       ingress = {
         "vault.kokosa.de" = "http://127.0.0.1:8222";
         "beszel.kokosa.de" = "http://127.0.0.1:8090";
+        "social.kokosa.de" = "http://127.0.0.1:8080";
       };
       default = "http_status:404";
     };
@@ -113,13 +114,38 @@
   };
   systemd.services.beszel-agent.serviceConfig.MemoryHigh = "96M";
 
+  # The website keeps the apex domain; GoToSocial runs on the subdomain and
+  # only claims kokosa.de as the account domain. kokosa.de must redirect
+  # /.well-known/{webfinger,host-meta,nodeinfo} here for federation to work.
+  services.gotosocial = {
+    enable = true;
+    settings = {
+      host = "social.kokosa.de";
+      account-domain = "kokosa.de";
+      landing-page-user = "hi";
+      accounts-registration-open = false;
+      instance-expose-public-timeline = false;
+      instance-expose-peers = false;
+      instance-expose-blocklist = false;
+      media-remote-cache-days = 7;
+    };
+  };
+  systemd.services.gotosocial.serviceConfig.MemoryHigh = "384M";
+
   services.restic.backups.r2 = {
     repository = "s3:https://ff79f31ebf5f3c892a71005a5f0b9345.r2.cloudflarestorage.com/eygelshoven-restic";
     environmentFile = config.vaultix.secrets.restic-r2.path;
     paths = [
       "/var/backup/vaultwarden"
       "/var/lib/private/beszel-hub"
+      "/var/backup/gotosocial"
     ];
+    # Media is intentionally excluded; only the SQLite database is dumped.
+    # .backup produces a consistent snapshot while GTS is running.
+    backupPrepareCommand = ''
+      install -d -m 0700 /var/backup/gotosocial
+      ${pkgs.sqlite}/bin/sqlite3 /var/lib/gotosocial/database.sqlite ".backup '/var/backup/gotosocial/database.sqlite'"
+    '';
     initialize = true;
     timerConfig = {
       OnCalendar = "03:15";
