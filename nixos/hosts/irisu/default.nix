@@ -35,6 +35,16 @@
     KbdInteractiveAuthentication = lib.mkForce false;
   };
 
+  services.beszel.agent = {
+    enable = true;
+    openFirewall = true;
+    environment = {
+      LISTEN = "0.0.0.0:45876";
+      KEY = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK8FlBoI98lqR1QAzD3CmYRPzpf0arhhZS5puzV2X1fN";
+    };
+  };
+  systemd.services.beszel-agent.serviceConfig.MemoryHigh = "96M";
+
   networking.hostName = "irisu";
   time.timeZone = lib.mkForce "UTC";
   system.stateVersion = "26.11";
