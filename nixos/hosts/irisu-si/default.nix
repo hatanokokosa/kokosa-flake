@@ -102,6 +102,7 @@
         "vault.kokosa.de" = "http://127.0.0.1:8222";
         "beszel.kokosa.de" = "http://127.0.0.1:8090";
         "reader.kokosa.de" = "http://127.0.0.1:8081";
+        "ntfy.kokosa.de" = "http://127.0.0.1:2586";
       };
       default = "http_status:404";
     };
@@ -151,6 +152,17 @@
     };
   };
   systemd.services.miniflux.serviceConfig.MemoryHigh = "256M";
+
+  services.ntfy-sh = {
+    enable = true;
+    settings = {
+      "base-url" = "https://ntfy.kokosa.de";
+      "listen-http" = "127.0.0.1:2586";
+      "auth-default-access" = "deny-all";
+      "behind-proxy" = true;
+    };
+  };
+  systemd.services.ntfy-sh.serviceConfig.MemoryHigh = "128M";
 
   services.restic.backups.r2 = {
     repository = "s3:https://ff79f31ebf5f3c892a71005a5f0b9345.r2.cloudflarestorage.com/eygelshoven-restic";
