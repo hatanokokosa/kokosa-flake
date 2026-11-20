@@ -101,6 +101,7 @@
       ingress = {
         "vault.kokosa.de" = "http://127.0.0.1:8222";
         "beszel.kokosa.de" = "http://127.0.0.1:8090";
+        "reader.kokosa.de" = "http://127.0.0.1:8081";
       };
       default = "http_status:404";
     };
@@ -140,6 +141,16 @@
     };
   };
   systemd.services.beszel-agent.serviceConfig.MemoryHigh = "96M";
+
+  services.miniflux = {
+    enable = true;
+    config = {
+      LISTEN_ADDR = "127.0.0.1:8081";
+      BASE_URL = "https://reader.kokosa.de/";
+      CREATE_ADMIN = 0;
+    };
+  };
+  systemd.services.miniflux.serviceConfig.MemoryHigh = "256M";
 
   services.restic.backups.r2 = {
     repository = "s3:https://ff79f31ebf5f3c892a71005a5f0b9345.r2.cloudflarestorage.com/eygelshoven-restic";
