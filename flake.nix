@@ -114,6 +114,15 @@
           inputs = inputs // {nixpkgs = inputs.nixpkgs-stable;};
         };
       };
+
+      irisu-si = inputs.nixpkgs-stable.lib.nixosSystem {
+        modules = [./nixos/hosts/irisu-si];
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit nixosModules nixosProfiles;
+          inputs = inputs // {nixpkgs = inputs.nixpkgs-stable;};
+        };
+      };
     };
   in
     # avoid warnings from 'nix flake check'
