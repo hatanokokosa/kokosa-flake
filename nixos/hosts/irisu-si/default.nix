@@ -171,10 +171,12 @@
       "/var/backup/vaultwarden"
       "/var/lib/private/beszel-hub"
       "/var/backup/sharkey"
+      "/var/backup/miniflux"
     ];
     backupPrepareCommand = ''
-      install -d -m 0700 /var/backup/sharkey
+      install -d -m 0700 /var/backup/sharkey /var/backup/miniflux
       /run/current-system/sw/bin/runuser -u postgres -- ${config.services.postgresql.package}/bin/pg_dump -Fc sharkey > /var/backup/sharkey/sharkey.dump
+      /run/current-system/sw/bin/runuser -u postgres -- ${config.services.postgresql.package}/bin/pg_dump -Fc miniflux > /var/backup/miniflux/miniflux.dump
     '';
     initialize = true;
     timerConfig = {
